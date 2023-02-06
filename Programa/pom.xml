@@ -9,7 +9,7 @@
 
 
 	<build>
-		<finalName>Cidades Inteligentes (versão 4)</finalName>
+		<finalName>Indicadores de cidades inteligentes</finalName>
 		<plugins>
 
 			<plugin>
@@ -25,7 +25,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>br.edu.mg.unifal.bcc.ic.cidades_inteligentes.janelas.unica</mainClass>
+							<mainClass>br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
