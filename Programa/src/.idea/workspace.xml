@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="899ef1d4-0f48-4d27-b44d-1f7f142882c5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/ConexaoBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/ConexaoBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/Tutorial.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/Tutorial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/CalculoPrioridade.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/CalculoPrioridade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/Soma.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/Soma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/Subtracao.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/Subtracao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/testes/TesteConstantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/testes/TesteConstantes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/META-INF/maven/cidade_inteligentes.br.edu.mg.unifal.bcc.ic.cidades_inteligentes/cidades_inteligentes/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/META-INF/maven/cidade_inteligentes.br.edu.mg.unifal.bcc.ic.cidades_inteligentes/cidades_inteligentes/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/ConexaoBD$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/ConexaoBD$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/ConexaoBD.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/ConexaoBD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/Tutorial.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/janelas/unica/internas/Tutorial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/CalculoPrioridade.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/CalculoPrioridade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/Soma.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/Soma.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/Subtracao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/prototipo/modelo/calculo/Subtracao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/test-classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/testes/TesteConstantes.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/test-classes/br/edu/mg/unifal/bcc/ic/cidades_inteligentes/testes/TesteConstantes.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2Gc69PYcoq0eIvOzoiEW7ibLCCC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Gabriel/Documents/GitHub/IC/Sidra/cidades_inteligentes"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="899ef1d4-0f48-4d27-b44d-1f7f142882c5" name="Changes" comment="" />
+      <created>1666675465078</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666675465078</updated>
+      <workItem from="1666675545573" duration="111000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

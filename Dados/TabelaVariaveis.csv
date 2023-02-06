@@ -1,0 +1,397 @@
+codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
+10|BD|Homicídios na população negra||Anual|True
+30|BD|Índice de Desenvolvimento Humano (IDH) municipal||Decenal|True
+3960|BD|Número de pessoas de 16 anos ou mais com ocupação||Decenal|True
+4042|BD|Número de empregos formais||Decenal|True
+4067|BD|Número de mulheres mortas por homicídio||Anual|True
+4101|BD|Número de óbitos por armas de fogo||Anual|True
+4121|BD|Rendimento médio real do trabalho principal das pessoas de 16 anos ou mais||Decenal|True
+1|Sidra|População com 10 anos ou mais e recebe até 1/2 salário mínimo|1384/n1/all/v/allxp/p/all/c11570/92973|Decenal|True
+2|Sidra|População com 10 anos ou mais e recebe de 1/2 a 1 salário mínimo|1384/n1/all/v/allxp/p/all/c11570/92974|Decenal|True
+3|Sidra|População com 10 anos ou mais e recebe de 1 a 2 salários mínimos|1384/n1/all/v/allxp/p/all/c11570/92975|Decenal|True
+4|Sidra|População com 10 anos ou mais e recebe de 2 a 5 salários mínimos|1384/n1/all/v/allxp/p/all/c11570/92976|Decenal|True
+5|Sidra|População com 10 anos ou mais e recebe de 5 a 10 salários mínimos|1384/n1/all/v/allxp/p/all/c11570/92977|Decenal|True
+6|Sidra|População com 10 anos ou mais e recebe de 10 a 20 salários mínimos|1384/n1/all/v/allxp/p/all/c11570/92978|Decenal|True
+7|Sidra|População com 10 anos ou mais e recebe mais de 20 salários mínimos|1384/n1/all/v/allxp/p/all/c11570/92979|Decenal|True
+8|Sidra|População com 10 anos ou mais e sem rendimento|1384/n1/all/v/allxp/p/all/c11570/92980|Decenal|True
+9|Sidra|População total estimada|6579/n1/all/v/all/p/all|Anual|True
+11|Sidra|Consumo total de água na indústria, em metros cúbicos (m³)|7499/n1/all/v/448/p/all/c988/48985|Decenal|True
+12|Sidra|Consumo total de água no comércio, em metros cúbicos (m³)|7499/n1/all/v/448/p/all/c988/48984|Decenal|True
+13|Sidra|Consumo total de água doméstico, em metros cúbicos (m³)|7499/n1/all/v/448/p/all/c988/48982|Decenal|True
+19|Sidra|População total do município|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/0/d/v93%200|Decenal|True
+41|Sidra|Número total de nascidos vivos no município|2609/n1/all/v/allxp/p/all/c232/0/c240/0/c2/0|Anual|True
+44|Sidra|População na faixa etária de 4 a 17 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1141%201142%202487%202498%202499%202500/d/v93%200|Decenal|True
+48|Sidra|População na faixa etária de 5 a 8 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1140%201141/d/v93%200|Decenal|True
+49|Sidra|População com 15 anos ou mais|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1143%201144%201145%201146%201147%201148%201149%201150%201151%201152%201153%201154%201155%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|True
+53|Sidra|População com 25 anos ou mais|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1145%201146%201147%201148%201149%201150%201151%201152%201153%201154%201155%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|True
+54|Sidra|Percentual da população idosa no município (mais de 60 anos)|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1152%201153%201154%201155%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|True
+55|Sidra|Número total de domicílios no município|3451/n1/all/v/96/p/all/c1/6795|Decenal|True
+59|Sidra|Número total de óbitos de crianças com menos de um ano de idade|2654/n1/all/v/allxp/p/all/c244/0/c1836/0/c2/0/c260/5922/c257/0|Anual|True
+64|Sidra|Número total de domicílios que são atendidos pelo abastecimento público de água potável|3218/n1/all/v/allxp/p/all/c61/92853/c299/0/c67/0/c309/0|Decenal|True
+65|Sidra|Número de domicílios sem ligação com a rede de esgoto|1394/n1/all/v/allxp/p/all/c1/0/c458/0/c125/0/c63/0/c11558/119523|Decenal|True
+66|Sidra|Consumo total de água (indústria, comércio, agricultura e doméstico), em metros cúbicos (m³)|7499/n1/all/v/448/p/all/c988/48981|Decenal|True
+75|Sidra|Total de indivíduos com 25 anos ou mais com ensino superior concluído|3457/n1/all/v/allxp/p/all/c1568/99713/c2/0/c133/0/d/v1643%200|Decenal|True
+76|Sidra|Total de indivíduos de 5 até 8 anos (inclusive) plenamente alfabetizados|2104/n1/all/v/allxp/p/all/c133/0/c59/1023/c58/1141/d/v138%200|Decenal|True
+79|Sidra|Número total de indivíduos residentes com renda até 1/4 do salário mínimo|3177/n1/all/v/allxp/p/all/c86/0/c1/0/c2/0/c11570/92983|Decenal|True
+92|Sidra|Número de indivíduos residentes em aglomerados subnormais|1425/n1/all/v/allxp/p/all/c86/0/c1/12458|Decenal|True
+222|Sidra|População total de mulheres no município|200/n1/all/v/allxp/p/all/c2/5/c1/0/c58/0/d/v93%200|Decenal|True
+224|Sidra|População residente com 10 anos ou mais|1384/n1/all/v/allxp/p/all/c11570/0|Decenal|True
+225|Sidra|Total de analfabetos com 15 anos ou mais|2104/n1/all/v/allxp/p/all/c133/0/c59/1024/c58/1143%201144%201145%203244%203299%203300%203301%203520/d/v138%200|Decenal|True
+229|Sidra|Número de nascidos vivos cujas mães tinham 19 anos ou menos|2680/n1/all/v/allxp/p/all/c235/0/c2/0/c237/0/c238/0/c240/5370%205414|Anual|True
+241|Sidra|Número total, em metros cúbicos (m³), de esgoto com tratamento|7479/n1/all/v/756/p/all/c348/8128|Decenal|True
+255|Sidra|Produto Interno Bruto (PIB) do município|5938/n1/all/v/37/p/all/d/v37%200|Anual|True
+268|Sidra|Total de indivíduos de 4 a 17 anos na escola|2976/n1/all/v/allxp/p/all/c11798/0/c1/0/c58/2487%202488%202489%202493%202792%202798%2014433/d/v690%200|Decenal|True
+321|Sidra|Número total, em metros cúbicos (m³), de esgoto gerado|7510/n1/all/v/768/p/all/c988/48981|Decenal|True
+3961|Sidra|Número total de pessoas com 16 anos ou mais|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1144%201145%201146%201147%201148%201149%201150%201151%201152%201153%201154%201155%202499%202500%202501%202502%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|True
+3968|Sidra|Número de domicílios com acesso a serviço de coleta de resíduos domésticos|1395/n1/all/v/allxp/p/all/c1/0/c458/0/c125/0/c61/0/c67/2520/c309/0|Decenal|True
+4007|Sidra|Percentual de participação da indústria no Produto Interno Bruto (PIB) municipal|5938/n1/all/v/520/p/all/d/v520%202|Anual|True
+4022|Sidra|Número de domicílios com acesso à energia elétrica|3513/n1/all/v/96/p/all/c12236/0/c125/0/c63/0/c137/0/c309/0/d/v96%200|Decenal|True
+4023|Sidra|Número de domicílios com acesso a telefone celular|3516/n1/all/v/allxp/p/all/c12062/12210%2012211/c1/0/c386/0/d/v96%200|Decenal|True
+4045|Sidra|Número total de empresas do município|6449/n1/all/v/2585/p/all/c12762/117897|Anual|True
+4055|Sidra|População na faixa etária de 20 a 59 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1144%201145%201146%201147%201148%201149%201150%201151/d/v93%200|Decenal|True
+4095|Sidra|Número de óbitos de crianças menores de 5 anos de idade|2654/n1/all/v/allxp/p/all/c244/0/c1836/0/c2/0/c260/5922%205948%205954/c257/0|Anual|True
+4096|Sidra|Número de óbitos de crianças residentes de 0 a 27 dias de idade|2654/n1/all/v/allxp/p/all/c244/0/c1836/0/c2/0/c260/5923%205931/c257/0|Anual|True
+4192|Sidra|Número de imóveis locados no município|3511/n1/all/v/allxp/p/all/c511/0/c125/0/c137/0/c65/0/c74/0/d/v1549%200|Decenal|True
+4193|Sidra|Número total de imóveis do município|3152/n1/all/v/allxp/p/all/c125/2932/c68/9902|Decenal|True
+14|BD|Consumo total de água na agricultura, em metros cúbicos (m³)||Anual|True
+27|BD|Área total do município em quilômetros quadrados (km²)||Anual|True
+39|BD|Total de funcionários do município||Anual|True
+43|BD|População na faixa etária de 0 a 14 anos||Anual|True
+45|BD|População na faixa etária de 7 a 14 anos||Anual|True
+47|BD|População masculina na faixa etária de 15 a 29 anos||Anual|True
+57|BD|Número total de unidades básicas de atendimento em saúde no município||Anual|True
+60|BD|Número total de equipamentos esportivos públicos||Anual|True
+63|BD|Número total, em metros cúbicos (m³), de água perdida||Anual|True
+67|BD|Número de domicílios com coleta seletiva||Anual|True
+68|BD|Número total, em quilos (kg), de resíduo urbano gerado pelo município||Anual|True
+69|BD|Número total, em quilos (kg), de resíduo urbano reciclado||Anual|True
+70|BD|Número total, em quilowatt-hora (kWh), de energia consumida pelo município||Anual|True
+71|BD|Número total de livros para adultos disponíveis em bibliotecas municipais||Anual|True
+72|BD|Taxa média de desemprego||Anual|True
+73|BD|Nota do Índice de Desenvolvimento da Educação Básica (IDEB) - Rede municipal - anos iniciais||Anual|True
+77|BD|Número de matrículas em creches municipais||Anual|True
+78|BD|Número total de inscritos em creches (matrículas efetuadas + vagas solicitadas)||Anual|True
+81|BD|Número total de mortes por homicídio de jovens homens com idade entre 15 e 29 anos||Anual|True
+83|BD|Número total de roubos no município||Anual|True
+90|BD|Número total de ônibus coletivos no município||Anual|True
+93|BD|Número total, em quilômetros quadrados (km²), de área destinada a conservação||Anual|True
+228|BD|Número de nascidos vivos cujas mães fizeram menos de 7 consultas pré-natal||Anual|True
+230|BD|Número de óbitos por causas maternas||Anual|True
+231|BD|Número de crianças com baixo peso ao nascer||Anual|True
+232|BD|Número total de crianças menores de 5 anos desnutridas||Anual|True
+233|BD|População de crianças menores que 5 anos||Anual|True
+234|BD|Número de pessoas infectadas com dengue, chikungunya ou zika||Anual|True
+243|BD|Número de catadores incluídos no sistema de coleta seletiva||Anual|True
+244|BD|Número total de catadores||Anual|True
+245|BD|Número total, em quilos (kg), de resíduo urbano depositado em aterros sanitários||Anual|True
+247|BD|Valor total, em reais (R$), destinados às campanhas de educação cidadã||Anual|True
+248|BD|Verba total destinada a comunicação/publicidade||Anual|True
+249|BD|Número de centros culturais, espaços e casas de cultura públicos e privados||Anual|True
+250|BD|Número de livros infanto - juvenis disponíveis em bibliotecas municipais||Anual|True
+252|BD|Temperatura média mensal||Anual|True
+253|BD|Número de mortes causadas por desastres socioambientais||Anual|True
+256|BD|Taxa média de desemprego de jovens de 15 a 29 anos||Anual|True
+258|BD|Nota do Índice de Desenvolvimento da Educação Básica (IDEB) - Rede municipal - anos finais||Anual|True
+262|BD|Número de escolas públicas com esporte educacional no turno obrigatório||Anual|True
+263|BD|Número total de escolas públicas no município||Anual|True
+264|BD|Número de escolas públicas de ensino fundamental e médio com acesso à internet||Anual|True
+266|BD|Número de indivíduos até 19 anos com ensino médio concluído||Anual|True
+267|BD|População até 19 anos||Anual|True
+269|BD|Número total de matrículas em pré-escolas municipais||Anual|True
+270|BD|Número total de inscritos em pré-escolas (matrículas efetuadas + vagas solicitadas)||Anual|True
+271|BD|Número total de matrículas no ensino fundamental em escolas públicas municipais e estaduais||Anual|True
+272|BD|Número total de inscritos no ensino fundamental (matrículas efetuadas + vagas solicitadas)||Anual|True
+273|BD|Número total de matrículas no ensino médio em escolas públicas municipais e estaduais||Anual|True
+274|BD|Número total de inscritos no ensino médio (matrículas efetuadas + vagas solicitadas)||Anual|True
+275|BD|Número total de famílias que recebem recursos dos programas de transferência de renda||Anual|True
+276|BD|Número total de famílias que solicitam recursos dos programas de transferência de renda existentes||Anual|True
+277|BD|Número total de internações de crianças residentes, de até 14 anos, por causas relacionadas a possíveis agressões||Anual|True
+279|BD|Número total de internações de pessoas residentes, de 60 anos ou mais, por causas relacionadas a possível agressão||Anual|True
+281|BD|Número total de crimes sexuais||Anual|True
+282|BD|Número de crimes violentos fatais||Anual|True
+283|BD|Número total de atos infracionais praticados por pessoas na faixa etária de 15 a 18 anos||Anual|True
+284|BD|Número total de atos infracionais ocorridos no município||Anual|True
+285|BD|Número de pessoas em situação de rua||Anual|True
+290|BD|Número total de pessoas com deficiência empregadas no governo||Anual|True
+295|BD|Número total de acidentes de trânsito||Anual|True
+296|BD|Número total de atropelamentos||Anual|True
+297|BD|Número total, em quilômetros (km), de corredores exclusivos de ônibus||Anual|True
+298|BD|Extensão total, em quilômetros (km), de vias do município||Anual|True
+301|BD|Número total, em quilômetros quadrados (km²) , de área desmatada||Anual|True
+302|BD|Número de edifícios novos e reformados que têm avaliação em termos de critérios de sustentabilidade||Anual|True
+303|BD|Número total de edifícios novos e projetos de reforma||Anual|True
+305|BD|Quantidade total de quilômetros de calçadas||Anual|True
+307|BD|Total de emissões transformadas em CO2 equivalente||Anual|True
+308|BD|Número de aprendizes contratados||Anual|True
+309|BD|Total de vagas estipuladas pela lei para aprendizes||Anual|True
+311|BD|Valor do orçamento executado decidido participativamente||Anual|True
+312|BD|Orçamento total do município||Anual|True
+313|BD|Número de secretarias do governo que contam com Conselhos Municipais||Anual|True
+314|BD|Total de secretarias do governo||Anual|True
+320|BD|Número total, em metros cúbicos (m³), de água tratada do município||Anual|True
+322|BD|Valor total do orçamento, em reais (R$), destinado ao transporte público||Anual|True
+323|BD|Valor total do orçamento da área de transporte do município||Anual|True
+3942|BD|Número total, em metros quadrados (m²), de área verde pública por habitante||Anual|True
+3943|BD|Percentual da população que vive em um raio de até 300m de áreas verdes||Anual|True
+3944|BD|Número de quilômetros de calçadas acessíveis||Anual|True
+3947|BD|Número de crianças e adolescentes afastadas de situação irregular de trabalho infantil||Anual|True
+3948|BD|Número de internações hospitalares ocorridas em consequência de doenças relacionadas ao saneamento ambiental inadequado (DRSAI)||Anual|True
+3949|BD|Número de domicílios com acesso a internet||Anual|True
+3951|BD|Mortalidade por doenças crônicas não transmissíveis (doenças cardiovasculares, doenças respiratórias, neoplasias, diabetes mellitus)||Anual|True
+3952|BD|Número de mulheres em cargos gerenciais no governo do município||Anual|True
+3953|BD|Número de pessoas em cargos gerenciais no governo do município||Anual|True
+3954|BD|Número de negros em cargos gerenciais no governo do município||Anual|True
+3955|BD|Número de notificações de violência contra mulheres e meninas registradas no município||Anual|True
+3956|BD|Número de mulheres no comando das secretarias do governo municipal||Anual|True
+3957|BD|Número total de secretários(as) do governo municipal||Anual|True
+3958|BD|Número de casos de negligência e abandono de crianças e adolescentes registrados no município||Anual|True
+3959|BD|Número de notificações de estupros sofridos por mulheres registrados no município||Anual|True
+3962|BD|Recursos do orçamento público destinados à saúde sexual e reprodutiva||Anual|True
+3963|BD|Gasto total em saúde (estadual)||Anual|True
+3964|BD|Orçamento municipal investido em ciência e tecnologia||Anual|True
+3965|BD|Número de espaços e equipamentos públicos com acessibilidade||Anual|True
+3967|BD|Valor do orçamento destinado a ações afirmativas em políticas públicas para a redução da desigualdade||Anual|True
+3971|BD|Número de pedidos negados no sistema de informação ao cidadão||Anual|True
+3972|BD|Total de pedidos registrados no sistema de informação ao cidadão||Anual|True
+3975|BD|Número de adolescentes cumprindo medidas socioeducativas||Anual|True
+3976|BD|Número de afetados por eventos climáticos extremos como alagamentos, ciclones, deslizamentos, enxurradas, inundações, secas, dentre outros||Anual|True
+3977|BD|Número de alunos da rede pública com acesso à quadra esportiva (coberta ou descoberta)||Anual|True
+3978|BD|Número total de alunos da rede pública||Anual|True
+3979|BD|Número de alunos com deficência e transtornos globais do desenvolvimento matriculados em classes comuns na rede regular de ensino||Anual|True
+3980|BD|Número total de alunos matriculados em classes comuns na rede regular de ensino||Anual|True
+3981|BD|Número de alunos, professores e funcionários vítimas de violência no ambiente escolar||Anual|True
+3982|BD|Número total de alunos, professores e funcionários||Anual|True
+3983|BD|População que tem escolaridade de até 3 anos de estudo||Anual|True
+3984|BD|Número total, em quilômetros quadrados (km²) , de área restaurada de florestas degradadas||Anual|True
+3985|BD|Número total, em quilômetros quadrados (km²) , das áreas de mananciais protegidas||Anual|True
+3986|BD|Número total, em quilômetros quadrados (km²) , de áreas destinadas às Unidades de Conservação||Anual|True
+3987|BD|Número total, em quilômetros quadrados (km²) de área verde no município||Anual|True
+3995|BD|Número de secretarias que contam com ouvidorias||Anual|True
+3997|BD|Número total de secretarias||Anual|True
+3998|BD|Percentual da população imunizada||Anual|True
+3999|BD|Número total, em quilômetros quadrados (km²), de cobertura vegetal nativa remanescente||Anual|True
+4000|BD|Número total, em quilômetros quadrados (km²), de cobertura vegetal||Anual|True
+4005|BD|Número de agricultores familiares (culturas e pecuária)||Anual|True
+4006|BD|Número total de agricultores (culturas e pecuária)||Anual|True
+4008|BD|Quantidade de litros de agrotóxicos consumidos no município||Anual|True
+4009|BD|Número total, em quilômetros quadrados (km²), de área plantada||Anual|True
+4010|BD|Número de amostras irregulares (contaminação por agrotóxicos - culturas que apresentam valores acima do limite máximo de resíduos permitido)||Anual|True
+4011|BD|Número total de amostras (contaminação por agrotóxicos - amostras regulares + amostras irregulares)||Anual|True
+4014|BD|Número de crianças e adolescentes de 0 a 14 anos que sofreram violência sexual||Anual|True
+4015|BD|Número de crimes contra a liberdade sexual||Anual|True
+4016|BD|Custo anual, em reais, dos acidentes de trânsito no município||Anual|True
+4018|BD|Valor do déficit habitacional no município||Anual|True
+4019|BD|Número de registros de violação dos direitos humanos||Anual|True
+4020|BD|Número de escolas da rede municipal que implementam as leis 10.639 e 11.645 para atendimento à diversidade sociocultural (quilombola ou indígena)||Anual|True
+4024|BD|Número de domicílios em área de risco||Anual|True
+4026|BD|Número de matrículas de Educação de Jovens e Adultos (EJA) integrada à educação profissional de nível fundamental e médio||Anual|True
+4033|BD|Número total de matrículas da Educação de Jovens e Adultos (EJA) de nível fundamental e médio||Anual|True
+4034|BD|Número de alunos de creche da rede municipal matriculados em tempo integral||Anual|True
+4035|BD|Número de alunos de pré-escola da rede municipal matriculados em tempo integral||Anual|True
+4036|BD|Número de alunos do ensino fundamental (anos finais) da rede municipal matriculados em tempo integral||Anual|True
+4037|BD|Número total de alunos do ensino fundamental (anos finais) matriculados na rede municipal||Anual|True
+4038|BD|Número de alunos do ensino fundamental (anos iniciais) da rede municipal matriculados em tempo integral||Anual|True
+4039|BD|Número total de alunos do ensino fundamental (anos iniciais) matriculados na rede municipal||Anual|True
+4040|BD|Número de empregos nas atividades turísticas no município||Anual|True
+4041|BD|Número total de empregos no município||Anual|True
+4044|BD|Número de empresas que realizam logística reversa de resíduos||Anual|True
+4046|BD|Número de escolas públicas com conselhos escolares ativos||Anual|True
+4047|BD|Número de escolas que possuem banheiros, dependências e vias adequadas a pessoas com deficiência e mobilidade reduzida||Anual|True
+4048|BD|Número de escolas com salas de recursos multifuncionais para AEE (Atendimento Educacional Especializado)||Anual|True
+4049|BD|Número de escolas com educação para o desenvolvimento sustentável, direitos humanos, igualdade de gênero, não-violência de forma transversal, nos parâmetros curriculares do município||Anual|True
+4050|BD|Número de escolas da rede municipal que abrem aos finais de semana para a comunidade||Anual|True
+4051|BD|Número total, em metros cúbicos (m³), de esgoto tratado antes de chegar ao mar, rios e córregos||Anual|True
+4052|BD|Número total, em metros cúbicos (m³), esgoto total que chegar ao mar, rios e córregos||Anual|True
+4053|BD|Número de estabelecimentos de saúde cadastrados no SUS que realizam procedimentos para a interrupção voluntária de gravidez para casos previstos em lei||Anual|True
+4054|BD|Número de pessoas identificadas com Índice de Massa Corporal (IMC) maior ou igual a 25 kg/m²||Anual|True
+4056|BD|Número total de famílias residentes cadastradas no Cadástro Único||Anual|True
+4057|BD|Número de famílias residentes cadastradas no Cadastro Único com renda familiar per capita de até meio salário mínimo||Anual|True
+4058|BD|Número total, em quilômetros quadrados (km²), de área de florestamento e reflorestamento||Anual|True
+4060|BD|Número de funcionários públicos investigados por corrupção||Anual|True
+4061|BD|Número total de funcionários públicos||Anual|True
+4062|BD|Número de funcionários públicos que sofreram ação administrativa||Anual|True
+4065|BD|Valor do orçamento público destinado à regeneração de recursos naturais, ecossistemas e biodiversidade||Anual|True
+4072|BD|Quantidade de pessoas feridas em eventos climáticos extremos||Anual|True
+4073|BD|Quantidade de pessoas mortas em eventos climáticos extremos||Anual|True
+4078|BD|Indivíduos que utilizaram o governo eletrônico com 16 anos ou mais||Anual|True
+4079|BD|Total de usuários da internet com 16 anos ou mais||Anual|True
+4080|BD|Emissões de GEE (t CO2) dos setores de energia, transporte, resíduos sólidos e efluentes domésticos e industriais||Anual|True
+4081|BD|Número de internações hospitalares por doenças crônicas selecionadas (doenças cardiovasculares, doenças respiratórias, neoplasias, diabetes mellitus)||Anual|True
+4082|BD|Orçamento municipal destinado à saúde aplicado em programas de saúde preventiva||Anual|True
+4083|BD|Valor do investimento público em infraestrutura||Anual|True
+4084|BD|Número de jovens de 15 a 24 anos de idade que não estudam nem trabalham||Anual|True
+4089|BD|Número de Infratores do cadastro de empregadores flagrados utilizando trabalho em condição análoga à escravidão – “Lista suja”||Anual|True
+4090|BD|Número total, em quilos (kg), de material reciclado em atividades industriais||Anual|True
+4094|BD|Orçamento investido em modernização tecnológica e inovação||Anual|True
+4098|BD|Número de óbitos pela síndrome da imunodeficiência adquirida (Aids)||Anual|True
+4099|BD|Número de óbitos por agressão||Anual|True
+4102|BD|Número de mulheres jovens de 15 a 24 anos de idade que não estudam nem trabalham||Anual|True
+4103|BD|Número de mulheres jovens de 15 a 24 anos de idade||Anual|True
+4104|BD|Número total de jovens de 15 a 24 anos de idade||Anual|True
+4105|BD|Número de pedidos respondidos no sistema de informação ao cidadão||Anual|True
+4106|BD|Valor da tarifa de ônibus preponderante no município multiplicado por 50 viagens||Anual|True
+4107|BD|Renda média mensal no município||Anual|True
+4108|BD|Número total, em quilos (kg), de material reciclável recuperado||Anual|True
+4109|BD|PIB do turismo||Anual|True
+4111|BD|Número total, em quilos (kg), de resíduo urbano coletado||Anual|True
+4114|BD|Recursos alocados na LOA (Lei Orçamento Anual) para políticas de promoção da equidade de gênero||Anual|True
+4117|BD|Número de recursos e reclamações registrados no sistema de informação ao cidadão||Anual|True
+4118|BD|Valor dos recursos públicos municipais para cultura||Anual|True
+4119|BD|Renda municipal detida pelos 20% mais pobres||Anual|True
+4120|BD|Renda de todas as faixas salariais do município||Anual|True
+4122|BD|Rendimento médio real das mulheres||Anual|True
+4124|BD|Rendimento médio real dos homens||Anual|True
+4125|BD|Número de rios e córregos classificados, pelo menos, com "bom" estado (segundo a classificação oficial)||Anual|True
+4126|BD|Número de rios e córregos no município||Anual|True
+4130|BD|Tempo médio gasto, em minutos, no deslocamento entre a moradia e o local de trabalho||Anual|True
+4132|BD|Número total, em quilômetros quadrados (km²), de área registrada como terra indígena no município||Anual|True
+4133|BD|Número de títulos expedidos às comunidades quilombolas||Anual|True
+4135|BD|Número total de títulos solicitados||Anual|True
+4137|BD|Valor de receitas arrecadadas no município||Anual|True
+4138|BD|Valor total de receitas do município||Anual|True
+4139|BD|Número de ocupações potencialmente precárias (trabalho)||Anual|True
+4141|BD|Número total de ocupações (trabalho)||Anual|True
+4142|BD|Número de ônibus coletivos que utilizam sistemas de energia sustentável (elétrico, híbrido e combustíveis renováveis e limpos)||Anual|True
+4145|BD|Número de unidades de saúde básica que oferecem serviços de planejamento familiar||Anual|True
+4146|BD|Total de unidades de saúde básica||Anual|True
+4147|BD|Valor total repassado às famílias beneficiárias do Programa Bolsa Família no município||Anual|True
+4148|BD|Número de imóveis e propriedades rurais entregues via política habitacional e reforma agrária que tenham a mulher como proprietária||Anual|True
+4149|BD|Variação de renda do 1º décimo da população||Anual|True
+4150|BD|Número total de imóveis e propriedades rurais entregues||Anual|True
+4152|BD|Variação de renda do 2º décimo da população||Anual|True
+4153|BD|Variação de renda do 3º décimo da população||Anual|True
+4154|BD|Variação de renda do 4º décimo da população||Anual|True
+4155|BD|Variação de renda do 5º décimo da população||Anual|True
+4156|BD|Variação de renda do 6º décimo da população||Anual|True
+4157|BD|Variação de renda do 7º décimo da população||Anual|True
+4158|BD|Variação de renda do 8º décimo da população||Anual|True
+4159|BD|Variação de renda do 9º décimo da população||Anual|True
+4160|BD|Variação de renda do 10º décimo da população||Anual|True
+4161|BD|Número de pessoas admitidas no setor industrial||Anual|True
+4163|BD|Número de pessoas demitidas no setor industrial||Anual|True
+4164|BD|População atendida por equipes de saúde da família||Anual|True
+4165|BD|Número total, em quilos (kg), do volume de resíduos orgânicos que são destinados à compostagem||Anual|True
+4166|BD|Número total, em quilos (kg), do volume total de resíduos orgânicos coletados pelo município||Anual|True
+4168|BD|Número de espaços e equipamentos públicos com wifi||Anual|True
+4170|BD|Número total de espaços e equipamentos públicos||Anual|True
+4172|BD|Número total, em quilômetros quadrados (km²), de zona costeira em área de conservação e interesse científico||Anual|True
+4173|BD|Número total, em quilômetros quadrados (km²), de zona costeira||Anual|True
+4175|BD|Número de vereadoras na Câmara Municipal||Anual|True
+4176|BD|Número total de vereadores||Anual|True
+4177|BD|Número de adultos (35 anos ou mais de idade) com diabetes||Anual|True
+4178|BD|Número de adultos (35 anos ou mais de idade)||Anual|True
+4179|BD|Número de processos municipais autuados por corrupção||Anual|True
+4180|BD|Número total de processos municipais||Anual|True
+4182|BD|Número de professores da rede pública com formação em nível superior||Anual|True
+4183|BD|Número total de professores da rede pública||Anual|True
+4184|BD|Número de professores nos anos finais do ensino fundamental e no ensino médio da rede pública com licenciatura nas áreas em que atuam||Anual|True
+4185|BD|Número de professores nos anos finais do Ensino Fundamental e no Ensino Médio da rede pública||Anual|True
+4186|BD|Número de professores da educação básica com formação em educação especial||Anual|True
+4187|BD|Número total de professores da educação básica||Anual|True
+4194|BD|Nota de língua portuguesa da Prova Brasil - Anos Iniciais||Anual|True
+4195|BD|Nota de matemática da Prova Brasil - Anos Iniciais||Anual|True
+4196|BD|População que vive em um raio de até 300 metros de estações de metrô ou ponto de ônibus||Anual|True
+4197|BD|Valor da produção, em Reais (R$), de cereais, leguminosas e oleaginosas no município||Anual|True
+4198|BD|Quantidade produzida, em toneladas (t), de cereais, leguminosas e oleaginosas no município||Anual|True
+4199|BD|Área plantada, em hectares (ha), de cereais, leguminosas e oleaginosas no município||Anual|True
+4201|BD|Número de professores na pré-escola||Anual|True
+4202|BD|Número de professores no ensino fundamental||Anual|True
+4203|BD|Número de professores no ensino médio||Anual|True
+4204|BD|Taxa de adequação da idade para o ano no Ensino Fundamental nos anos iniciais||Anual|True
+4205|BD|Taxa de adequação da idade para o ano no Ensino Fundamental nos anos finais||Anual|True
+4206|BD|Razão entre as taxas de escolarização de mulheres e homens no ensino técnico||Anual|True
+4207|BD|Razão entre as taxas de escolarização de mulheres e homens no ensino profissional||Anual|True
+4208|BD|Razão entre as taxas de escolarização de mulheres e homens no ensino superior||Anual|True
+4209|BD|Número de alunos na pré-escola||Anual|True
+4210|BD|Número de alunos no ensino fundamental||Anual|True
+4211|BD|Número de alunos no ensino médio||Anual|True
+4212|BD|Salário médio de mulheres por hora no setor extrativista mineral||Anual|True
+4213|BD|Salário médio de mulheres por hora no setor indústria de transformação||Anual|True
+4214|BD|Salário médio de mulheres por hora no setor de serviços industriais de utilidade pública||Anual|True
+4215|BD|Salário médio de mulheres por hora no setor da construção civil||Anual|True
+4216|BD|Salário médio de mulheres por hora no setor do comércio||Anual|True
+4217|BD|Salário médio de mulheres por hora no setor de serviços||Anual|True
+4218|BD|Salário médio de mulheres por hora no setor da administração pública||Anual|True
+4219|BD|Salário médio de mulheres por hora no setor da agropecuária||Anual|True
+4220|BD|Salário médio de mulheres por hora no setor de extração vegetal||Anual|True
+4221|BD|Salário médio de mulheres por hora no setor de caça e pesca||Anual|True
+4222|BD|Salário médio de homens por hora no setor extrativista mineral||Anual|True
+4223|BD|Salário médio de homens por hora no setor indústria de transformação||Anual|True
+4224|BD|Salário médio de homens por hora no setor de serviços industriais de utilidade pública||Anual|True
+4225|BD|Salário médio de homens por hora no setor da construção civil||Anual|True
+4226|BD|Salário médio de homens por hora no setor do comércio||Anual|True
+4227|BD|Salário médio de homens por hora no setor de serviços||Anual|True
+4228|BD|Salário médio de homens por hora no setor da administração pública||Anual|True
+4229|BD|Salário médio de homens por hora no setor da agropecuária||Anual|True
+4230|BD|Salário médio de homens por hora no setor de extração vegetal||Anual|True
+4231|BD|Salário médio de homens por hora no setor de caça e pesca||Anual|True
+4232|BD|Número de processos julgados||Anual|True
+4233|BD|Número total de processos abertos||Anual|True
+4234|BD|Média do tempo decorrente entre o ingresso da demanda e a solução||Anual|True
+4235|BD|Saldo do ano anterior (pessoas admitidas no setor industrial no ano anterior - pessoas demitidas no setor industrial no ano anterior)||Anual|True
+4290|BD|Nota de matemática da Prova Brasil - Anos Finais||Anual|True
+4291|BD|Nota de língua portuguesa da Prova Brasil - Anos Finais||Anual|True
+5001|BD|Número total, em quilômetros (km), de ciclovias||Anual|True
+5002|BD|Número total, em quilômetros (km), de ciclofaixas permanentes||Anual|True
+5003|BD|Número de ônibus com piso rebaixado para pessoas com deficiência||Anual|True
+5004|BD|Número de ônibus com elevador para pessoas com deficiência||Anual|True
+5005|BD|Homicídios na população branca||Anual|True
+5500|BD|Total de gastos públicos em todas as áreas administrativas do município||Anual|True
+5501|BD|Gastos públicos em Administração||Anual|True
+5502|BD|Gastos públicos em Agricultura||Anual|True
+5503|BD|Gastos públicos em Assistência Social||Anual|True
+5504|BD|Gastos públicos em Ciência e Tecnologia||Anual|True
+5505|BD|Gastos públicos em Comunicações||Anual|True
+5506|BD|Gastos públicos em Comércio e Serviços||Anual|True
+5507|BD|Gastos públicos em Cultura||Anual|True
+5508|BD|Gastos públicos em Defesa Nacional||Anual|True
+5509|BD|Gastos públicos em Desporto e Lazer||Anual|True
+5510|BD|Gastos públicos em Direitos da Cidadania||Anual|True
+5511|BD|Gastos públicos em Educação||Anual|True
+5512|BD|Gastos públicos em Encargos Especiais||Anual|True
+5513|BD|Gastos públicos em Energia||Anual|True
+5514|BD|Gastos públicos em Essencial à Justiça||Anual|True
+5515|BD|Gastos públicos em Gestão Ambiental||Anual|True
+5516|BD|Gastos públicos em Habitação||Anual|True
+5517|BD|Gastos públicos em Indústria||Anual|True
+5518|BD|Gastos públicos em Judiciária||Anual|True
+5519|BD|Gastos públicos em Legislativa||Anual|True
+5520|BD|Gastos públicos em Organização Agrária||Anual|True
+5521|BD|Gastos públicos em Previdência Social||Anual|True
+5522|BD|Gastos públicos em Relações Exteriores||Anual|True
+5523|BD|Gastos públicos em Saneamento||Anual|True
+5524|BD|Gastos públicos em Saúde||Anual|True
+5525|BD|Gastos públicos em Segurança Pública||Anual|True
+5526|BD|Gastos públicos em Trabalho||Anual|True
+5527|BD|Gastos públicos em Transporte||Anual|True
+5528|BD|Gastos públicos em Urbanismo||Anual|True
+5550|BD|Total de mortes com automóveis e caminhonetes||Anual|True
+5551|BD|Total de mortes com bicicleta||Anual|True
+5552|BD|Total de mortes com motocicleta||Anual|True
+5553|BD|Total de mortes por atropelamentos||Anual|True
+5570|BD|Número total, em quilômetros quadrados (km²), da área urbana do município||Anual|True
+5571|BD|Número total, em quilômetros quadrados (km²), da área rural do município||Anual|True
+5601|BD|Documentos pessoais, como RG, CPF, passaporte ou carteira de trabalho||Anual|True
+5602|BD|Números de saúde pública, como agendamento de consultas, remédios ou outros serviços do sistema público de saúde||Anual|True
+5603|BD|Educação pública, como ENEM, PROUNI, matrícula em escolas ou universidades públicas||Anual|True
+5604|BD|Direitos do trabalhador ou previdência social, como INSS, FGTS, seguro-desemprego, auxílio-doença ou aposentadoria||Anual|True
+5605|BD|Impostos e taxas governamentais, como declaração de imposto de renda, IPVA ou IPTU||Anual|True
+5606|BD|Polícia e segurança, como boletim de ocorrência, antecedentes criminais ou denúncias||Anual|True
+5607|BD|Transporte público ou outros serviços urbanos, como limpeza e conservação de vias, iluminação||Anual|True
+5620|BD|Emissões de GEE (t CO2) nos processos industriais - CO2||Anual|True
+5621|BD|Emissões de GEE (t CO2) nos processos industriais - CH4||Anual|True
+5622|BD|Emissões de GEE (t CO2) nos processos industriais - N2O||Anual|True
+5623|BD|Emissões totais de GEE (t CO2) nos processos industriais||Anual|True
+5700|BD|Acompanhamento nutricional de crianças entre 0 e 5 anos de idade||Anual|True
+5701|BD|Acompanhamento nutricional de crianças entre 5 e 10 anos de idade||Anual|True
+5702|BD|População de crianças entre 5 a 10 anos de idade||Anual|True
+5800|BD|Número de pessoas com hepatite A||Anual|True
+5801|BD|Número de pessoas com hepatite B||Anual|True
+5802|BD|Número de pessoas com hepatite C||Anual|True
+5803|BD|Número de pessoas com hepatite D||Anual|True
+5810|BD|Pessoas mortas por dengue||Anual|True
+5811|BD|Pessoas mortas por chikungunya||Anual|True
+5812|BD|Pessoas mortas por zika||Anual|True
+5820|BD|Número total de leitos hospitalares públicos||Anual|True
+5821|BD|Número total de leitos hospitalares privados||Anual|True
+5830|BD|Gasto total em saúde (federal)||Anual|True
