@@ -27,7 +27,7 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.banco_dados;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.PossuiVariavel;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.PossuiVariavel;
 
 /**
  * Classe responsável por gerenciar as operações no banco de dados

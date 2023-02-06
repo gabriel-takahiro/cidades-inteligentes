@@ -4,24 +4,24 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.CalculoIndicadorDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.DataDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.PossuiVariavelDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.ValorVariavelDAO;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.dao.CalculoIndicadorDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.dao.DataDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.dao.PossuiVariavelDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.dao.ValorVariavelDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.CalculoIndicador;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.Variavel;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.AbreChaves;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.AbreColchetes;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.AbreParenteses;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.Calculo;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.CompostoCalculo;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.Default;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.Divisao;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.Multiplicacao;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.SequenciaCalculo;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.Soma;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.prototipo.modelo.calculo.Subtracao;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.CalculoIndicador;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Variavel;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.AbreChaves;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.AbreColchetes;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.AbreParenteses;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Calculo;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.CompostoCalculo;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Default;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Divisao;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Multiplicacao;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.SequenciaCalculo;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Soma;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Subtracao;
 
 public class TesteCalculoIndicador {
 

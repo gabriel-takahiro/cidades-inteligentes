@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.janelas.principal.JanelaPrincipal;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal.JanelaPrincipal;
 
 /**
  * Classe responsável pela criação das tabelas do banco de dados
