@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao;
 
 import java.sql.Connection;
@@ -14,20 +40,30 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Indicador
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.IndicadoresBuscados;
 
 /**
- * Classe que faz conexão com a tabela calculo_indicador.
+ * Classe que faz conexão com a tabela "calculo_indicador"
  * 
  * @author Gabriel Takahiro
- * @version 0.1
+ * @version 0.2
  */
 
 public class CalculoIndicadorDAO {
 
 	private Connection connection;
 
+	/**
+	 * 
+	 * @param connection conexão com o banco de dados
+	 */
 	public CalculoIndicadorDAO(Connection connection) {
 		this.connection = connection;
 	}
 
+	/**
+	 * Busca um conjunto dos indicadores a partir do código de um município e um ano  
+	 * @param codigoMunicipio código do município a ser buscado
+ 	 * @param data ano a ser buscado
+	 * @return conjunto dos indicadores de um município para um certo ano
+	 */
 	public Set<CalculoIndicador> buscarResultadosSet(int codigoMunicipio, String data) {
 		Set<CalculoIndicador> resultados = new HashSet<CalculoIndicador>();
 		try {
@@ -54,6 +90,13 @@ public class CalculoIndicadorDAO {
 		}
 	}
 
+	/**
+	 * Busca o resultado de um indicador para um determinado município e ano
+	 * @param codigo código do indicador a ser buscado
+	 * @param codigo_municipio código do município a ser buscado
+	 * @param data ano a ser buscado
+	 * @return resultado do indicador
+	 */
 	public String buscaResultado(int codigo, int codigo_municipio, String data) {
 		try {
 			String sql = "SELECT resultado FROM calculo_indicador WHERE codigo_indicador = ? AND codigo_municipio = ? AND data = ?";
@@ -80,6 +123,13 @@ public class CalculoIndicadorDAO {
 		}
 	}
 
+	/**
+	 * Busca os indicadores selecionados no programa
+	 * @param codigoMunicipio código do município a ser buscado
+	 * @param data ano a ser buscado
+	 * @param listaIndicadoresSelecionados lista de indicadores selecionados no programa
+	 * @return lista de indicadores selecionados
+	 */
 	public List<IndicadoresBuscados> buscarResultadosList(int codigoMunicipio, String data,
 			ArrayList<Indicador> listaIndicadoresSelecionados) {
 		List<IndicadoresBuscados> resultados = new ArrayList<IndicadoresBuscados>();
@@ -156,6 +206,15 @@ public class CalculoIndicadorDAO {
 		}
 	}
 
+	/**
+	 * Insere valores na tabela "calculo_indicador"
+	 * @param codigo código do indicador
+	 * @param codigo_municipio código do município
+	 * @param data ano que o indicador foi calculado
+	 * @param resultado resultado do indicador
+	 * @param data_variaveis ano em que as variáveis foram utilizadas
+	 * @param valor_oficial indicador foi calculado apenas com valores dos bancos de dados oficiais?
+	 */
 	public void insereResultado(int codigo, int codigo_municipio, String data, String resultado, String data_variaveis,
 			boolean valor_oficial) {
 		try {
@@ -177,6 +236,15 @@ public class CalculoIndicadorDAO {
 		}
 	}
 
+	/**
+	 * Atualiza os indicadores da tabela "calculo_indicador"
+	 * @param resultado resultado novo
+	 * @param codigo_indicador código do indicador a ser atualizado
+	 * @param codigo_municipio código do indicador
+	 * @param data ano que foi calculado
+	 * @param data_variaveis ano das variáveis utilizadas
+	 * @param valor_oficial indicador foi calculado apenas com valores dos bancos de dados oficiais? 
+	 */
 	public void updateResultado(String resultado, int codigo_indicador, int codigo_municipio, String data,
 			String data_variaveis, boolean valor_oficial) {
 		try {
@@ -196,6 +264,13 @@ public class CalculoIndicadorDAO {
 		}
 	}
 
+	/**
+	 * Verifica se o indicador possui resultado
+	 * @param codigo código do indicador
+	 * @param codigo_municipio código do município
+	 * @param data ano em que foi calculado o indicador
+	 * @return true caso o indicador possua resultado e false caso contrário
+	 */
 	public boolean possuiResultado(int codigo, int codigo_municipio, String data) {
 		try {
 			String sql = "SELECT * FROM calculo_indicador WHERE codigo_indicador = ? AND"
@@ -219,6 +294,12 @@ public class CalculoIndicadorDAO {
 		}
 	}
 
+	/**
+	 * Busca todos os indicadores calculados para todos os municípios em um determinado ano
+	 * @param codigos lista de códigos de indicadores
+	 * @param data ano que deseja obter os resultados
+	 * @return conjunto de indicadores com resultado
+	 */
 	public Set<CalculoIndicador> buscarResultadosTodosMunicipios(List<Integer> codigos, String data) {
 		Set<CalculoIndicador> resultados = new HashSet<CalculoIndicador>();
 		try {
@@ -247,6 +328,12 @@ public class CalculoIndicadorDAO {
 		}
 	}
 
+	/**
+	 * Deleta indicadores calculados da tabela "calculo_indicador"
+	 * @param codigo_indicador código do indicador que deseja deletar
+	 * @param codigo_municipio código do município
+	 * @param data ano
+	 */
 	public void excluir(int codigo_indicador, int codigo_municipio, String data) {
 		try {
 			String sql = "DELETE FROM calculo_indicador WHERE codigo_indicador = ? AND codigo_municipio = ? AND data = ?";

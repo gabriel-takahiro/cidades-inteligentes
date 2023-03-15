@@ -51,6 +51,9 @@ public class Submenus {
 	public static void mostrarIndicadores(JMenu menuIndicadores) {
 		JMenuItem submenuMostrarIndicadores = new JMenuItem("Mostrar indicadores");
 		submenuMostrarIndicadores.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que mostra os indicadores
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.mostrarIndicadores();
 			}
@@ -66,6 +69,9 @@ public class Submenus {
 	public static void editarIndicadores(JMenu menuIndicadores) {
 		JMenuItem submenuEditarIndicadores = new JMenuItem("Editar indicadores");
 		submenuEditarIndicadores.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que edita os indicadores
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.editarIndicadores();
 			}
@@ -81,6 +87,9 @@ public class Submenus {
 	public static void cadastrarIndicadores(JMenu menuIndicadores) {
 		JMenuItem submenuCadastrarIndicadores = new JMenuItem("Cadastrar indicadores");
 		submenuCadastrarIndicadores.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que cadastra os indicadores
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.cadastrarIndicadores();
 			}
@@ -96,6 +105,9 @@ public class Submenus {
 	public static void mostrarVariaveis(JMenu menuVariaveis) {
 		JMenuItem submenuMostrarVariaveis = new JMenuItem("Mostrar variáveis");
 		submenuMostrarVariaveis.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que mostra as variáveis
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.mostrarVariaveis();
 			}
@@ -111,6 +123,9 @@ public class Submenus {
 	public static void editarVariaveis(JMenu menuVariaveis) {
 		JMenuItem submenuEditarVariveis = new JMenuItem("Editar variáveis");
 		submenuEditarVariveis.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que edita as variáveis
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.editarVariaveis();
 			}
@@ -126,6 +141,9 @@ public class Submenus {
 	public static void cadastrarVariaveis(JMenu menuVariaveis) {
 		JMenuItem submenuCadastrarVariaveis = new JMenuItem("Cadastrar variáveis");
 		submenuCadastrarVariaveis.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que cadastra as variáveis
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.cadastrarVariaveis();
 			}
@@ -141,6 +159,9 @@ public class Submenus {
 	public static void mostrarMetas(JMenu menuMetas) {
 		JMenuItem submenuMostrarMetas = new JMenuItem("Mostrar metas");
 		submenuMostrarMetas.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que mostra as metas
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.mostrarMetas();
 			}
@@ -156,6 +177,9 @@ public class Submenus {
 	public static void editarMetas(JMenu menuMetas) {
 		JMenuItem submenuEditarMetas = new JMenuItem("Editar metas");
 		submenuEditarMetas.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que edita as metas
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.editarMetas();
 			}
@@ -171,6 +195,9 @@ public class Submenus {
 	public static void cadastrarMetas(JMenu menuMetas) {
 		JMenuItem submenuCadastrarMetas = new JMenuItem("Cadastrar metas");
 		submenuCadastrarMetas.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que cadastra as metas
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.cadastrarMetas();
 			}
@@ -186,6 +213,9 @@ public class Submenus {
 	public static void mostrarODS(JMenu menuODS) {
 		JMenuItem submenuMostrarODS = new JMenuItem("Mostrar ODS");
 		submenuMostrarODS.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que mostra as ods
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.mostrarODS();
 			}
@@ -201,6 +231,9 @@ public class Submenus {
 	public static void editarODS(JMenu menuODS) {
 		JMenuItem submenuEditarODS = new JMenuItem("Editar ODS");
 		submenuEditarODS.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que edita as ods
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.editarODS();
 			}
@@ -216,6 +249,9 @@ public class Submenus {
 	public static void cadastrarODS(JMenu menuODS) {
 		JMenuItem submenuCadastrarODS = new JMenuItem("Cadastrar ODS");
 		submenuCadastrarODS.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que cadastra as ods
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.cadastrarODS();
 			}
@@ -231,6 +267,9 @@ public class Submenus {
 	public static void consultarIndicadoresCalculados(JMenu menuConsultas) {
 		JMenuItem submenuConsultarIndicadoresCalculados = new JMenuItem("Consultar indicadores calculados");
 		submenuConsultarIndicadoresCalculados.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que consulta os indicadores calculados
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.consultarIndicadoresCalculados();
 			}
@@ -246,6 +285,9 @@ public class Submenus {
 	public static void calcularIndicadores(JMenu menuCalculos) {
 		JMenuItem submenuCalcularIndicadores = new JMenuItem("Calcular indicadores");
 		submenuCalcularIndicadores.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface responsável por calcular os indicadores
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.calcularIndicadores();
 			}
@@ -261,6 +303,9 @@ public class Submenus {
 	public static void recalcularIndicadores(JMenu menuCalculos) {
 		JMenuItem submenuRecalcularIndicadores = new JMenuItem("Recalcular indicadores");
 		submenuRecalcularIndicadores.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface responsável por recalcular os indicadores
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.recalcularIndicadores();
 			}
@@ -276,6 +321,9 @@ public class Submenus {
 	public static void criarTabelas(JMenu menuBancoDados) {
 		JMenuItem submenuCriarTabelas = new JMenuItem("Criar tabelas");
 		submenuCriarTabelas.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que cria as tabelas no banco de dados
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.criarTabelas();
 			}
@@ -291,6 +339,9 @@ public class Submenus {
 	public static void excluirTabelas(JMenu menuBancoDados) {
 		JMenuItem submenuExcluirTabelas = new JMenuItem("Excluir tabelas");
 		submenuExcluirTabelas.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que exclui as tabelas no banco de dados
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.excluirTabelas();
 			}
@@ -306,6 +357,9 @@ public class Submenus {
 	public static void importarTabelas(JMenu menuBancoDados) {
 		JMenuItem submenuImportarTabelas = new JMenuItem("Importar tabelas");
 		submenuImportarTabelas.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que importa as tabelas no banco de dados
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.importarTabelas();
 			}
@@ -321,6 +375,9 @@ public class Submenus {
 	public static void tutorial(JMenu menuAjuda) {
 		JMenuItem submenuTutorial = new JMenuItem("Tutorial");
 		submenuTutorial.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface do tutorial
+			 */
 			public void actionPerformed(ActionEvent e) {
 				JanelaPrincipal.tutorial();
 			}

@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.confirmacao;
 
 import java.awt.Font;
@@ -18,6 +44,12 @@ import javax.swing.border.EmptyBorder;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Meta;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.ODS;
 
+/**
+ * Classe responsável pela interface que atualiza as metas
+ * @author Gabriel Takahiro
+ * @version 0.3
+ *
+ */
 public class JanelaAtualizarMeta extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -27,6 +59,10 @@ public class JanelaAtualizarMeta extends JDialog {
 	private static JComboBox<Object> comboBoxODS;
 	private static JTextArea textAreaTextoMeta;
 
+	/**
+	 * Executa a interface responsável pela atualização das metas
+	 * @param meta a ser atualizada
+	 */
 	public JanelaAtualizarMeta(Meta meta) {
 		setBounds(100, 100, 450, 300);
 		setTitle("Atualizar meta");
@@ -77,8 +113,11 @@ public class JanelaAtualizarMeta extends JDialog {
 
 		JButton btnNewButton = new JButton("Atualizar meta");
 		btnNewButton.addActionListener(new ActionListener() {
+			/**
+			 * Atualizar meta
+			 */
 			public void actionPerformed(ActionEvent e) {
-				new JanelaConfirmaAtualizacaoMeta(meta);
+				new JanelaConfirmaAtualizacaoMeta(meta, estaJanela());
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -95,7 +134,20 @@ public class JanelaAtualizarMeta extends JDialog {
 		setAlwaysOnTop(rootPaneCheckingEnabled);
 	}
 
-	public static void atualizarMeta(Meta meta) {
+	/**
+	 * Retorna esta janela
+	 * @return esta janela
+	 */
+	protected JanelaAtualizarMeta estaJanela() {
+		return this;
+	}
+
+	/**
+	 * Atualiza a meta com os valores da interface
+	 * @param meta meta a ser atualizada
+	 * @param janelaAtualizarMeta interface que atualiza meta
+	 */
+	public static void atualizarMeta(Meta meta, JanelaAtualizarMeta janelaAtualizarMeta) {
 		String numero_meta = textFieldMeta.getText().replace(" ", "");
 		String texto_meta = textAreaTextoMeta.getText().replace(" ", "");
 		if (numero_meta.equals("")) {
@@ -106,16 +158,17 @@ public class JanelaAtualizarMeta extends JDialog {
 			new JanelaMensagem("O campo \"Texto da meta\" não pode ser nulo.");
 			return;
 		}
-		try {
-			if (Meta.metaCorrespondeODS(numero_meta, (int) comboBoxODS.getSelectedItem())) {
+		if (Meta.metaCorrespondeODS(numero_meta, (int) comboBoxODS.getSelectedItem())) {
+			try {
 				Meta.atualizarMeta(textFieldMeta.getText(), textAreaTextoMeta.getText(),
 						(int) comboBoxODS.getSelectedItem(), meta.getNumero_meta());
+				janelaAtualizarMeta.dispose();
+				return;
+			} catch (Exception e) {
 				return;
 			}
-			new JanelaMensagem("A meta difere da ODS.");
-		} catch (Exception e) {
-			new JanelaMensagem("Meta inválida.");
 		}
+		new JanelaMensagem("A meta difere da ODS.");
 	}
 
 }

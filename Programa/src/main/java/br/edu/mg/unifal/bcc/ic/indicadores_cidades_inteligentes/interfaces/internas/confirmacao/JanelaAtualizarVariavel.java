@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.confirmacao;
 
 import java.awt.Font;
@@ -20,6 +46,12 @@ import javax.swing.border.EmptyBorder;
 
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Variavel;
 
+/**
+ * Classe responsável pela interface que atualiza as variáveis
+ * @author Gabriel Takahiro
+ * @version 0.3
+ *
+ */
 public class JanelaAtualizarVariavel extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -31,6 +63,10 @@ public class JanelaAtualizarVariavel extends JDialog {
 	private static JTextArea textAreaNomeVariavel;
 	private static JComboBox<String> comboBox_1Atualizacao;
 
+	/**
+	 * Executa a interface responsável pela atualização das variáveis
+	 * @param variavel variável a ser atualizada
+	 */
 	public JanelaAtualizarVariavel(Variavel variavel) {
 		setBounds(100, 100, 450, 300);
 
@@ -47,7 +83,7 @@ public class JanelaAtualizarVariavel extends JDialog {
 		lblNewLabelCodigoVariavel.setBounds(10, 11, 140, 30);
 		contentPane.add(lblNewLabelCodigoVariavel);
 
-		textFieldCodigoVariavel = new JTextField(Integer.toString(variavel.getCodigo()));
+		textFieldCodigoVariavel = new JTextField(Integer.toString(variavel.getCodigo_variavel()));
 		textFieldCodigoVariavel.setToolTipText("Esse campo não pode ser nulo.");
 		textFieldCodigoVariavel.setFont(new Font("Arial", Font.PLAIN, 16));
 		textFieldCodigoVariavel.setBounds(155, 11, 77, 30);
@@ -55,6 +91,9 @@ public class JanelaAtualizarVariavel extends JDialog {
 		textFieldCodigoVariavel.setColumns(10);
 
 		textFieldCodigoVariavel.addKeyListener(new KeyAdapter() {
+			/**
+			 * Permite apenas que números sejam digitados
+			 */
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
 				if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
@@ -110,7 +149,7 @@ public class JanelaAtualizarVariavel extends JDialog {
 
 		comboBox_1Atualizacao = new JComboBox<String>();
 		comboBox_1Atualizacao
-				.setModel(new DefaultComboBoxModel<String>(new String[] { "Decenal", "Anual", "Trimestral" }));
+				.setModel(new DefaultComboBoxModel<String>(new String[] { "Decenal", "Anual" }));
 		comboBox_1Atualizacao.setSelectedIndex(0);
 		comboBox_1Atualizacao.setFont(new Font("Arial", Font.PLAIN, 16));
 		comboBox_1Atualizacao.setBounds(113, 151, 106, 30);
@@ -119,8 +158,11 @@ public class JanelaAtualizarVariavel extends JDialog {
 
 		JButton btnNewButton = new JButton("Atualizar variável");
 		btnNewButton.addActionListener(new ActionListener() {
+			/**
+			 * Atualiza variável 
+			 */
 			public void actionPerformed(ActionEvent e) {
-				new JanelaConfirmaAtualizacaoVariavel(variavel);
+				new JanelaConfirmaAtualizacaoVariavel(variavel, estaJanela());
 				return;
 			}
 		});
@@ -135,7 +177,20 @@ public class JanelaAtualizarVariavel extends JDialog {
 		setAlwaysOnTop(rootPaneCheckingEnabled);
 	}
 
-	public static void atualizarVariavel(Variavel variavel) {
+	/**
+	 * Retorna esta janela
+	 * @return esta janela
+	 */
+	protected JanelaAtualizarVariavel estaJanela() {
+		return this;
+	}
+
+	/**
+	 * Atualiza a variável com os valores da interface
+	 * @param variavel variável a ser atualizada
+	 * @param janelaAtualizarVariavel esta janela
+	 */
+	public static void atualizarVariavel(Variavel variavel, JanelaAtualizarVariavel janelaAtualizarVariavel) {
 		String codigo_variavel = textFieldCodigoVariavel.getText().replace(" ", "");
 		String nome_variavel = textAreaNomeVariavel.getText().replace(" ", "");
 
@@ -150,13 +205,20 @@ public class JanelaAtualizarVariavel extends JDialog {
 		String banco = (String) comboBoxTipoDeBanco.getSelectedItem();
 		String codigo = textField_1CodigoBanco.getText().replace(" ", "");
 
-		int codigo_da_variavel = Integer.parseInt(codigo_variavel);
+		int codigo_da_variavel;
+		try {
+			codigo_da_variavel = Integer.parseInt(codigo_variavel);
+		} catch (Exception e1) {
+			new JanelaMensagem("Código da variável inválido.\nNúmero máximo permitido: 2147483647");
+			return;
+		}
 
 		if (banco.equals("BD")) {
 			if (codigo.equals("")) {
 				Variavel.atualizarVariavel(codigo_da_variavel, (String) comboBoxTipoDeBanco.getSelectedItem(),
 						textAreaNomeVariavel.getText(), null, (String) comboBox_1Atualizacao.getSelectedItem(),
-						variavel.isPadrao(), variavel.getCodigo());
+						variavel.isPadrao(), variavel.getCodigo_variavel());
+				janelaAtualizarVariavel.dispose();
 				return;
 			}
 			new JanelaMensagem("O campo \"Código do banco\" deve ser nulo para o tipo de banco \"BD\".");
@@ -166,10 +228,15 @@ public class JanelaAtualizarVariavel extends JDialog {
 			new JanelaMensagem("O campo \"Código do banco\" não pode ser nulo.");
 			return;
 		}
-		Variavel.atualizarVariavel(codigo_da_variavel, (String) comboBoxTipoDeBanco.getSelectedItem(),
-				textAreaNomeVariavel.getText(), codigo, (String) comboBox_1Atualizacao.getSelectedItem(),
-				variavel.isPadrao(), variavel.getCodigo());
-
+		try {
+			Variavel.atualizarVariavel(codigo_da_variavel, (String) comboBoxTipoDeBanco.getSelectedItem(),
+					textAreaNomeVariavel.getText(), codigo, (String) comboBox_1Atualizacao.getSelectedItem(),
+					variavel.isPadrao(), variavel.getCodigo_variavel());
+			janelaAtualizarVariavel.dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

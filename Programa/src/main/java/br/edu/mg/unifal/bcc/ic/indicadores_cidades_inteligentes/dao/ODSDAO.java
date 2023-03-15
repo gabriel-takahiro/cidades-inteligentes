@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao;
 
 import java.sql.Connection;
@@ -14,14 +40,28 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.inter
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal.JanelaPrincipal;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.ODS;
 
+/**
+ * Classe que faz conexão com a tabela "ods".
+ * 
+ * @author Gabriel Takahiro
+ * @version 0.1
+ */
 public class ODSDAO {
 
 	private Connection connection;
 
+	/**
+	 * 
+	 * @param connection conexão com o banco de dados
+	 */
 	public ODSDAO(Connection connection) {
 		this.connection = connection;
 	}
 
+	/**
+	 * Preenche o comboBox com todas as ODS cadastradas no banco de dados
+	 * @param comboBoxODS comboBox a ser preenchida
+	 */
 	public void buscarODS(JComboBox<Object> comboBoxODS) {
 		try {
 			String sql = "SELECT numero_ods FROM ods ORDER BY 1";
@@ -40,6 +80,11 @@ public class ODSDAO {
 		}
 	}
 
+	/**
+	 * Preenche a tabela com todos as ods do banco de dados
+	 * @param tableODS tabela a ser preenchida
+	 * @param seleciona é necessário um coluna extra para uma caixa de selecionar?
+	 */
 	public void mostrarODS(JTable tableODS, boolean seleciona) {
 		try {
 			String sql = "SELECT numero_ods, nome_objetivo FROM ods ORDER BY 1";
@@ -100,6 +145,11 @@ public class ODSDAO {
 		}
 	}
 
+	/**
+	 * Cadastra ODS no banco de dados
+	 * @param numero_ods número da ODS a ser cadastrada
+	 * @param nome_objetivo nome do objetivo da ODS
+	 */
 	public void cadastrarODS(int numero_ods, String nome_objetivo) {
 		try {
 			String sql = "INSERT INTO ods (numero_ods, nome_objetivo) VALUES (?, ?)";
@@ -114,9 +164,16 @@ public class ODSDAO {
 			}
 		} catch (Exception e) {
 			new JanelaMensagem("A ODS \"" + numero_ods + "\" já existe.");
+			throw new RuntimeException();
 		}
 	}
 
+	/**
+	 * Verifica a existência da ODS no banco de dados
+	 * @param numero_ods número da ODS
+	 * @param nome_objetivo nome do objetivo
+	 * @return ods com número de ODS e o nome do objetivo
+	 */
 	public ODS buscaODS(int numero_ods, String nome_objetivo) {
 		try {
 			String sql = "SELECT numero_ods, nome_objetivo FROM ods WHERE numero_ods = ? AND nome_objetivo = ?";
@@ -138,14 +195,18 @@ public class ODSDAO {
 		}
 	}
 
-	public void atualizarODS(int numero_ods, String nome_objetivo, int numero_ods_atualizar) {
+	/**
+	 * Atualiza as informações da ODS no banco de dados
+	 * @param nome_objetivo nome do objetivo
+	 * @param numero_ods_atualizar número da ODS a ser atualizada
+	 */
+	public void atualizarODS(String nome_objetivo, int numero_ods_atualizar) {
 		try {
-			String sql = "UPDATE ods SET numero_ods = ?,  nome_objetivo = ? WHERE numero_ods = ?";
+			String sql = "UPDATE ods SET nome_objetivo = ? WHERE numero_ods = ?";
 
 			try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-				pstm.setInt(1, numero_ods);
-				pstm.setString(2, nome_objetivo);
-				pstm.setInt(3, numero_ods_atualizar);
+				pstm.setString(1, nome_objetivo);
+				pstm.setInt(2, numero_ods_atualizar);
 				pstm.execute();
 
 				JanelaPrincipal.atualizarODS();
@@ -153,10 +214,14 @@ public class ODSDAO {
 			}
 		} catch (Exception e) {
 			new JanelaMensagem("Falha ao atualizar a ODS: " + numero_ods_atualizar);
-			throw new RuntimeException("Falha na atualização.");
+			throw new RuntimeException();
 		}
 	}
 
+	/**
+	 * Exclui da tabela "ods" uma ODS a partir do número da ODS e do nome do objetivo
+	 * @param ods ods contendo o número da ODS e o nome do objetivo
+	 */
 	public void excluir(ODS ods) {
 		try {
 			String sql = "DELETE FROM ods WHERE numero_ods = ? AND nome_objetivo = ?";
@@ -169,7 +234,7 @@ public class ODSDAO {
 
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao excluir a ods " + ods.getNumero_ods());
+			throw new RuntimeException("Falha ao excluir a ods " + ods.getNumero_ods() + "\nEsta ODS está sendo utilizada em alguma meta");
 		}
 	}
 

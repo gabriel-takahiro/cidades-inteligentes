@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.confirmacao;
 
 import java.awt.BorderLayout;
@@ -25,6 +51,12 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Indicador
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Meta;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Variavel;
 
+/**
+ * 
+ * @author Gabriel Takahiro
+ * @version 0.3
+ *
+ */
 public class JanelaAtualizarIndicadores extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -42,6 +74,10 @@ public class JanelaAtualizarIndicadores extends JDialog {
 	private static int contadorParenteses = 0;
 	private static boolean estadoColchetes = false;
 
+	/**
+	 * Classe responsável pela interface que atualiza os indicadores
+	 * @param indicador indicador a ser atualizado
+	 */
 	public JanelaAtualizarIndicadores(Indicador indicador) {
 
 		setTitle("Atualizar indicador");
@@ -144,6 +180,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnLimpar = new JButton("Limpar campos");
 		btnLimpar.addActionListener(new ActionListener() {
+			/**
+			 * Limpa todos os campos 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				new JanelaConfirmaLimpeza(false);
 			}
@@ -154,8 +193,11 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnAtualizarIndicador = new JButton("Atualizar indicador");
 		btnAtualizarIndicador.addActionListener(new ActionListener() {
+			/**
+			 * Atualiza o indicador
+			 */
 			public void actionPerformed(ActionEvent e) {
-				new JanelaConfirmaAtualizacaoIndicador(indicador);
+				new JanelaConfirmaAtualizacaoIndicador(indicador, estaJanela());
 			}
 		});
 		btnAtualizarIndicador.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -198,6 +240,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn0 = new JButton("0");
 		btn0.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "0" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -210,6 +255,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn1 = new JButton("1");
 		btn1.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "1" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -222,6 +270,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn2 = new JButton("2");
 		btn2.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "2" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -234,6 +285,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn3 = new JButton("3");
 		btn3.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "3" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -246,6 +300,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn4 = new JButton("4");
 		btn4.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "4" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -258,6 +315,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn5 = new JButton("5");
 		btn5.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "5" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -270,6 +330,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn6 = new JButton("6");
 		btn6.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "6" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -282,6 +345,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn7 = new JButton("7");
 		btn7.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "7" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -294,6 +360,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn8 = new JButton("8");
 		btn8.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "8" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -306,6 +375,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btn9 = new JButton("9");
 		btn9.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "9" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -318,6 +390,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnMultiplicar = new JButton("x");
 		btnMultiplicar.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "x" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -330,6 +405,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnDividir = new JButton("/");
 		btnDividir.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "/" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -342,6 +420,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnSomar = new JButton("+");
 		btnSomar.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "+" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -354,6 +435,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnSubtrair = new JButton("-");
 		btnSubtrair.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "-" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -366,6 +450,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnAbreParenteses = new JButton("[");
 		btnAbreParenteses.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "[" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -378,6 +465,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnFechaParenteses = new JButton("]");
 		btnFechaParenteses.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "]" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -390,6 +480,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnAbreColchetes = new JButton("(");
 		btnAbreColchetes.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor "(" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -402,6 +495,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnFechaColchetes = new JButton(")");
 		btnFechaColchetes.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo o valor ")" 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -414,6 +510,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnApagar = new JButton("Apagar");
 		btnApagar.addActionListener(new ActionListener() {
+			/**
+			 * Apaga o último elemento do método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				if (textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho).equals("}")) {
@@ -463,6 +562,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 
 		JButton btnIncluirIndicadores = new JButton("Incluir indicadores");
 		btnIncluirIndicadores.addActionListener(new ActionListener() {
+			/**
+			 * Acrescenta no método de cálculo um indicador 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				new JanelaIncluirIndicador(false);
 			}
@@ -479,6 +581,17 @@ public class JanelaAtualizarIndicadores extends JDialog {
 		setAlwaysOnTop(rootPaneCheckingEnabled);
 	}
 
+	/**
+	 * Retorna essa janela
+	 * @return Essa janela
+	 */
+	protected JanelaAtualizarIndicadores estaJanela() {
+		return this;
+	}
+
+	/**
+	 * Mostra as variáveis na tabela
+	 */
 	public static void mostrarVariaveis() {
 		tableVariaveis.setModel(new DefaultTableModel(new Object[][] {}, new String[][] {}) {
 
@@ -494,6 +607,9 @@ public class JanelaAtualizarIndicadores extends JDialog {
 		Variavel.mostrarVariaveis(tableVariaveis, false);
 	}
 
+	/**
+	 * Apaga todos os campos do indicador
+	 */
 	public static void apagarCampos() {
 
 		textFieldNomeIndicador.setText("");
@@ -505,7 +621,12 @@ public class JanelaAtualizarIndicadores extends JDialog {
 		comboBoxMeta.setSelectedIndex(0);
 	}
 
-	public static void atualizarIndicador(Indicador indicador) {
+	/**
+	 * Atualiza o indicador com os valores  da interface
+	 * @param indicador indicador a ser atualizado
+	 * @param janelaAtualizarIndicadores esta janela
+	 */
+	public static void atualizarIndicador(Indicador indicador, JanelaAtualizarIndicadores janelaAtualizarIndicadores) {
 		if (textFieldNomeIndicador.getText().equals("")) {
 			new JanelaMensagem("O campo \"Nome do indicador\" não pode ser nulo.");
 			return;
@@ -531,18 +652,30 @@ public class JanelaAtualizarIndicadores extends JDialog {
 		if (meta.equals("")) {
 			meta = null;
 		}
-		Indicador.atualizarIndicador(indicador.getCodigo(), textFieldNomeIndicador.getText(),
-				textFieldMetodoCalculo.getText(), (String) comboBoxEixo.getSelectedItem(), textFieldTipoPlano.getText(),
-				textFieldNomePlano.getText(), textAreaDescricao.getText(), textAreaInformacoesTecnicas.getText(), meta,
-				indicador.isPadrao());
+		try {
+			Indicador.atualizarIndicador(indicador.getCodigo(), textFieldNomeIndicador.getText(),
+					textFieldMetodoCalculo.getText(), (String) comboBoxEixo.getSelectedItem(), textFieldTipoPlano.getText(),
+					textFieldNomePlano.getText(), textAreaDescricao.getText(), textAreaInformacoesTecnicas.getText(), meta,
+					indicador.isPadrao());
+			janelaAtualizarIndicadores.dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
+	/**
+	 * Atualiza o campo "meta"
+	 */
 	public static void atualizarMeta() {
 		comboBoxMeta.setModel(new DefaultComboBoxModel<>());
 		Meta.buscarMetas(comboBoxMeta);
 	}
 
+	/**
+	 * Coloca o indicador no método de cálculo após fazer a verificação da existência dele no banco de dados
+	 * @param codigo_indicador código do indicador a ser verificado no banco de dados
+	 */
 	public static void colocarIndicador(String codigo_indicador) {
 		int tamanho = textFieldMetodoCalculo.getText().length();
 		String metodo_calculo = textFieldMetodoCalculo.getText();
@@ -558,6 +691,12 @@ public class JanelaAtualizarIndicadores extends JDialog {
 				+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
 	}
 
+	/**
+	 * Verificação utilizada para a inserção dos operadores: subtração (-), soma (+), multiplicação (x) e divisão (/)
+	 * @param metodo_calculo método de cálculo atual do indicador
+	 * @param tamanho tamanho atual do método de cálculo
+	 * @param valor operador a ser inserido
+	 */
 	public void testeGenericoOperadores(String metodo_calculo, int tamanho, String valor) {// Usado em "-", "+", "x" e
 																							// "/"
 		try {
@@ -588,6 +727,12 @@ public class JanelaAtualizarIndicadores extends JDialog {
 		}
 	}
 
+	/**
+	 * Verificação utilizada para a inserção de números
+	 * @param metodo_calculo método de cálculo atual do indicador
+	 * @param tamanho tamanho atual do método de cálculo
+	 * @param valor número a ser inserido
+	 */
 	public void testeGenericoNumeros(String metodo_calculo, int tamanho, String valor) {// Usado em números
 		if (tamanho == 0 || metodo_calculo.substring(tamanho - 1, tamanho).equals("0")
 				|| metodo_calculo.substring(tamanho - 1, tamanho).equals("1")
@@ -612,6 +757,12 @@ public class JanelaAtualizarIndicadores extends JDialog {
 				+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
 	}
 
+	/**
+	 * Verificação utilizada para a inserção de abre parênteses "(" ou abre chaves "["
+	 * @param metodo_calculo método de cálculo atual do indicador
+	 * @param tamanho tamanho atual do método de cálculo
+	 * @param valor abre parênteses "(" ou abre chaves "["
+	 */
 	public void testeGenericoInicio(String metodo_calculo, int tamanho, String valor) { // Usado em "(" e "["
 		if (tamanho == 0 || metodo_calculo.substring(tamanho - 1, tamanho).equals("+")
 				|| metodo_calculo.substring(tamanho - 1, tamanho).equals("-")
@@ -639,6 +790,12 @@ public class JanelaAtualizarIndicadores extends JDialog {
 				+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
 	}
 
+	/**
+	 * Verificação utilizada para a inserção de fecha parênteses ")" ou fecha chaves "]"
+	 * @param metodo_calculo método de cálculo atual do indicador
+	 * @param tamanho tamanho atual do método de cálculo
+	 * @param valor fecha parênteses ")" ou fecha chaves "]"
+	 */
 	public void testeGenericoFim(String metodo_calculo, int tamanho, String valor) { // Usado em ")" e "]"
 		try {
 			if (metodo_calculo.substring(tamanho - 1, tamanho).equals("0")
@@ -681,5 +838,5 @@ public class JanelaAtualizarIndicadores extends JDialog {
 			new JanelaMensagem("Não é possível utilizar \"" + valor + "\" no começo do método.");
 		}
 	}
-
+	
 }

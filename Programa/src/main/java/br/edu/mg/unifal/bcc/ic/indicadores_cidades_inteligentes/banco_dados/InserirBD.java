@@ -29,8 +29,11 @@ package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.banco_dados;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Indicador;
 
 /**
  * Classe responsável pela inserção dos valores presentes nas tabelas do esquema "importados" do banco de dados
@@ -40,17 +43,24 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.Connecti
  */
 public class InserirBD {
 
+	private static List<ResultadoOperacao> operacoes;
+	
 	/**
 	 * Insere todos os valores disponíveis nas tabelas do esquema "importados" do banco de dados
+	 * @return lista com as operações realizadas 
 	 */
-	public static void inserirTudo() {
+	public static List<ResultadoOperacao> inserirTudo() {
 		Connection connection = ConnectionFactory.recuperarConexao();
+		
+		operacoes = new ArrayList<ResultadoOperacao>();
 		
 		inserirODS(connection);
 		inserirMetas(connection);
 		inserirIndicadores(connection);
 		inserirVariaveis(connection);
 		inserirMunicipios(connection);
+		
+		return operacoes;
 	}
 
 	/**
@@ -61,8 +71,9 @@ public class InserirBD {
 		String inserirODS = "INSERT INTO ods SELECT numero_ods, nome_objetivo FROM importados.ods";
 		try (PreparedStatement pstm = connection.prepareStatement(inserirODS)) {
 			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Inserir ODS", "Sucesso"));
 		} catch (Exception e) {
-			System.out.println("Erro ao inserir ODS.");
+			operacoes.add(new ResultadoOperacao("Inserir ODS", "Falha"));
 		}
 	}
 
@@ -75,8 +86,9 @@ public class InserirBD {
 				+ "FROM importados.planilha WHERE numero_meta IS NOT NULL GROUP BY 1, 2, 3 ORDER BY 1 ASC;";
 		try (PreparedStatement pstm = connection.prepareStatement(inserirMeta)) {
 			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Inserir metas", "Sucesso"));
 		} catch (Exception e) {
-			System.out.println("Erro ao inserir meta.");
+			operacoes.add(new ResultadoOperacao("Inserir metas", "Falha"));
 		}
 	}
 
@@ -90,8 +102,10 @@ public class InserirBD {
 				+ " FROM importados.planilha;";
 		try (PreparedStatement pstm = connection.prepareStatement(inserirIndicador)) {
 			pstm.execute();
+			new Indicador().padronizarMetodoCalculo();
+			operacoes.add(new ResultadoOperacao("Inserir indicadores", "Sucesso"));
 		} catch (Exception e) {
-			System.out.println("Erro ao inserir indicador.");
+			operacoes.add(new ResultadoOperacao("Inserir indicadores", "Falha"));
 		}
 	}
 
@@ -105,8 +119,9 @@ public class InserirBD {
 				+ "FROM importados.variaveis;";
 		try (PreparedStatement pstm = connection.prepareStatement(inserirVariavel)) {
 			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Inserir variáveis", "Sucesso"));
 		} catch (Exception e) {
-			System.out.println("Erro ao inserir variavel.");
+			operacoes.add(new ResultadoOperacao("Inserir variáveis", "Falha"));
 		}
 	}
 
@@ -119,8 +134,9 @@ public class InserirBD {
 				+ " FROM importados.municipios;";
 		try (PreparedStatement pstm = connection.prepareStatement(inserirMunicipio)) {
 			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Inserir municípios", "Sucesso"));
 		} catch (Exception e) {
-			System.out.println("Erro ao inserir municipio.");
+			operacoes.add(new ResultadoOperacao("Inserir municípios", "Falha"));
 		}
 	}
 }

@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas;
 
 import java.awt.Font;
@@ -28,15 +54,16 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Municipio
 /**
  * Classe responsável pela interface que realiza a consulta dos indicadores calculados
  * @author Gabriel Takahiro
+ * @version 0.3
  *
  */
 public class ConsultarIndicadoresCalculados extends JInternalFrame implements Janelas {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextField textField;
+	private JTextField textFieldCEP;
 	private static JTable table;
-	private JFormattedTextField textField_1;
+	private JFormattedTextField textFieldData;
 
 	/**
 	 * Executa a interface que realiza a consulta dos indicadores calculados
@@ -57,38 +84,41 @@ public class ConsultarIndicadoresCalculados extends JInternalFrame implements Ja
 		JLabel lblCep = new JLabel("CEP:");
 		lblCep.setFont(new Font("Arial", Font.PLAIN, 16));
 
-		textField = new JTextField();
-		textField.setFont(new Font("Arial", Font.PLAIN, 16));
-		textField.setColumns(10);
+		textFieldCEP = new JTextField();
+		textFieldCEP.setFont(new Font("Arial", Font.PLAIN, 16));
+		textFieldCEP.setColumns(10);
 
 		JButton btnTabelaIndicadores = new JButton("Tabela dos indicadores");
 		btnTabelaIndicadores.addActionListener(new ActionListener() {
+			/**
+			 * Mostra a tabela dos indicadores calculados
+			 */
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Indicador> listaIndicadoresSelecionados = new ArrayList<Indicador>();
 				listaIndicadoresSelecionados = Tabelas.indicadoresSelecionados(table);
 
-				if (textField.getText().isBlank()) {
+				if (textFieldCEP.getText().isBlank()) {
 					new JanelaMensagem("É necessário preencher o campo CEP.");
 					return;
 				}
 
-				if (textField_1.getText().isBlank()) {
+				if (textFieldData.getText().isBlank()) {
 					new JanelaMensagem("É necessário preencher o campo Data.");
 					return;
 				}
 
 				int codigo_municipio = 0;
 				try {
-					codigo_municipio = Municipio.buscaCodigoDoMunicipio(textField.getText());
+					codigo_municipio = Municipio.buscaCodigoDoMunicipio(textFieldCEP.getText());
 				} catch (Exception erroCodigoMunicipio) {
 					new JanelaMensagem("CEP inválido.");
 					return;
 				}
 
 				try {
-					String nomeMunicipio = Municipio.buscaNomeComUF(textField.getText());
+					String nomeMunicipio = Municipio.buscaNomeComUF(textFieldCEP.getText());
 					JanelaPrincipal.abrirJanelas(new TabelaIndicadoresCalculados(listaIndicadoresSelecionados,
-							nomeMunicipio, codigo_municipio, textField_1.getText(), 0));
+							nomeMunicipio, codigo_municipio, textFieldData.getText(), 0));
 				} catch (Exception e1) {
 					new JanelaMensagem("CEP inválido.");
 				}
@@ -103,28 +133,28 @@ public class ConsultarIndicadoresCalculados extends JInternalFrame implements Ja
 				ArrayList<Indicador> listaIndicadoresSelecionados = new ArrayList<Indicador>();
 				listaIndicadoresSelecionados = Tabelas.indicadoresSelecionados(table);
 
-				if (textField.getText().isBlank()) {
+				if (textFieldCEP.getText().isBlank()) {
 					new JanelaMensagem("É necessário preencher o campo CEP.");
 					return;
 				}
 
-				if (textField_1.getText().isBlank()) {
+				if (textFieldData.getText().isBlank()) {
 					new JanelaMensagem("É necessário preencher o campo Data.");
 					return;
 				}
 
 				int codigo_municipio = 0;
 				try {
-					codigo_municipio = Municipio.buscaCodigoDoMunicipio(textField.getText());
+					codigo_municipio = Municipio.buscaCodigoDoMunicipio(textFieldCEP.getText());
 				} catch (Exception erroCodigoMunicipio) {
 					new JanelaMensagem("CEP inválido.");
 					return;
 				}
 
 				try {
-					String nomeMunicipio = Municipio.buscaNomeComUF(textField.getText());
+					String nomeMunicipio = Municipio.buscaNomeComUF(textFieldCEP.getText());
 					JanelaPrincipal.abrirJanelas(new GraficoIndicadores(listaIndicadoresSelecionados, nomeMunicipio,
-							codigo_municipio, textField_1.getText()));
+							codigo_municipio, textFieldData.getText()));
 				} catch (Exception e1) {
 					new JanelaMensagem("CEP inválido.");
 				}
@@ -135,15 +165,18 @@ public class ConsultarIndicadoresCalculados extends JInternalFrame implements Ja
 		MaskFormatter mascaraAno;
 		try {
 			mascaraAno = new MaskFormatter("####");
-			textField_1 = new JFormattedTextField(mascaraAno);
+			textFieldData = new JFormattedTextField(mascaraAno);
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		textField_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		textField_1.setColumns(10);
+		textFieldData.setFont(new Font("Arial", Font.PLAIN, 16));
+		textFieldData.setColumns(10);
 
 		JButton btnSelecionarTodos = new JButton("Selecionar Todos");
 		btnSelecionarTodos.addActionListener(new ActionListener() {
+			/**
+			 * Seleciona todos os indicadores 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				Tabelas.selecionarTodos(5, table);
 			}
@@ -157,11 +190,11 @@ public class ConsultarIndicadoresCalculados extends JInternalFrame implements Ja
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 								.addComponent(lblAno, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldData, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(lblListaDosIndicadores, GroupLayout.PREFERRED_SIZE, 172,
 										GroupLayout.PREFERRED_SIZE)
@@ -177,9 +210,9 @@ public class ConsultarIndicadoresCalculados extends JInternalFrame implements Ja
 				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblAno, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldData, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblListaDosIndicadores, GroupLayout.PREFERRED_SIZE, 25,
 										GroupLayout.PREFERRED_SIZE))

@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo;
 
 import java.awt.Color;
@@ -20,26 +46,17 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 /**
- *  The ButtonColumn class provides a renderer and an editor that looks like a
- *  JButton. The renderer and editor will then be used for a specified column
- *  in the table. The TableModel will contain the String to be displayed on
- *  the button.
- *
- *  The button can be invoked by a mouse click or by pressing the space bar
- *  when the cell has focus. Optionally a mnemonic can be set to invoke the
- *  button. When the button is invoked the provided Action is invoked. The
- *  source of the Action will be the table. The action command will contain
- *  the model row number of the button that was clicked.
- *
+ * Classe responsável por adicionar botões em uma coluna específica na tabela
+ * @author Gabriel Takahiro
+ * @version 0.3
  */
-public class ButtonColumn extends AbstractCellEditor
+public class ColunaBotao extends AbstractCellEditor
 	implements TableCellRenderer, TableCellEditor, ActionListener, MouseListener
 {
 	private static final long serialVersionUID = 1L;
 	
 	private JTable table;
 	private Action action;
-	private int mnemonic;
 	private Border originalBorder;
 	private Border focusBorder;
 
@@ -50,15 +67,13 @@ public class ButtonColumn extends AbstractCellEditor
 	private String nome;
 
 	/**
-	 *  Create the ButtonColumn to be used as a renderer and editor. The
-	 *  renderer and editor will automatically be installed on the TableColumn
-	 *  of the specified column.
-	 *
-	 *  @param table the table containing the button renderer/editor
-	 *  @param action the Action to be invoked when the button is invoked
-	 *  @param column the column to which the button renderer/editor is added
+	 * Adiciona um botão a uma coluna específica na tabela
+	 * @param table tabela a ser utilizada
+	 * @param action ação executada ao pressionar o botão
+	 * @param column coluna que será implementado o botão
+	 * @param nome nome do botão
 	 */
-	public ButtonColumn(JTable table, Action action, int column, String nome)
+	public ColunaBotao(JTable table, Action action, int column, String nome)
 	{
 		this.table = table;
 		this.action = action;
@@ -79,9 +94,8 @@ public class ButtonColumn extends AbstractCellEditor
 
 
 	/**
-	 *  Get foreground color of the button when the cell has focus
-	 *
-	 *  @return the foreground color
+	 * 
+	 * @return borda de foco
 	 */
 	public Border getFocusBorder()
 	{
@@ -89,9 +103,8 @@ public class ButtonColumn extends AbstractCellEditor
 	}
 
 	/**
-	 *  The foreground color of the button when the cell has focus
-	 *
-	 *  @param focusBorder the foreground color
+	 * 
+	 * @param focusBorder borda de foco
 	 */
 	public void setFocusBorder(Border focusBorder)
 	{
@@ -99,22 +112,6 @@ public class ButtonColumn extends AbstractCellEditor
 		editButton.setBorder( focusBorder );
 	}
 
-	public int getMnemonic()
-	{
-		return mnemonic;
-	}
-
-	/**
-	 *  The mnemonic to activate the button when the cell has focus
-	 *
-	 *  @param mnemonic the mnemonic
-	 */
-	public void setMnemonic(int mnemonic)
-	{
-		this.mnemonic = mnemonic;
-		renderButton.setMnemonic(mnemonic);
-		editButton.setMnemonic(mnemonic);
-	}
 
 	@Override
 	public Component getTableCellEditorComponent(
@@ -122,7 +119,7 @@ public class ButtonColumn extends AbstractCellEditor
 	{
 		if (value == null)
 		{
-			editButton.setText( nome );
+			editButton.setText( nome + " cálculo");
 			editButton.setIcon( null );
 		}
 		else if (value instanceof Icon)
@@ -146,9 +143,7 @@ public class ButtonColumn extends AbstractCellEditor
 		return editorValue;
 	}
 
-//
-//  Implement TableCellRenderer interface
-//
+	@Override
 	public Component getTableCellRendererComponent(
 		JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
@@ -172,7 +167,6 @@ public class ButtonColumn extends AbstractCellEditor
 			renderButton.setBorder( originalBorder );
 		}
 
-//		renderButton.setText( (value == null) ? "" : value.toString() );
 		if (value == null)
 		{
 			renderButton.setText( nome );
@@ -192,18 +186,11 @@ public class ButtonColumn extends AbstractCellEditor
 		return renderButton;
 	}
 
-//
-//  Implement ActionListener interface
-//
-	/*
-	 *	The button has been pressed. Stop editing and invoke the custom Action
-	 */
+	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		int row = table.convertRowIndexToModel( table.getEditingRow() );
 		fireEditingStopped();
-
-		//  Invoke the Action
 
 		ActionEvent event = new ActionEvent(
 			table,
@@ -212,14 +199,7 @@ public class ButtonColumn extends AbstractCellEditor
 		action.actionPerformed(event);
 	}
 
-//
-//  Implement MouseListener interface
-//
-	/*
-	 *  When the mouse is pressed the editor is invoked. If you then then drag
-	 *  the mouse to another cell before releasing it, the editor is still
-	 *  active. Make sure editing is stopped when the mouse is released.
-	 */
+	@Override
     public void mousePressed(MouseEvent e)
     {
     	if (table.isEditing()
@@ -227,6 +207,8 @@ public class ButtonColumn extends AbstractCellEditor
 			isButtonColumnEditor = true;
     }
 
+   
+    @Override
     public void mouseReleased(MouseEvent e)
     {
     	if (isButtonColumnEditor
@@ -236,8 +218,13 @@ public class ButtonColumn extends AbstractCellEditor
 		isButtonColumnEditor = false;
     }
 
+    @Override
     public void mouseClicked(MouseEvent e) {}
+    
+    @Override
 	public void mouseEntered(MouseEvent e) {}
+    
+    @Override
     public void mouseExited(MouseEvent e) {}
 
 }

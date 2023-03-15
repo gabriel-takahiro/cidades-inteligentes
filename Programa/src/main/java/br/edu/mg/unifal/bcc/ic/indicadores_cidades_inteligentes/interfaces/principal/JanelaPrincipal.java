@@ -70,6 +70,7 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.inter
 
 /**
  * Classe responsável pela interface principal do programa
+ * 
  * @author Gabriel Takahiro
  * @version 0.3
  */
@@ -107,10 +108,8 @@ public class JanelaPrincipal extends JFrame {
 	private static ExcluirTabelas janelaExcluirTabelas;
 	private static ImportarTabelas janelaImportarTabelas;
 
-	
 	/**
 	 * Executa a interface principal do programa
-	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -126,7 +125,8 @@ public class JanelaPrincipal extends JFrame {
 	}
 
 	/**
-	 * Executa a interface principal do programa. Responsável por executar a barra de menu e todos os submenus
+	 * Executa a interface principal do programa. Responsável por executar a barra
+	 * de menu e todos os submenus
 	 */
 	public JanelaPrincipal() {
 		setTitle("Janela principal dos indicadores");
@@ -136,9 +136,9 @@ public class JanelaPrincipal extends JFrame {
 
 		JMenuBar barraMenu = new JMenuBar();
 		setJMenuBar(barraMenu);
-		
+
 		Menus.criarMenus(barraMenu);
-		
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -171,9 +171,10 @@ public class JanelaPrincipal extends JFrame {
 
 		desktopPane.add(new ConexaoBD(listaMenu, this, desktopPane));
 	}
-	
+
 	/**
 	 * Método responsável por abrir novas interfaces na interface principal
+	 * 
 	 * @param janela interface que será aberta
 	 */
 	public static void abrirJanelas(JInternalFrame janela) {
@@ -181,7 +182,7 @@ public class JanelaPrincipal extends JFrame {
 		janela.setVisible(true);
 		janela.moveToFront();
 	}
-	
+
 	/**
 	 * 
 	 * @param janelaMostrarIndicadores interface que mostra os indicadores
@@ -292,7 +293,8 @@ public class JanelaPrincipal extends JFrame {
 
 	/**
 	 * 
-	 * @param janelaConsultarIndicadoresCalculados interface que consulta os indicadores calculados
+	 * @param janelaConsultarIndicadoresCalculados interface que consulta os
+	 *                                             indicadores calculados
 	 */
 	public static void setJanelaConsultarIndicadoresCalculados(
 			ConsultarIndicadoresCalculados janelaConsultarIndicadoresCalculados) {
@@ -351,27 +353,28 @@ public class JanelaPrincipal extends JFrame {
 
 	/**
 	 * 
-	 * @param janelaImportarTabelas interface que importa as tabelas no banco de dados
+	 * @param janelaImportarTabelas interface que importa as tabelas no banco de
+	 *                              dados
 	 */
 	public static void setJanelaImportarTabelas(ImportarTabelas janelaImportarTabelas) {
 		JanelaPrincipal.janelaImportarTabelas = janelaImportarTabelas;
 		JanelaPrincipal.janelaImportarTabelas.moveToFront();
 	}
-	
+
 	/**
 	 * Exibe a interface que mostra os indicadores
 	 */
 	public static void mostrarIndicadores() {
 		janelaMostrarIndicadores.abrirJanela(janelaMostrarIndicadores, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que edita os indicadores
 	 */
 	public static void editarIndicadores() {
 		janelaEditarIndicadores.abrirJanela(janelaEditarIndicadores, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que cadastra os indicadores
 	 */
@@ -392,49 +395,49 @@ public class JanelaPrincipal extends JFrame {
 	public static void editarVariaveis() {
 		janelaEditarVariaveis.abrirJanela(janelaEditarVariaveis, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que cadastra as variáveis
 	 */
 	public static void cadastrarVariaveis() {
 		janelaCadastrarVariaveis.abrirJanela(janelaCadastrarVariaveis, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que mostra as metas
 	 */
 	public static void mostrarMetas() {
 		janelaMostrarMetas.abrirJanela(janelaMostrarMetas, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que edita as metas
 	 */
 	public static void editarMetas() {
 		janelaEditarMetas.abrirJanela(janelaEditarMetas, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que cadastra as metas
 	 */
 	public static void cadastrarMetas() {
 		janelaCadastrarMetas.abrirJanela(janelaCadastrarMetas, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que mostra as ODS
 	 */
 	public static void mostrarODS() {
 		janelaMostrarODS.abrirJanela(janelaMostrarODS, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que edita as ODS
 	 */
 	public static void editarODS() {
 		janelaEditarODS.abrirJanela(janelaEditarODS, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que cadastra as ODS
 	 */
@@ -469,14 +472,14 @@ public class JanelaPrincipal extends JFrame {
 	public static void criarTabelas() {
 		janelaCriarTabelas.abrirJanela(janelaCriarTabelas, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que exclui as tabelas no banco de dados
 	 */
 	public static void excluirTabelas() {
 		janelaExcluirTabelas.abrirJanela(janelaExcluirTabelas, desktopPane);
 	}
-	
+
 	/**
 	 * Exibe a interface que importa as tabelas para o banco de dados
 	 */
@@ -493,7 +496,9 @@ public class JanelaPrincipal extends JFrame {
 
 	/**
 	 * Instancia todas as interfaces do programa
-	 * @param abrirTutorial verifica se é necessário mostrar a interface "tutorial" após realizar o login
+	 * 
+	 * @param abrirTutorial verifica se é necessário mostrar a interface "tutorial"
+	 *                      após realizar o login
 	 */
 	public void instanciarJanelas(boolean abrirTutorial) {
 		instanciarIndicadores();
@@ -505,7 +510,7 @@ public class JanelaPrincipal extends JFrame {
 		instanciarBancoDados();
 		instanciarTutorial(abrirTutorial);
 	}
-	
+
 	/**
 	 * Instancia todas as interfaces dos indicadores
 	 */
@@ -522,7 +527,7 @@ public class JanelaPrincipal extends JFrame {
 		desktopPane.add(janelaCadastrarIndicadores);
 		janelaCadastrarIndicadores.setVisible(false);
 	}
-	
+
 	/**
 	 * Instancia todas as interfaces das variáveis
 	 */
@@ -539,7 +544,7 @@ public class JanelaPrincipal extends JFrame {
 		desktopPane.add(janelaCadastrarVariaveis);
 		janelaCadastrarVariaveis.setVisible(false);
 	}
-	
+
 	/**
 	 * Instancia todas as interfaces das metas
 	 */
@@ -556,7 +561,7 @@ public class JanelaPrincipal extends JFrame {
 		desktopPane.add(janelaCadastrarMetas);
 		janelaCadastrarMetas.setVisible(false);
 	}
-	
+
 	/**
 	 * Instancia todas as interfaces das ODS
 	 */
@@ -573,7 +578,7 @@ public class JanelaPrincipal extends JFrame {
 		desktopPane.add(janelaCadastrarODS);
 		janelaCadastrarODS.setVisible(false);
 	}
-	
+
 	/**
 	 * Instancia todas as interfaces das consultas
 	 */
@@ -582,7 +587,7 @@ public class JanelaPrincipal extends JFrame {
 		desktopPane.add(janelaConsultarIndicadoresCalculados);
 		janelaConsultarIndicadoresCalculados.setVisible(false);
 	}
-	
+
 	/**
 	 * Instancia todas as interfaces dos cálculos
 	 */
@@ -595,7 +600,7 @@ public class JanelaPrincipal extends JFrame {
 		desktopPane.add(janelaRecalcularIndicadores);
 		janelaRecalcularIndicadores.setVisible(false);
 	}
-	
+
 	/**
 	 * Instancia todas as interfaces do banco de dados
 	 */
@@ -612,10 +617,12 @@ public class JanelaPrincipal extends JFrame {
 		desktopPane.add(janelaImportarTabelas);
 		janelaImportarTabelas.setVisible(false);
 	}
-	
+
 	/**
 	 * Instancia a interface tutorial
-	 * @param abrirTutorial verifica se é necessário mostrar a interface "tutorial" após realizar o login
+	 * 
+	 * @param abrirTutorial verifica se é necessário mostrar a interface "tutorial"
+	 *                      após realizar o login
 	 */
 	public static void instanciarTutorial(boolean abrirTutorial) {
 		janelaTutorial = new Tutorial();
@@ -632,7 +639,7 @@ public class JanelaPrincipal extends JFrame {
 			System.out.println(e);
 		}
 	}
-	
+
 	/**
 	 * Atualiza todas as interfaces (indicadores, variáveis, metas e ODS)
 	 */
@@ -708,21 +715,7 @@ public class JanelaPrincipal extends JFrame {
 	 * Atualiza todas as interfaces que possui alguma relação com as variáveis
 	 */
 	public static void atualizarVariaveis() {
-		try {
-			if (!(janelaEditarIndicadores.isClosed())) {
-				Tabelas.mostrarVariaveis(6, EditarVariaveis.getTable());
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
-		try {
-			if (!(janelaMostrarIndicadores.isClosed())) {
-				Tabelas.mostrarVariaveis(MostrarVariaveis.getTable());
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		atualizarIndicadores();
 
 		try {
 			if (!(janelaCadastrarIndicadores.isClosed())) {
@@ -733,33 +726,28 @@ public class JanelaPrincipal extends JFrame {
 		}
 
 		try {
-			JInternalFrame[] lista = desktopPane.getAllFrames();
-			for (JInternalFrame jInternalFrame : lista) {
-				if (jInternalFrame.getClass().getSimpleName().equals("TabelaIndicadoresCalculados")) {
-					TabelaIndicadoresCalculados tabelaIndicadoresCalculados = (TabelaIndicadoresCalculados) jInternalFrame;
-					tabelaIndicadoresCalculados.atualizar();
-				}
-				if (jInternalFrame.getClass().getSimpleName().equals("MostrarCalculos")) {
-					MostrarCalculos mostrarCalculos = (MostrarCalculos) jInternalFrame;
-					mostrarCalculos.atualizar();
-				}
+			if (!(janelaMostrarVariaveis.isClosed())) {
+				Tabelas.mostrarVariaveis(MostrarVariaveis.getTable());
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+
+		try {
+			if (!(janelaEditarVariaveis.isClosed())) {
+				Tabelas.mostrarVariaveis(6, EditarVariaveis.getTable());
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 	}
 
 	/**
 	 * Atualiza todas as interfaces que possui alguma relação com as metas
 	 */
 	public static void atualizarMetas() {
-		try {
-			if (!(janelaCadastrarIndicadores.isClosed())) {
-				CadastrarIndicadores.atualizarMeta();
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		atualizarIndicadores();
 
 		try {
 			if (!(janelaMostrarMetas.isClosed())) {
@@ -772,22 +760,6 @@ public class JanelaPrincipal extends JFrame {
 		try {
 			if (!(janelaEditarMetas.isClosed())) {
 				Tabelas.mostrarMetas(3, EditarMetas.getTable());
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
-		try {
-			JInternalFrame[] lista = desktopPane.getAllFrames();
-			for (JInternalFrame jInternalFrame : lista) {
-				if (jInternalFrame.getClass().getSimpleName().equals("TabelaIndicadoresCalculados")) {
-					TabelaIndicadoresCalculados tabelaIndicadoresCalculados = (TabelaIndicadoresCalculados) jInternalFrame;
-					tabelaIndicadoresCalculados.atualizar();
-				}
-				if (jInternalFrame.getClass().getSimpleName().equals("MostrarCalculos")) {
-					MostrarCalculos mostrarCalculos = (MostrarCalculos) jInternalFrame;
-					mostrarCalculos.atualizar();
-				}
 			}
 		} catch (Exception e) {
 			System.out.println(e);
@@ -839,4 +811,31 @@ public class JanelaPrincipal extends JFrame {
 		}
 	}
 
+	/**
+	 * Fecha a janela que cadastra indicadores
+	 */
+	public static void fechaCadastrarIndicadores() {
+		janelaCadastrarIndicadores.dispose();
+	}
+
+	/**
+	 * Fecha a janela que cadastra variáveis
+	 */
+	public static void fechaCadastrarVariaveis() {
+		janelaCadastrarVariaveis.dispose();
+	}
+
+	/**
+	 * Fecha a janela que cadastra metas
+	 */
+	public static void fechaCadastrarMetas() {
+		janelaCadastrarMetas.dispose();
+	}
+
+	/**
+	 * Fecha a janela que cadastra ODS
+	 */
+	public static void fechaCadastrarODS() {
+		janelaCadastrarODS.dispose();
+	}
 }

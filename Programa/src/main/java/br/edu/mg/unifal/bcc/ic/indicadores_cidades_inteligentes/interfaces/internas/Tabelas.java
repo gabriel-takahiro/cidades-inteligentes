@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas;
 
 import java.awt.Color;
@@ -17,7 +43,7 @@ import javax.swing.table.TableRowSorter;
 
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.banco_dados.ResultadoOperacao;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal.JanelaPrincipal;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.ButtonColumn;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.ColunaBotao;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Indicador;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.IndicadoresBuscados;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Meta;
@@ -217,7 +243,7 @@ public class Tabelas {
 				}
 			}
 		};
-		new ButtonColumn(tableIndicadoresComResultado, mostrarCalculo, 11, "Mostrar");
+		new ColunaBotao(tableIndicadoresComResultado, mostrarCalculo, 11, "Mostrar");
 	}
 
 	/**
@@ -557,6 +583,7 @@ public class Tabelas {
 	 * Mostra o resultado das operações que criam no banco de dados
 	 * 
 	 * @param table tabela que será utilizada
+	 * @param resultadoOperacoes lista com os resultados das operações e as operações
 	 */
 	public static void logCriar(JTable table, List<ResultadoOperacao> resultadoOperacoes) {
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[][] {}) {
@@ -593,13 +620,18 @@ public class Tabelas {
 				JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row,
 						column);
 
+				if (table2.getValueAt(row, 1) == null) {
+					label.setBackground(new Color(250, 255, 178));
+					label.setForeground(Color.BLACK);
+					return label;
+				}
 				if (table2.getValueAt(row, 1).equals("Sucesso")) {
 					label.setBackground(new Color(173, 255, 180));
-					label.setForeground(new Color(0, 0, 0));
+					label.setForeground(Color.BLACK);
 					return label;
 				}
 				label.setBackground(new Color(255, 173, 173));
-				label.setForeground(new Color(0, 0, 0));
+				label.setForeground(Color.BLACK);
 				return label;
 			}
 		});

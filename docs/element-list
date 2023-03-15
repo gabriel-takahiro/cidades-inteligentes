@@ -3,7 +3,6 @@ br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao
 br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory
 br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas
 br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.confirmacao
-br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.paineis
 br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal
 br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo
 br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo

@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas;
 
 import java.awt.Font;
@@ -89,6 +115,9 @@ public class RecalcularIndicadores extends JInternalFrame implements Janelas {
 		JRadioButton rdbtnParaUmMunicipio = new JRadioButton("Recalcular para um município");
 		rdbtnParaUmMunicipio.setSelected(true);
 		rdbtnParaUmMunicipio.addActionListener(new ActionListener() {
+			/**
+			 * Exibe apenas as opções que precisam ser preenchidas para recalcular para um município
+			 */
 			public void actionPerformed(ActionEvent e) {
 				rdbtnParaUmMunicipio.setSelected(true);
 				rdbtnRecalcularParaTodos.setSelected(false);
@@ -102,6 +131,9 @@ public class RecalcularIndicadores extends JInternalFrame implements Janelas {
 
 		rdbtnRecalcularParaTodos = new JRadioButton("Recalcular para todos os municípios ");
 		rdbtnRecalcularParaTodos.addActionListener(new ActionListener() {
+			/**
+			 * Exibe apenas as opções que precisam ser preenchidas para recalcular para todos os municípios 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				rdbtnRecalcularParaTodos.setSelected(true);
 				rdbtnParaUmMunicipio.setSelected(false);
@@ -133,6 +165,9 @@ public class RecalcularIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnRecalcular = new JButton("Recalcular");
 		btnRecalcular.addActionListener(new ActionListener() {
+			/**
+			 * Recalcula os indicadores selecionados
+			 */
 			public void actionPerformed(ActionEvent e) {
 				if (rdbtnRecalcularParaTodos.isSelected()) {
 					if (textFieldAno.getText().isBlank()) {
@@ -208,6 +243,9 @@ public class RecalcularIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnSelecionarTodos = new JButton("Selecionar Todos");
 		btnSelecionarTodos.addActionListener(new ActionListener() {
+			/**
+			 * Seleciona todos os indicadores para serem recalculados
+			 */
 			public void actionPerformed(ActionEvent e) {
 				Tabelas.selecionarTodos(5, table);
 			}

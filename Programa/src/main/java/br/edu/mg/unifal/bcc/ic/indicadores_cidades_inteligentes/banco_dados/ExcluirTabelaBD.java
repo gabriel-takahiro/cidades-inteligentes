@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal.JanelaPrincipal;
 
 /**
  * Classe responsável pela exclusão de tabelas no banco de dados
@@ -50,8 +49,9 @@ public class ExcluirTabelaBD {
 	 * 
 	 * @param excluirApenasImportados verifica se é necessario excluir apenas as
 	 *                                tabelas presentes no esquema "importados"
+	 * @return lista com as operações realizadas 
 	 */
-	public static void excluirTodas(boolean excluirApenasImportados) {
+	public static List<ResultadoOperacao> excluirTodas(boolean excluirApenasImportados) {
 		Connection connection = ConnectionFactory.recuperarConexao();
 
 		operacoes = new ArrayList<ResultadoOperacao>();
@@ -75,7 +75,7 @@ public class ExcluirTabelaBD {
 		excluirImportadosODS(connection);
 		excluirEsquemaImportados(connection);
 
-		JanelaPrincipal.abrirJanelas(new LogBancoDados(operacoes));
+		return operacoes;
 	}
 
 	/**

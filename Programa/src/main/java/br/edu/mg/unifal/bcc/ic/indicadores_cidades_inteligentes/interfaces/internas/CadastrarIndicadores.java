@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas;
 
 import java.awt.BorderLayout;
@@ -34,6 +60,7 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Variavel;
 /**
  * Classe responsável pela interface que cadastra os indicadores
  * @author Gabriel Takahiro
+ * @version 0.3
  *
  */
 public class CadastrarIndicadores extends JInternalFrame implements Janelas {
@@ -160,6 +187,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnLimparCampos = new JButton("Limpar campos");
 		btnLimparCampos.addActionListener(new ActionListener() {
+			/**
+			 * Limpa todos os campos 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				new JanelaConfirmaLimpeza(true);
 			}
@@ -170,6 +200,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnCadastrarIndicador = new JButton("Cadastrar indicador");
 		btnCadastrarIndicador.addActionListener(new ActionListener() {
+			/**
+			 * Cadastrar indicador
+			 */
 			public void actionPerformed(ActionEvent e) {
 				new JanelaConfirmaCadastroIndicador();
 			}
@@ -214,6 +247,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn0 = new JButton("0");
 		btn0.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "0" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -226,6 +262,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn1 = new JButton("1");
 		btn1.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "1" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -239,6 +278,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 		JButton btn2 = new JButton("2");
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/**
+				 * Adiciona o elemento "2" no campo método de cálculo 
+				 */
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
 				testeGenericoNumeros(metCalc, tamanho, "2");
@@ -250,6 +292,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn3 = new JButton("3");
 		btn3.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "3" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -262,6 +307,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn4 = new JButton("4");
 		btn4.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "4" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -274,6 +322,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn5 = new JButton("5");
 		btn5.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "5" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -286,6 +337,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn6 = new JButton("6");
 		btn6.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "6" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -298,6 +352,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn7 = new JButton("7");
 		btn7.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "7" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -310,6 +367,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn8 = new JButton("8");
 		btn8.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "8" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -322,6 +382,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btn9 = new JButton("9");
 		btn9.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "9" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -334,6 +397,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnMultiplicar = new JButton("x");
 		btnMultiplicar.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "x" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -346,6 +412,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnDividir = new JButton("/");
 		btnDividir.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "/" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -358,6 +427,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnSomar = new JButton("+");
 		btnSomar.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "+" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -370,6 +442,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnSubtrair = new JButton("-");
 		btnSubtrair.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "-" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -382,6 +457,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnAbreColchetes = new JButton("[");
 		btnAbreColchetes.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "[" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -394,6 +472,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnFechaColchetes = new JButton("]");
 		btnFechaColchetes.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "]" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -406,6 +487,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnAbreParenteses = new JButton("(");
 		btnAbreParenteses.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento "(" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -418,6 +502,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnFechaParenteses = new JButton(")");
 		btnFechaParenteses.addActionListener(new ActionListener() {
+			/**
+			 * Adiciona o elemento ")" no campo método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				String metCalc = textFieldMetodoCalculo.getText();
@@ -430,6 +517,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnApagar = new JButton("Apagar");
 		btnApagar.addActionListener(new ActionListener() {
+			/**
+			 * Apaga o último elemento do campo método de cálculo
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int tamanho = textFieldMetodoCalculo.getText().length();
 				if (textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho).equals("}")) {
@@ -483,6 +573,9 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnIncluirIndicadores = new JButton("Incluir indicadores");
 		btnIncluirIndicadores.addActionListener(new ActionListener() {
+			/**
+			 * Inclui indicador no método de cálculo 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				new JanelaIncluirIndicador(true);
 			}
@@ -565,9 +658,15 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 		if (meta.equals("")) {
 			meta = null;
 		}
-		Indicador.cadastrarIndicador(textFieldNomeIndicador.getText(), textFieldMetodoCalculo.getText(),
-				(String) comboBoxEixo.getSelectedItem(), textFieldTipoPlano.getText(), textFieldNomePlano.getText(),
-				textAreaDescricao.getText(), textAreaInformacoesTecnicas.getText(), meta);
+		
+		try {
+			Indicador.cadastrarIndicador(textFieldNomeIndicador.getText(), textFieldMetodoCalculo.getText(),
+					(String) comboBoxEixo.getSelectedItem(), textFieldTipoPlano.getText(), textFieldNomePlano.getText(),
+					textAreaDescricao.getText(), textAreaInformacoesTecnicas.getText(), meta);
+			JanelaPrincipal.fechaCadastrarIndicadores();
+		} catch (Exception e) {
+			new JanelaMensagem(e.getMessage());
+		}
 	}
 
 	/**
@@ -583,17 +682,21 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 	 * @param codigo_indicador código do indicador a ser verificado no banco de dados
 	 */
 	public static void colocarIndicador(String codigo_indicador) {
-		int tamanho = textFieldMetodoCalculo.getText().length();
-		String metodo_calculo = textFieldMetodoCalculo.getText();
-		String elemento = metodo_calculo.substring(tamanho - 1, tamanho);
+		try {
+			int tamanho = textFieldMetodoCalculo.getText().length();
+			String metodo_calculo = textFieldMetodoCalculo.getText();
+			String elemento = metodo_calculo.substring(tamanho - 1, tamanho);
 
-		if (tamanho == 0 || elemento.equals("+") || elemento.equals("-") || elemento.equals("x") || elemento.equals("/")
-				|| elemento.equals("(")) {
+			if (tamanho == 0 || elemento.equals("+") || elemento.equals("-") || elemento.equals("x") || elemento.equals("/")
+					|| elemento.equals("(")) {
+				textFieldMetodoCalculo.setText(textFieldMetodoCalculo.getText() + "{" + codigo_indicador + "}");
+				return;
+			}
+			new JanelaMensagem("Não é possível adicionar o indicador após \""
+					+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
+		} catch (Exception e) {
 			textFieldMetodoCalculo.setText(textFieldMetodoCalculo.getText() + "{" + codigo_indicador + "}");
-			return;
 		}
-		new JanelaMensagem("Não é possível adicionar o indicador após \""
-				+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
 	}
 
 	/**
@@ -632,17 +735,21 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 	 * @param valor número a ser inserido
 	 */
 	public void testeGenericoNumeros(String metodo_calculo, int tamanho, String valor) {
-		String elemento = metodo_calculo.substring(tamanho - 1, tamanho);
+		try {
+			String elemento = metodo_calculo.substring(tamanho - 1, tamanho);
 
-		if (tamanho == 0 || elemento.equals("0") || elemento.equals("1") || elemento.equals("2") || elemento.equals("3")
-				|| elemento.equals("4") || elemento.equals("5") || elemento.equals("6") || elemento.equals("7")
-				|| elemento.equals("8") || elemento.equals("9") || elemento.equals("(") || elemento.equals("[")
-				|| elemento.equals("+") || elemento.equals("-") || elemento.equals("x") || elemento.equals("/")) {
+			if (tamanho == 0 || elemento.equals("0") || elemento.equals("1") || elemento.equals("2") || elemento.equals("3")
+					|| elemento.equals("4") || elemento.equals("5") || elemento.equals("6") || elemento.equals("7")
+					|| elemento.equals("8") || elemento.equals("9") || elemento.equals("(") || elemento.equals("[")
+					|| elemento.equals("+") || elemento.equals("-") || elemento.equals("x") || elemento.equals("/")) {
+				textFieldMetodoCalculo.setText(textFieldMetodoCalculo.getText() + valor);
+				return;
+			}
+			new JanelaMensagem("Não é possível utilizar \"" + valor + "\" após \""
+					+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
+		} catch (Exception e) {
 			textFieldMetodoCalculo.setText(textFieldMetodoCalculo.getText() + valor);
-			return;
 		}
-		new JanelaMensagem("Não é possível utilizar \"" + valor + "\" após \""
-				+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
 	}
 
 	/**
@@ -652,10 +759,31 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 	 * @param valor abre parênteses "(" ou abre chaves "["
 	 */
 	public void testeGenericoInicio(String metodo_calculo, int tamanho, String valor) { // Usado em "(" e "["
-		String elemento = metodo_calculo.substring(tamanho - 1, tamanho);
+		try {
+			String elemento = metodo_calculo.substring(tamanho - 1, tamanho);
 
-		if (tamanho == 0 || elemento.equals("+") || elemento.equals("-") || elemento.equals("x") || elemento.equals("/")
-				|| elemento.equals("(")) {
+			if (tamanho == 0 || elemento.equals("+") || elemento.equals("-") || elemento.equals("x") || elemento.equals("/")
+					|| elemento.equals("(")) {
+				if (estadoColchetes) {
+					if (valor.equals("(")) {
+						new JanelaMensagem("Não é possível abrir um parênteses dentro de um colchetes.");
+						return;
+					}
+					new JanelaMensagem("Não é possível abrir um colchetes dentro de um colchetes.");
+					return;
+				}
+				textFieldMetodoCalculo.setText(textFieldMetodoCalculo.getText() + valor);
+				if (valor.equals("(")) {
+					contadorParenteses++;
+				}
+				if (valor.equals("[")) {
+					estadoColchetes = true;
+				}
+				return;
+			}
+			new JanelaMensagem("Não é possível utilizar \"" + valor + "\" após \""
+					+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
+		} catch (Exception e) {
 			if (estadoColchetes) {
 				if (valor.equals("(")) {
 					new JanelaMensagem("Não é possível abrir um parênteses dentro de um colchetes.");
@@ -671,10 +799,7 @@ public class CadastrarIndicadores extends JInternalFrame implements Janelas {
 			if (valor.equals("[")) {
 				estadoColchetes = true;
 			}
-			return;
 		}
-		new JanelaMensagem("Não é possível utilizar \"" + valor + "\" após \""
-				+ textFieldMetodoCalculo.getText().substring(tamanho - 1, tamanho) + "\"");
 	}
 
 	/**

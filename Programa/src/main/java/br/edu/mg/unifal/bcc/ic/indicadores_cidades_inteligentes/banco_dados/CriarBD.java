@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal.JanelaPrincipal;
 
 /**
  * Classe responsável pela criação das tabelas do banco de dados
@@ -47,8 +46,9 @@ public class CriarBD {
 
 	/**
 	 * Cria todas as tabelas do banco de dados
+	 * @return lista com as operações realizadas
 	 */
-	public static void criarTudo() {
+	public static List<ResultadoOperacao> criarTudo() {
 		Connection connection = ConnectionFactory.recuperarConexao();
 
 		operacoes = new ArrayList<ResultadoOperacao>();
@@ -64,15 +64,16 @@ public class CriarBD {
 		criarCalculoIndicador(connection);
 		criarValorVariavel(connection);
 
-		JanelaPrincipal.abrirJanelas(new LogBancoDados(operacoes));
+		return operacoes;
 	}
 
 	/**
 	 * Cria o esquema "importados" e todas as suas tabelas
 	 * 
 	 * @param connection conexão com o banco de dados
+	 * @return lista com as operações realizadas
 	 */
-	public static void criarTudoImportados(Connection connection) {
+	public static List<ResultadoOperacao> criarTudoImportados(Connection connection) {
 		operacoes = new ArrayList<ResultadoOperacao>();
 
 		criarEsquemaImportados(connection);
@@ -81,7 +82,7 @@ public class CriarBD {
 		criarImportadosVariaveis(connection);
 		criarImportadosODS(connection);
 
-		JanelaPrincipal.abrirJanelas(new LogBancoDados(operacoes));
+		return operacoes;
 	}
 
 	/**

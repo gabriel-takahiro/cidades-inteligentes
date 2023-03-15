@@ -1,3 +1,29 @@
+/*Copyright (C) <2022> <Gabriel Takahiro Toma de Lima>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ 
+Versão em português:
+
+Este programa é um software livre: você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+publicado pela Free Software Foundation, seja a versão 3 da Licença
+ou (a seu critério) qualquer versão posterior.
+Este programa é distribuído na esperança de que seja útil,
+mas SEM QUALQUER GARANTIA; sem a garantia implícita de
+COMERCIALIZAÇÃO OU ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+Licença Pública Geral GNU para obter mais detalhes.
+Você deve ter recebido uma cópia da Licença Pública Geral GNU
+junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
+*/
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas;
 
 import java.awt.Font;
@@ -90,6 +116,9 @@ public class CalcularIndicadores extends JInternalFrame implements Janelas {
 		JRadioButton rdbtnParaUmMunicipio = new JRadioButton("Realizar os cálculos para um município");
 		rdbtnParaUmMunicipio.setSelected(true);
 		rdbtnParaUmMunicipio.addActionListener(new ActionListener() {
+			/**
+			 * Mostra os campos que são necessários preencher para realizar o cálculo para um município 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				rdbtnParaUmMunicipio.setSelected(true);
 				rdbtnConsultarParaTodos.setSelected(false);
@@ -103,6 +132,9 @@ public class CalcularIndicadores extends JInternalFrame implements Janelas {
 
 		rdbtnConsultarParaTodos = new JRadioButton("Realizar os cálculos para todos os municípios ");
 		rdbtnConsultarParaTodos.addActionListener(new ActionListener() {
+			/**
+			 * Mostra os campos que são necessários preencher para realizar o cálculo para todos os municípios
+			 */
 			public void actionPerformed(ActionEvent e) {
 				rdbtnConsultarParaTodos.setSelected(true);
 				rdbtnParaUmMunicipio.setSelected(false);
@@ -134,6 +166,9 @@ public class CalcularIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnConsultar = new JButton("Consultar");
 		btnConsultar.addActionListener(new ActionListener() {
+			/**
+			 * Realiza a consulta dos indicadores selecionados 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				if (rdbtnConsultarParaTodos.isSelected()) {
 					if (textFieldAno.getText().isBlank()) {
@@ -210,6 +245,9 @@ public class CalcularIndicadores extends JInternalFrame implements Janelas {
 
 		JButton btnSelecionarTodos = new JButton("Selecionar Todos");
 		btnSelecionarTodos.addActionListener(new ActionListener() {
+			/**
+			 * Seleciona todos indicadores da tabela 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				Tabelas.selecionarTodos(5, table);
 			}

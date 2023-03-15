@@ -29,6 +29,8 @@ package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.banco_dados;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
 
@@ -40,18 +42,26 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.Connecti
  */
 public class ImportarBD {
 
+	private static List<ResultadoOperacao> operacoes;
+
 	/**
 	 * Importa todas as tabelas no banco de dados
+	 * @return lista com as operações realizadas 
 	 */
-	public static void importarTudo() {
+	public static List<ResultadoOperacao> importarTudo() {
 		Connection connection = ConnectionFactory.recuperarConexao();
 		
-		CriarBD.criarTudoImportados(connection);
+		operacoes = new ArrayList<ResultadoOperacao>();
+		operacoes.add(new ResultadoOperacao("Criar tabelas para importar", null));
+		operacoes.addAll(CriarBD.criarTudoImportados(connection));
 		
+		operacoes.add(new ResultadoOperacao("Importar tabelas", null));
 		importarPlanilha(connection);
 		importarMunicipios(connection);
 		importarVariaveis(connection);
 		importarODS(connection);
+		
+		return operacoes;
 	}
 
 	/**
@@ -64,9 +74,9 @@ public class ImportarBD {
 				+ "CSV HEADER;";
 		try (PreparedStatement pstm = connection.prepareStatement(importarPlanilha)) {
 			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Importar planilha", "Sucesso"));
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Erro ao importar planilha.");
+			operacoes.add(new ResultadoOperacao("Importar planilha", "Falha"));
 		}
 	}
 	
@@ -80,9 +90,9 @@ public class ImportarBD {
 				+ "CSV HEADER;";
 		try (PreparedStatement pstm = connection.prepareStatement(importarMunicipios)) {
 			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Importar municípios", "Sucesso"));
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Erro ao importar municipios.");
+			operacoes.add(new ResultadoOperacao("Importar municípios", "Falha"));
 		}
 	}
 
@@ -96,9 +106,9 @@ public class ImportarBD {
 				+ "CSV HEADER;";
 		try (PreparedStatement pstm = connection.prepareStatement(importarVariaveis)) {
 			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Importar variáveis", "Sucesso"));
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Erro ao importar variaveis.");
+			operacoes.add(new ResultadoOperacao("Importar variáveis", "Falha"));
 		}
 	}
 
@@ -112,9 +122,9 @@ public class ImportarBD {
 				+ "CSV HEADER;";
 		try (PreparedStatement pstm = connection.prepareStatement(importarVariaveis)) {
 			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Importar ODS", "Sucesso"));
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Erro ao importar ods.");
+			operacoes.add(new ResultadoOperacao("Importar ODS", "Falha"));
 		}
 	}
 }

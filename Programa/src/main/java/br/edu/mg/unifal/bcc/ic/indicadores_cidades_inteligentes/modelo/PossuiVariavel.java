@@ -37,14 +37,7 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.PossuiVariav
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
 
 /**
- * Classe PossuiVariavel representa a tabela possui_variavel do banco de dados. Possui vários
- * métodos que trabalham com essa tabela.
- * <br><br>
- * Os campos da tabela possui_variavel são:
- * <ul>
- *	<li>codigo_variavel</li> 
- *  <li>codigo_indicador</li>
- * </ul> 
+ * Classe que representa a tabela possui_variavel do banco de dados.
  *
  * @author Gabriel Takahiro
  * @version 0.1
@@ -168,6 +161,15 @@ public class PossuiVariavel {
 	}
 	
 	/**
+	 * Substitui o código antigo da variável pelo novo para todos os métodos de cálculo que utilizam essa variável
+	 * @param codigo_antigo código antigo da variável
+	 * @param codigo_variavel código novo da variável
+	 */
+	public static void atualizarVariaveis(int codigo_antigo, int codigo_variavel) {
+		new PossuiVariavelDAO(ConnectionFactory.recuperarConexao()).atualizarVariaveis(codigo_antigo, codigo_variavel);
+	}
+	
+	/**
 	 * Constrói um objeto contendo o código da variável e do indicador
 	 * 
 	 * @param codigo_variavel código da variável
@@ -193,5 +195,6 @@ public class PossuiVariavel {
 	public int getVariavel() {
 		return codigo_variavel;
 	}
+
 
 }
