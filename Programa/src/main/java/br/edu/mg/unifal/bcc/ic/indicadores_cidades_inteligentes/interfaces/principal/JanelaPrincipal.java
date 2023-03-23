@@ -28,9 +28,12 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Frame;
 import java.beans.PropertyVetoException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.swing.GroupLayout;
@@ -625,18 +628,28 @@ public class JanelaPrincipal extends JFrame {
 	 *                      após realizar o login
 	 */
 	public static void instanciarTutorial(boolean abrirTutorial) {
-		janelaTutorial = new Tutorial();
-		desktopPane.add(janelaTutorial);
-		if (abrirTutorial) {
-			janelaTutorial.setVisible(true);
-		} else {
-			janelaTutorial.setVisible(false);
-		}
+
+//		janelaTutorial = new Tutorial();
+//		desktopPane.add(janelaTutorial);
+//		if (abrirTutorial) {
+//			janelaTutorial.setVisible(true);
+//		} else {
+//			janelaTutorial.setVisible(false);
+//		}
+//
+//		try {
+//			janelaTutorial.setMaximum(true);
+//		} catch (PropertyVetoException e) {
+//			System.out.println(e);
+//		}
 
 		try {
-			janelaTutorial.setMaximum(true);
-		} catch (PropertyVetoException e) {
-			System.out.println(e);
+			Desktop desktop = Desktop.getDesktop();
+			URI uri = new URI(
+					"https://gabriel-takahiro.github.io/cidades-inteligentes/como%20utilizar/html/index.html");
+			desktop.browse(uri);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

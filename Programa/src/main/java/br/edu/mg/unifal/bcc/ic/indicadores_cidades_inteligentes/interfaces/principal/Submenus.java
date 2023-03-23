@@ -27,25 +27,31 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.confirmacao.JanelaMensagem;
+
 /**
  * Classe responsável com a criação dos submenus na interface principal.
+ * 
  * @author Gabriel Takahiro
- * @version 0.3	
+ * @version 0.3
  */
 public class Submenus {
-	
+
 	private static List<JMenuItem> listaSubmenus = new ArrayList<JMenuItem>();
 
 	/**
 	 * Cria o submenu que mostra os indicadores
+	 * 
 	 * @param menuIndicadores menu dos indicadores
 	 */
 	public static void mostrarIndicadores(JMenu menuIndicadores) {
@@ -64,6 +70,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que edita os indicadores
+	 * 
 	 * @param menuIndicadores menus dos indicadores
 	 */
 	public static void editarIndicadores(JMenu menuIndicadores) {
@@ -82,6 +89,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que cadastra os indicadores
+	 * 
 	 * @param menuIndicadores menus dos indicadores
 	 */
 	public static void cadastrarIndicadores(JMenu menuIndicadores) {
@@ -100,6 +108,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que mostra as variáveis
+	 * 
 	 * @param menuVariaveis menus das variáveis
 	 */
 	public static void mostrarVariaveis(JMenu menuVariaveis) {
@@ -118,6 +127,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que edita as variáveis
+	 * 
 	 * @param menuVariaveis menus das variáveis
 	 */
 	public static void editarVariaveis(JMenu menuVariaveis) {
@@ -136,6 +146,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que cadastra as variáveis
+	 * 
 	 * @param menuVariaveis menus das variáveis
 	 */
 	public static void cadastrarVariaveis(JMenu menuVariaveis) {
@@ -151,9 +162,10 @@ public class Submenus {
 		menuVariaveis.add(submenuCadastrarVariaveis);
 		listaSubmenus.add(submenuCadastrarVariaveis);
 	}
-	
+
 	/**
 	 * Cria o submenu que mostra as metas
+	 * 
 	 * @param menuMetas menus das metas
 	 */
 	public static void mostrarMetas(JMenu menuMetas) {
@@ -172,6 +184,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que edita as metas
+	 * 
 	 * @param menuMetas menus das metas
 	 */
 	public static void editarMetas(JMenu menuMetas) {
@@ -190,6 +203,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que cadastra as metas
+	 * 
 	 * @param menuMetas menus das metas
 	 */
 	public static void cadastrarMetas(JMenu menuMetas) {
@@ -208,6 +222,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que mostra as ODS
+	 * 
 	 * @param menuODS menus das ODS
 	 */
 	public static void mostrarODS(JMenu menuODS) {
@@ -226,6 +241,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que edita as ODS
+	 * 
 	 * @param menuODS menus das ODS
 	 */
 	public static void editarODS(JMenu menuODS) {
@@ -244,6 +260,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que cadastra as ODS
+	 * 
 	 * @param menuODS menus das ODS
 	 */
 	public static void cadastrarODS(JMenu menuODS) {
@@ -262,6 +279,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que consulta os indicadores calculados
+	 * 
 	 * @param menuConsultas menu das consultas
 	 */
 	public static void consultarIndicadoresCalculados(JMenu menuConsultas) {
@@ -280,6 +298,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que calcula os indicadores
+	 * 
 	 * @param menuCalculos menu dos cálculos
 	 */
 	public static void calcularIndicadores(JMenu menuCalculos) {
@@ -298,6 +317,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que recalcula os indicadores
+	 * 
 	 * @param menuCalculos menu dos cálculos
 	 */
 	public static void recalcularIndicadores(JMenu menuCalculos) {
@@ -316,6 +336,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que cria as tabelas no banco de dados
+	 * 
 	 * @param menuBancoDados menu do banco de dados
 	 */
 	public static void criarTabelas(JMenu menuBancoDados) {
@@ -334,6 +355,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que exclui as tabelas no banco de dados
+	 * 
 	 * @param menuBancoDados menu do banco de dados
 	 */
 	public static void excluirTabelas(JMenu menuBancoDados) {
@@ -352,6 +374,7 @@ public class Submenus {
 
 	/**
 	 * Cria o submenu que importa as tabelas para o banco de dados
+	 * 
 	 * @param menuBancoDados menu do banco de dados
 	 */
 	public static void importarTabelas(JMenu menuBancoDados) {
@@ -369,7 +392,8 @@ public class Submenus {
 	}
 
 	/**
-	 * Cria o submenu que mostra o tutorial
+	 * Cria o submenu que ao ser clicado redireciona para o tutorial do software
+	 * 
 	 * @param menuAjuda menu de ajuda
 	 */
 	public static void tutorial(JMenu menuAjuda) {
@@ -379,11 +403,45 @@ public class Submenus {
 			 * Abre a interface do tutorial
 			 */
 			public void actionPerformed(ActionEvent e) {
-				JanelaPrincipal.tutorial();
+				//JanelaPrincipal.tutorial();
+				try {
+					Desktop desktop = Desktop.getDesktop();
+					URI uri = new URI(
+							"https://gabriel-takahiro.github.io/cidades-inteligentes/como%20utilizar/html/index.html");
+					desktop.browse(uri);
+				} catch (Exception e2) {
+					new JanelaMensagem("Erro ao abrir site");
+				}
 			}
 		});
 		menuAjuda.add(submenuTutorial);
 		listaSubmenus.add(submenuTutorial);
+	}
+
+	/**
+	 * Cria o submenu que ao ser clicado redireciona para a documentação do software
+	 * 
+	 * @param menuAjuda menu de ajuda
+	 */
+	public static void documentacao(JMenu menuAjuda) {
+		JMenuItem submenuDocumentacao = new JMenuItem("Documentação");
+		submenuDocumentacao.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface do tutorial
+			 */
+			public void actionPerformed(ActionEvent e) {
+				//JanelaPrincipal.tutorial();
+				try {
+					Desktop desktop = Desktop.getDesktop();
+					URI uri = new URI("https://gabriel-takahiro.github.io/cidades-inteligentes/");
+					desktop.browse(uri);
+				} catch (Exception e2) {
+					new JanelaMensagem("Erro ao abrir site");
+				}
+			}
+		});
+		menuAjuda.add(submenuDocumentacao);
+		listaSubmenus.add(submenuDocumentacao);
 	}
 
 	/**

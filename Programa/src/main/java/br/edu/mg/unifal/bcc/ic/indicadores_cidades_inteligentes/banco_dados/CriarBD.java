@@ -46,6 +46,7 @@ public class CriarBD {
 
 	/**
 	 * Cria todas as tabelas do banco de dados
+	 * 
 	 * @return lista com as operações realizadas
 	 */
 	public static List<ResultadoOperacao> criarTudo() {
@@ -290,10 +291,10 @@ public class CriarBD {
 	public static void criarImportadosPlanilha(Connection connection) {
 		String criaImportadosPlanilha = "CREATE TABLE importados.planilha(" + "    tipo_plano VARCHAR(100),"
 				+ "    nome_plano VARCHAR(200)," + "    ods INTEGER," + "    nome_ods VARCHAR(200),"
-				+ "    eixo VARCHAR(250)," + "    numero_meta VARCHAR(20)," + "    texto_meta VARCHAR(1500),"
-				+ "    indicador VARCHAR(500)," + "    descricao VARCHAR(1500)," + "    variaveis VARCHAR(100),"
-				+ "    calculo VARCHAR(100) PRIMARY KEY," + "    informacao VARCHAR(1500),"
-				+ "    padrao BOOLEAN NOT NULL" + ");";
+				+ "    eixo VARCHAR(250) NOT NULL," + "    numero_meta VARCHAR(20)," + "    texto_meta VARCHAR(1500),"
+				+ "    indicador VARCHAR(500) NOT NULL," + "    descricao VARCHAR(1500) NOT NULL,"
+				+ "    variaveis VARCHAR(100)," + "    calculo VARCHAR(100) PRIMARY KEY,"
+				+ "    informacao VARCHAR(1500)," + "    padrao BOOLEAN NOT NULL" + ");";
 		try (PreparedStatement pstm = connection.prepareStatement(criaImportadosPlanilha)) {
 			pstm.execute();
 			operacoes.add(new ResultadoOperacao("Criar tabela importados.planilha", "Sucesso"));

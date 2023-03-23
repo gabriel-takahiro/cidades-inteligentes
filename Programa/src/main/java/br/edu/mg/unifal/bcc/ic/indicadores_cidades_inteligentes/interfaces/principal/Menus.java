@@ -163,6 +163,7 @@ public class Menus {
 		listaMenus.add(menuAjuda);
 		
 		Submenus.tutorial(menuAjuda);
+		Submenus.documentacao(menuAjuda);
 	}
 	
 	/**
