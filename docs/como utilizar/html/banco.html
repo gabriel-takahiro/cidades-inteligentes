@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Banco de dados</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../css/banco.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="secao-titulo">
+            <p class="titulo-programa">Indicadores de cidades inteligentes</p>
+        </div>
+        <ul>
+            <li><a href="index.html">Sobre</a></li>
+            <li><a href="instalacao.html">Instalação</a></li>
+            <li><a href="uso.html">Como usar</a></li>
+            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+            <li><a class="ativa" href="#banco">Banco de dados</a>
+                <ul class="submenu">
+                    <li><a id="sub" href="#indicadores">Indicadores</a></li>
+                    <li><a id="sub" href="#variaveis">Variáveis</a></li>
+                    <li><a id="sub" href="#metas">Metas</a></li>
+                    <li><a id="sub" href="#ods">ODS</a></li>
+                    <li><a id="sub" href="#municipios">Municípios</a></li>
+                    <li><a id="sub" href="#data">Datas</a></li>
+                    <li><a id="sub" href="#possui_variavel">Possui variável</a></li>
+                    <li><a id="sub" href="#valor_variavel">Valor da variável</a></li>
+                    <li><a id="sub" href="#calculo_indicador">Cálculo do indicador</a></li>
+                    <li><a id="sub" href="#importados">Importados</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".municipios">Municipios</a></li>
+                            <li><a class="sub" href=".ods">ODS</a></li>
+                            <li><a class="sub" href=".variaveis">Variáveis</a></li>
+                            <li><a class="sub" href=".planilha">Planilha</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="documentacao.html">Documentação</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="banco">
+            <h1>Banco de dados</h1>
+            <hr class="linha-horizontal">
+            <p>Para armazenar todas as informações dos indicadores, variáveis, metas, ODS e resultados, foi feito um
+                mapeamento desses dados em um banco de dados relacional. Para dar suporte às funcionalidades do
+                software, foi implementado o seguinte banco de dados:
+            </p>
+            <img class="banco-dados" src="./imagens/Banco de dados Final.png" alt="">
+            <p class="titulo"><b>Figura 1:</b> Banco de dados</p>
+        </section>
+
+        <section id="indicadores">
+            <h2>Indicadores (Tabela: indicador)</h2>
+            <p>A tabela de indicadores armazena todas as informações relacionadas ao indicador. Os campos da tabela e
+                seus significados são descritos na tabela abaixo:</p>
+
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>codigo_indicador</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena o código do indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_indicador</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome do indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>metodo_calculo</td>
+                            <td>Texto</td>
+                            <td>Valor único, não pode ser nulo</td>
+                            <td>Este campo armazena o método de cálculo do indicador. Cada indicador deve ter um método
+                                de cálculo único. Os operadores aceitos são: "+" (soma), "-" (subtração), "x"
+                                (multiplicação) e "/" (divisão). Os números representam o código de uma variável,
+                                números entre colchetes "[ ]" indicam números naturais e números entre chaves "{ }"
+                                representam o código de outro indicador. É possível utilizar parênteses "( )" para
+                                determinar a precedência de uma operação.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_eixo</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome do eixo temático do indicador. O sistema é estruturado em 12
+                                eixos temáticos, alinhados aos Objetivos de Desenvolvimento Sustentável (ODS), para
+                                facilitar a organização e análise dos indicadores. O nome do eixo temático permite a
+                                identificação da área temática a que o indicador se refere.</td>
+                        </tr>
+                        <tr>
+                            <td>tipo_plano</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o tipo de plano ao qual o indicador está vinculado, sendo possível
+                                classificá-lo como estratégico ou setorial, de acordo com o contexto de utilização do
+                                indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_plano</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo registra o nome do plano ao qual o indicador está associado, fornecendo
+                                informações sobre o contexto de utilização do indicador e permitindo sua identificação
+                                precisa.</td>
+                        </tr>
+                        <tr>
+                            <td>descricao</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena a descrição do indicador, fornecendo informações detalhadas sobre o
+                                objetivo e a finalidade do mesmo, o que ajuda a fornecer contexto e compreensão sobre os
+                                resultados gerados.</td>
+                        </tr>
+                        <tr>
+                            <td>informacoes_tecnicas</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena as informações técnicas do indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>numero_meta</td>
+                            <td>Texto</td>
+                            <td>Chave estrangeira, pode ser nulo</td>
+                            <td>Este campo armazena o código da meta à qual o indicador está vinculado.</td>
+                        </tr>
+                        <tr>
+                            <td>padrao</td>
+                            <td>Booleano</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo indica se o indicador é padrão ou não. Um indicador é considerado padrão se
+                                foi baixado pelo sistema.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 1:</b> Tabela dos indicadores</p>
+            </div>
+        </section>
+
+        <section id="variaveis">
+            <h2>Variáveis (Tabela: variavel)</h2>
+            <p>A tabela de variáveis armazena informações detalhadas sobre cada variável utilizada nos indicadores. Cada
+                campo da tabela possui um significado específico, que pode ser consultado na tabela a seguir:</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>codigo_variavel</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena o código da variável.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_variavel</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome da variável.</td>
+                        </tr>
+                        <tr>
+                            <td>tipo_banco</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo registra o tipo de banco de dados onde a variável está armazenada, podendo
+                                ser: banco de dados local (BD), API SIDRA (Sidra) ou outras bases de dados
+                                governamentais.</td>
+                        </tr>
+                        <tr>
+                            <td>codigo_banco</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o código necessário para acessar o banco de dados da variável. Se a
+                                variável estiver localizada no banco de dados local, o código deve ser nulo.</td>
+                        </tr>
+                        <tr>
+                            <td>atualizacao</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo registra o período de atualização da variável, indicando se a sua atualização
+                                ocorre anualmente ou a cada dez anos.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>padrao</td>
+                            <td>Booleano</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo indica se a variável é padrão ou não. Uma variável é considerada padrão se
+                                foi baixada pelo sistema.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 2:</b> Tabela das variáveis</p>
+            </div>
+        </section>
+
+        <section id="metas">
+            <h2>Metas (Tabela: meta)</h2>
+            <p>A tabela de metas armazena todas as informações referentes a uma meta. Cada campo está
+                detalhado na tabela a seguir:</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>numero_meta</td>
+                            <td>Texto</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena o código da meta.</td>
+                        </tr>
+                        <tr>
+                            <td>texto_meta</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o texto da meta.</td>
+                        </tr>
+                        <tr>
+                            <td>numero_ods</td>
+                            <td>Inteiro</td>
+                            <td>Chave estrangeira, Não pode ser nulo</td>
+                            <td>Este campo armazena o número do ODS (Objetivo de Desenvolvimento Sustentável) ao qual a
+                                meta está vinculada.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 3:</b> Tabela das metas</p>
+            </div>
+        </section>
+
+        <section id="ods">
+            <h2>ODS (Tabela: ods)</h2>
+            <p>A tabela de ODS é responsável por armazenar o número e nome de cada ODS. O significado de cada campo pode
+                ser visto na tabela a seguir:</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>numero_ods</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena o número da ODS.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_objetivo</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome do objetivo de desenvolvimento sustentável (ODS).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 4:</b> Tabela das ODS</p>
+            </div>
+        </section>
+
+        <section id="municipios">
+            <h2>Municípios (Tabela: municipio)</h2>
+            <p>A tabela de municípios armazena as informações principais relacionadas aos municípios. Cada campo na
+                tabela tem um significado específico, que pode ser consultado na tabela a seguir:</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>codigo_municipio</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena o código do município segundo o IBGE.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_municipio</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome do município.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_uf</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome por extenso da unidade federativa.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 5:</b> Tabela dos municípios</p>
+            </div>
+        </section>
+
+        <section id="data">
+            <h2>Datas (Tabela: data)</h2>
+            <p>A tabela de datas armazena informações relacionadas ao ano e ao código referente a cada ano. O
+                significado de cada campo pode ser encontrado na tabela abaixo:</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>data</td>
+                            <td>Texto</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena um ano. Em casos onde a informação está disponível em outros
+                                períodos além do
+                                anual, é possível utilizar este campo para armazenar informações como mês, trimestre,
+                                semestre, entre outros.</td>
+                        </tr>
+                        <tr>
+                            <td>codigo_data</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o código que corresponde ao ano ou período em questão. Em geral,
+                                para anos, o próprio ano é utilizado como código. Já para outros períodos, é possível
+                                armazenar um código específico neste campo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 6:</b> Tabela das datas</p>
+            </div>
+        </section>
+
+        <section id="possui_variavel">
+            <h2>Possui variável (Tabela: possui_variavel)</h2>
+            <p>A tabela "possui_variavel" é responsável por estabelecer o relacionamento entre a tabela "indicador" e a
+                tabela "variavel", indicando quais variáveis fazem parte de cada indicador. O significado dos dois
+                campos presentes na tabela pode ser visto na tabela a seguir:</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>codigo_indicador</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária composta</td>
+                            <td>Este campo armazena o código do indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>codigo_variavel</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária composta</td>
+                            <td>Este campo armazena o código da variável.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 7:</b> Tabela possui_variavel</p>
+            </div>
+        </section>
+
+        <section id="valor_variavel">
+            <h2>Valor da variável (Tabela: valor_variavel)</h2>
+            <p>A tabela "valor_variavel" é responsável por armazenar os valores das variáveis referentes a um
+                determinado município e ano. Ela representa o relacionamento entre as tabelas "variavel", "municipio" e
+                "data". O significado de cada campo pode ser visto na tabela a seguir:</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>codigo_variavel</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária composta</td>
+                            <td>Este campo armazena o código da variável.</td>
+                        </tr>
+                        <tr>
+                            <td>codigo_municipio</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária composta</td>
+                            <td>Este campo armazena o código do município.</td>
+                        </tr>
+                        <tr>
+                            <td>data</td>
+                            <td>Texto</td>
+                            <td>Chave primária composta</td>
+                            <td>Este campo armazena a data.</td>
+                        </tr>
+                        <tr>
+                            <td>valor</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o valor da variável para um município específico em uma
+                                data específica.</td>
+                        </tr>
+                        <tr>
+                            <td>valor_atualizado</td>
+                            <td>Booleano</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo indica se o valor da variável foi obtido em uma data considerada atualizada
+                                ou não. Por exemplo, suponha que a taxa de atualização da variável seja decenal e a
+                                busca da variável seja realizada para o ano de 2015. Se o valor da variável for
+                                encontrado para uma data anterior a 2015, por exemplo em 2010, então o campo será
+                                marcado como "false", indicando que o valor não é considerado atualizado. Por outro
+                                lado, se o valor for encontrado para a data de 2015, o campo será marcado
+                                como "true", indicando que o valor é considerado atualizado.</td>
+                        </tr>
+                        <tr>
+                            <td>valor_oficial</td>
+                            <td>Booleano</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo indica se o valor da variável foi obtido a partir de uma fonte oficial, como
+                                uma base de dados governamental, ou se foi inserido manualmente no banco de dados sem
+                                uma fonte específica.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 8:</b> Tabela valor_variavel</p>
+            </div>
+        </section>
+
+        <section id="calculo_indicador">
+            <h2>Calculo do indicador (Tabela: calculo_indicador)</h2>
+            <p>A tabela "calculo_indicador" registra os cálculos dos indicadores para cada município e data,
+                relacionando-se com as tabelas "indicador", "municipio" e "data". O significado de cada campo pode ser
+                visto na tabela a seguir:</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>codigo_indicador</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária composta</td>
+                            <td>Este campo armazena o código do indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>codigo_municipio</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária composta</td>
+                            <td>Este campo armazena o código do município.</td>
+                        </tr>
+                        <tr>
+                            <td>data</td>
+                            <td>Texto</td>
+                            <td>Chave primária composta</td>
+                            <td>Este campo armazena a data.</td>
+                        </tr>
+                        <tr>
+                            <td>resultado</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o valor do indicador para um município específico em uma data
+                                específica.</td>
+                        </tr>
+                        <tr>
+                            <td>data_variaveis</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena as datas utilizadas para buscar os valores das variáveis que foram
+                                utilizadas no cálculo do indicador. Cada data é associada ao respectivo código da
+                                variável, seguindo o padrão "código da variável"/"data". Por exemplo, se um indicador
+                                utiliza as variáveis 1 e 2, e os valores foram buscados em 2020, o resultado seria:
+                                "1/2020/2/2020".
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>valor_oficial</td>
+                            <td>Booleano</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo indica se o valor do indicador foi calculado somente a partir de valores
+                                oficiais provenientes de bases de dados oficiais ou se houve a necessidade de utilizar
+                                informações de outras fontes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 9:</b> Tabela calculo_indicador</p>
+            </div>
+        </section>
+
+        <section id="importados">
+            <h2>Importados</h2>
+            <p>Para importar todos os arquivos disponibilizados pelo software, será criado um esquema denominado
+                "importados" no banco de dados, que será responsável por armazenar as informações antes de serem
+                transferidas para as tabelas principais.</p>
+            <img class="banco-dados" src="./imagens/importados.png" alt="">
+            <p class="titulo"><b>Figura 2:</b> Esquema importados</p>
+
+        </section>
+
+        <section class="municipios">
+            <h2>Municipios (Tabela: importados.municipios)</h2>
+            <p>Essa tabela é semelhante à tabela de municípios, mas serve apenas como uma tabela temporária para
+                armazenar dados antes de serem importados para a tabela principal.</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>codigo_municipio</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena o código do município segundo o IBGE.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_municipio</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome do município.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_uf</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome por extenso da unidade federativa.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 10:</b> Tabela importados.municípios</p>
+            </div>
+        </section>
+
+        <section class="ods">
+            <h2>ODS (Tabela: importados.ods)</h2>
+            <p>Essa tabela é semelhante à tabela de ods, mas serve apenas como uma tabela temporária para
+                armazenar dados antes de serem importados para a tabela principal.</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>numero_ods</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena o número da ODS.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_objetivo</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome do objetivo de desenvolvimento sustentável (ODS).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 11:</b> Tabela importados.ods</p>
+            </div>
+        </section>
+
+        <section class="variaveis">
+            <h2>Variáveis (Tabela: importados.variaveis)</h2>
+            <p>Essa tabela é semelhante à tabela de variáveis, mas serve apenas como uma tabela temporária para
+                armazenar dados antes de serem importados para a tabela principal.</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>codigo_variavel</td>
+                            <td>Inteiro</td>
+                            <td>Chave primária</td>
+                            <td>Este campo armazena o código da variável.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_variavel</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome da variável.</td>
+                        </tr>
+                        <tr>
+                            <td>tipo_banco</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo registra o tipo de banco de dados onde a variável está armazenada, podendo
+                                ser: banco de dados local (BD), API SIDRA (Sidra) ou outras bases de dados
+                                governamentais.</td>
+                        </tr>
+                        <tr>
+                            <td>codigo_banco</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o código necessário para acessar o banco de dados da variável. Se a
+                                variável estiver localizada no banco de dados local, o código deve ser nulo.</td>
+                        </tr>
+                        <tr>
+                            <td>atualizacao</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo registra o período de atualização da variável, indicando se a sua atualização
+                                ocorre anualmente ou a cada dez anos.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>padrao</td>
+                            <td>Booleano</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo indica se a variável é padrão ou não. Uma variável é considerada padrão se
+                                foi baixada pelo sistema.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 12:</b> Tabela importados.variáveis</p>
+            </div>
+        </section>
+
+        <section class="planilha">
+            <h2>Planilhas (Tabela: importados.planilha)</h2>
+            <p>A tabela "importados.planilha" armazena informações sobre os indicadores, incluindo as metas e ODS
+                relacionadas e as variáveis utilizadas para calcular o indicador. Quando esta tabela é importada no
+                programa, ele realiza a separação correta do indicador e das variáveis utilizadas, e inclui essas
+                informações na tabela "possui_variavel", que representa o relacionamento entre as variáveis e os
+                indicadores. Além disso, ele preenche a tabela de metas com o relacionamento entre as metas e ODS.</p>
+            <div class="tabela-wrapper">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th>Propriedades</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>calculo</td>
+                            <td>Texto</td>
+                            <td>Valor único, não pode ser nulo</td>
+                            <td>Este campo armazena o método de cálculo do indicador. Cada indicador deve ter um método
+                                de cálculo único. Os operadores aceitos são: "+" (soma), "-" (subtração), "x"
+                                (multiplicação) e "/" (divisão). Os números representam o código de uma variável,
+                                números entre colchetes "[ ]" indicam números naturais e números entre chaves "{ }"
+                                representam o código de outro indicador. É possível utilizar parênteses "( )" para
+                                determinar a precedência de uma operação.</td>
+                        </tr>
+                        <tr>
+                            <td>tipo_plano</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o tipo de plano ao qual o indicador está vinculado, sendo possível
+                                classificá-lo como estratégico ou setorial, de acordo com o contexto de utilização do
+                                indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_plano</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo registra o nome do plano ao qual o indicador está associado, fornecendo
+                                informações sobre o contexto de utilização do indicador e permitindo sua identificação
+                                precisa.</td>
+                        </tr>
+                        <tr>
+                            <td>ods</td>
+                            <td>Inteiro</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o número do ODS (Objetivo de Desenvolvimento Sustentável) ao qual a
+                                meta está vinculada.</td>
+                        </tr>
+                        <tr>
+                            <td>nome_ods</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o nome do objetivo de desenvolvimento sustentável (ODS).</td>
+                        </tr>
+                        <tr>
+                            <td>eixo</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome do eixo temático do indicador. O sistema é estruturado em 12
+                                eixos temáticos, alinhados aos Objetivos de Desenvolvimento Sustentável (ODS), para
+                                facilitar a organização e análise dos indicadores. O nome do eixo temático permite a
+                                identificação da área temática a que o indicador se refere.</td>
+                        </tr>
+                        <tr>
+                            <td>numero_meta</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o código da meta à qual o indicador está vinculado.</td>
+                        </tr>
+                        <tr>
+                            <td>texto_meta</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena o texto da meta.</td>
+                        </tr>
+                        <tr>
+                            <td>indicador</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena o nome do indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>descricao</td>
+                            <td>Texto</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo armazena a descrição do indicador, fornecendo informações detalhadas sobre o
+                                objetivo e a finalidade do mesmo, o que ajuda a fornecer contexto e compreensão sobre os
+                                resultados gerados.</td>
+                        </tr>
+                        <tr>
+                            <td>variaveis</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena os códigos das variáveis que fazem parte do método do cálculo do
+                                indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>informacao</td>
+                            <td>Texto</td>
+                            <td>Pode ser nulo</td>
+                            <td>Este campo armazena as informações técnicas do indicador.</td>
+                        </tr>
+                        <tr>
+                            <td>padrao</td>
+                            <td>Booleano</td>
+                            <td>Não pode ser nulo</td>
+                            <td>Este campo indica se o indicador é padrão ou não. Um indicador é considerado padrão se
+                                foi baixado pelo sistema.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="titulo"><b>Tabela 13:</b> Tabela importados.planilha</p>
+            </div>
+        </section>
+    </main>
+    <script src="../js/banco.js"></script>
+</body>
+
+</html>
