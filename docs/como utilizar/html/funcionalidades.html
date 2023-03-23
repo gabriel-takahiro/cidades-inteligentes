@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Funcionalidades</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../css/funcionalidades.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="secao-titulo">
+            <p class="titulo-programa">Indicadores de cidades inteligentes</p>
+        </div>
+        <ul>
+            <li><a href="index.html">Sobre</a></li>
+            <li><a href="instalacao.html">Instalação</a></li>
+            <li><a href="uso.html">Como usar</a></li>
+            <li><a class="ativa" href="#funcionalidades">Funcionalidades</a>
+                <ul class="submenu">
+                    <li><a id="sub" href="#indicadores">Indicadores</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".mostrar-indicadores">Mostrar indicadores</a></li>
+                            <li><a class="sub" href=".cadastrar-indicadores">Cadastrar indicadores</a></li>
+                            <li><a class="sub" href=".editar-indicadores">Editar indicadores</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="sub" href="#variaveis">Variáveis</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".mostrar-variaveis">Mostrar variáveis</a></li>
+                            <li><a class="sub" href=".cadastrar-variaveis">Cadastrar variáveis</a></li>
+                            <li><a class="sub" href=".editar-variaveis">Editar variáveis</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="sub" href="#metas">Metas</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".mostrar-metas">Mostrar metas</a></li>
+                            <li><a class="sub" href=".cadastrar-metas">Cadastrar metas</a></li>
+                            <li><a class="sub" href=".editar-metas">Editar metas</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="sub" href="#ods">ODS</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".mostrar-ods">Mostrar ODS</a></li>
+                            <li><a class="sub" href=".cadastrar-ods">Cadastrar ODS</a></li>
+                            <li><a class="sub" href=".editar-ods">Editar ODS</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="sub" href="#consultas">Consultas</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".consultar-indicadores">Consultar indicadores calculados</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="sub" href="#calculos">Cálculos</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".calcular-indicadores">Calcular indicadores</a></li>
+                            <li><a class="sub" href=".recalcular-indicadores">Recalcular indicadores</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="sub" href="#banco">Banco de dados</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".criar-tabelas">Criar tabelas</a></li>
+                            <li><a class="sub" href=".excluir-tabelas">Excluir tabelas</a></li>
+                            <li><a class="sub" href=".importar-tabelas">Importar tabelas</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="sub" href="#ajuda">Ajuda</a>
+                        <ul class="submenu inicial">
+                            <li><a class="sub" href=".tutorial">Tutorial</a></li>
+                            <li><a class="sub" href=".documentacao">Documentação</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="banco.html">Banco de dados</a></li>
+            <li><a href="documentacao.html">Documentação</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="funcionalidades">
+            <h1>Funcionalidades</h1>
+            <hr class="linha-horizontal">
+            <p>O programa oferece uma variedade de funcionalidades, que serão descritas a seguir com base nos menus
+                disponíveis no software.</p>
+        </section>
+        <section id="indicadores">
+            <h2>Indicadores</h2>
+            <p>Na seção de indicadores, é possível exibir todos os indicadores cadastrados no banco de dados, cadastrar
+                novos indicadores no banco de dados, bem como editar ou excluir indicadores já existentes.</p>
+        </section>
+        <section class="mostrar-indicadores">
+            <h2>Mostrar indicadores</h2>
+            <p>Ao selecionar a opção de exibir indicadores, uma nova interface será exibida, contendo uma tabela com
+                informações como o código, nome, meta, método de cálculo e indicador padrão. Nessa interface, serão
+                exibidos todos os indicadores cadastrados no banco de dados local.</p>
+            <img src="./imagens/Mostrar indicadores.png" alt="">
+            <p class="titulo"><b>Figura 1:</b> Interface que exibe os indicadores</p>
+        </section>
+        <section class="cadastrar-indicadores">
+            <h2>Cadastrar indicadores</h2>
+            <p>Para cadastrar um novo indicador, uma interface será exibida, onde é necessário preencher todas as
+                informações necessárias, que podem ser vistas na <a href="banco.html" class="link-externo">seção Banco
+                    de Dados.</a> Para evitar confusões ao inserir
+                o método de cálculo, ele é preenchido por meio de botões disponíveis, como números de 0 a 9, /
+                (divisão), x (multiplicação), + (adição), - (subtração), abre e fecha parênteses (para precedência) e
+                colchetes (para valores inteiros positivos), além de um botão para adicionar indicadores, que abre uma
+                nova interface mostrando os indicadores disponíveis e um campo para digitar o código do indicador
+                escolhido. Há também um botão para apagar o último elemento no método de cálculo, um botão para limpar
+                os campos preenchidos e um botão para concluir o cadastro do indicador.</p>
+            <img src="./imagens/Cadastrar indicadores.png" alt="">
+            <p class="titulo"><b>Figura 2:</b> Interface de cadastro de indicadores</p>
+        </section>
+        <section class="editar-indicadores">
+            <h2>Editar indicadores</h2>
+            <p>Para editar um indicador, é exibida uma interface semelhante à que exibe os indicadores disponíveis,
+                porém com uma coluna adicional para selecionar os indicadores. Para excluir indicadores, basta
+                selecioná-los e clicar em "excluir". Em seguida, uma interface será exibida, com uma tabela contendo
+                todos os indicadores selecionados para a exclusão do banco de dados, além de um botão de confirmação.
+                Para atualizar os indicadores, é necessário selecionar apenas um indicador e clicar no botão
+                "atualizar". Será exibida uma interface semelhante à de cadastro de indicador, mas com os valores do
+                indicador que deseja editar preenchidos. É possível fazer as mudanças desejadas e clicar em "atualizar
+                indicador".</p>
+            <img src="./imagens/Editar indicadores.png" alt="">
+            <p class="titulo"><b>Figura 3:</b> Interface que edita os indicadores</p>
+        </section>
+
+        <section id="variaveis">
+            <h2>Variaveis</h2>
+            <p>Na seção de variáveis, é possível exibir todas as variáveis cadastradas no banco de dados, cadastrar
+                novas variáveis no banco de dados, bem como editar ou excluir variáveis já existentes.</p>
+        </section>
+
+        <section class="mostrar-variaveis">
+            <h2>Mostrar variáveis</h2>
+            <p>Ao selecionar a opção de exibir variáveis, uma nova interface será exibida, contendo uma tabela com
+                informações como o código, banco, nome, código do banco, atualização e variável padrão. Nessa interface,
+                serão
+                exibidas todas as variáveis cadastradas no banco de dados local.</p>
+            <img src="./imagens/Mostrar variaveis.png" alt="">
+            <p class="titulo"><b>Figura 4:</b> Interface que exibe as variáveis</p>
+        </section>
+
+        <section class="cadastrar-variaveis">
+            <h2>Cadastrar variáveis</h2>
+            <p>Para cadastrar uma nova variável, uma interface será exibida, onde é necessário preencher todas as
+                informações necessárias, que podem ser vistas na seção<a href="banco.html" class="link-externo"> Banco
+                    de Dados</a>. </p>
+            <img src="./imagens/Cadastrar variaveis.png" alt="">
+            <p class="titulo"><b>Figura 5:</b> Interface de cadastro de variáves</p>
+        </section>
+
+        <section class="editar-variaveis">
+            <h2>Editar variáveis</h2>
+            <p>Para editar uma variável, é exibida uma interface semelhante à que exibe as variáveis disponíveis,
+                porém com uma coluna adicional para selecionar as variáveis. Para excluir variáveis, basta
+                selecioná-las e clicar em "excluir". Em seguida, uma interface será exibida, com uma tabela contendo
+                todas as variáveis selecionadas para a exclusão do banco de dados, além de um botão de confirmação.
+                Para atualizar as variáveis, é necessário selecionar apenas uma variável e clicar no botão
+                "atualizar". Será exibida uma interface semelhante à de cadastro de variável, mas com os valores da
+                variável que deseja editar preenchidos. É possível fazer as mudanças desejadas e clicar em "atualizar
+                variável".</p>
+            <img src="./imagens/Editar indicadores.png" alt="">
+            <p class="titulo"><b>Figura 6:</b> Interface que edita as variáveis</p>
+        </section>
+
+        <section id="metas">
+            <h2>Metas</h2>
+            <p>Na seção de metas, é possível exibir todas as metas cadastradas no banco de dados, cadastrar
+                novas metas no banco de dados, bem como editar ou excluir metas já existentes.</p>
+        </section>
+
+        <section class="mostrar-metas">
+            <h2>Mostrar metas</h2>
+            <p>Ao selecionar a opção de exibir metas, uma nova interface será exibida, contendo uma tabela com
+                informações como o ODS, número de meta e texto. Nessa interface, serão
+                exibidas todas as metas cadastradas no banco de dados local.</p>
+            <img src="./imagens/Mostrar metas.png" alt="">
+            <p class="titulo"><b>Figura 7:</b> Interface que exibe as metas</p>
+        </section>
+
+        <section class="cadastrar-metas">
+            <h2>Cadastrar metas</h2>
+            <p>Para cadastrar uma nova meta, uma interface será exibida, onde é necessário preencher todas as
+                informações necessárias, que podem ser vistas na seção<a href="banco.html" class="link-externo"> Banco
+                    de Dados</a>. </p>
+            <img src="./imagens/Cadastrar meta.png" alt="">
+            <p class="titulo"><b>Figura 8:</b> Interface de cadastro de metas</p>
+        </section>
+
+        <section class="editar-metas">
+            <h2>Editar metas</h2>
+            <p>Para editar uma meta, é exibida uma interface semelhante à que exibe as metas disponíveis,
+                porém com uma coluna adicional para selecionar as metas. Para excluir metas, basta
+                selecioná-las e clicar em "excluir". Em seguida, uma interface será exibida, com uma tabela contendo
+                todas as metas selecionadas para a exclusão do banco de dados, além de um botão de confirmação.
+                Para atualizar as metas, é necessário selecionar apenas uma meta e clicar no botão
+                "atualizar". Será exibida uma interface semelhante à de cadastro de meta, mas com os valores da
+                meta que deseja editar preenchidos. É possível fazer as mudanças desejadas e clicar em "atualizar
+                meta".</p>
+            <img src="./imagens/Editar metas.png" alt="">
+            <p class="titulo"><b>Figura 9:</b> Interface que edita as variáveis</p>
+        </section>
+
+        <section id="ods">
+            <h2>ODS</h2>
+            <p>Na seção de ODS, é possível exibir todas as ODS cadastradas no banco de dados, cadastrar
+                novas ODS no banco de dados, bem como editar ou excluir ODS já existentes.</p>
+        </section>
+
+        <section class="mostrar-ods">
+            <h2>Mostrar ODS</h2>
+            <p>Ao selecionar a opção de exibir ODS, uma nova interface será exibida, contendo uma tabela com
+                informações como o ODS e nome do objetivo. Nessa interface, serão
+                exibidas todas as ODS cadastradas no banco de dados local.</p>
+            <img src="./imagens/Mostrar ods.png" alt="">
+            <p class="titulo"><b>Figura 10:</b> Interface que exibe as ODS</p>
+        </section>
+
+        <section class="cadastrar-ods">
+            <h2>Cadastrar ODS</h2>
+            <p>Para cadastrar uma nova ODS, uma interface será exibida, onde é necessário preencher todas as
+                informações necessárias, que podem ser vistas na seção<a href="banco.html" class="link-externo"> Banco
+                    de Dados</a>. </p>
+            <img src="./imagens/Cadastrar ods.png" alt="">
+            <p class="titulo"><b>Figura 11:</b> Interface de cadastro de ODS</p>
+        </section>
+
+        <section class="editar-ods">
+            <h2>Editar ODS</h2>
+            <p>Para editar uma ODS, é exibida uma interface semelhante à que exibe as ODS disponíveis,
+                porém com uma coluna adicional para selecionar as ODS. Para excluir ODS, basta
+                selecioná-las e clicar em "excluir". Em seguida, uma interface será exibida, com uma tabela contendo
+                todas as ODS selecionadas para a exclusão do banco de dados, além de um botão de confirmação.
+                Para atualizar as ODS, é necessário selecionar apenas uma ODS e clicar no botão
+                "atualizar". Será exibida uma interface semelhante à de cadastro de ODS, mas com os valores da
+                ODS que deseja editar preenchidos. É possível fazer as mudanças desejadas e clicar em "atualizar
+                meta".</p>
+            <img src="./imagens/Editar ods.png" alt="">
+            <p class="titulo"><b>Figura 12:</b> Interface que edita as ODS</p>
+        </section>
+
+        <section id="consultas">
+            <h2>Consultas</h2>
+            <p>Na seção de consultas, é possível realizar uma busca no banco de dados para exibir os resultados
+                previamente calculados dos indicadores.</p>
+        </section>
+
+        <section class="consultar-indicadores">
+            <h2>Consultar indicadores</h2>
+            <p>Para realizar a consulta, é necessário informar o ano, o CEP correspondente ao município e selecionar os
+                indicadores para os quais se deseja obter os resultados. Após preencher esses parâmetros, é possível
+                escolher como deseja que os dados sejam exibidos, seja por meio de uma tabela de resultados ou de um
+                gráfico de barras. Para obter mais informações sobre o funcionamento dos resultados, consulte a <a
+                    class="link-externo" href="#resultados-indicadores" onclick="moverSuave(event)">seção dos
+                    resultados.</a></p>
+            <img src="./imagens/Consultar indicadores.png" alt="">
+            <p class="titulo"><b>Figura 13:</b> Interface que consulta os indicadores</p>
+        </section>
+
+        <section id="calculos">
+            <h2>Cálculos</h2>
+            <p>Na seção de cálculo, é possível realizar o cálculo dos indicadores de cidades inteligentes.</p>
+        </section>
+
+        <section class="calcular-indicadores">
+            <h2>Calcular indicadores</h2>
+            <p>Para realizar o cálculo dos indicadores de cidades inteligentes é preciso selecionar os indicadores que
+                deseja calcular e escolher se quer realizar o cálculo para um município específico ou para todos os
+                municípios. Caso selecione a opção para um município específico, será necessário informar o CEP do
+                município, o ano para o cálculo dos indicadores e a quantidade de anos para a <a class="link-externo"
+                    href="#busca-retroativa" onclick="moverSuave(event)">busca retroativa das variáveis.</a> Se
+                selecionar a opção para todos os municípios, não será necessário informar o CEP. Após
+                inserir todas as informações necessárias, clique em Consultar para realizar o cálculo dos indicadores.
+            <p id="busca-retroativa"><b>Busca retroativa das variáveis:</b> A busca retroativa das variáveis é um
+                recurso que permite o uso de valores antigos mesmo após o período de atualização ter expirado. Por
+                exemplo, se uma variável teve seu valor disponibilizado em 2020 com período de atualização de 10 anos,
+                ela continuará válida até 2030. Contudo, após 2030, ela não será mais considerada pelo programa para o
+                cálculo de um indicador em 2031. Com o recurso de busca retroativa, é possível utilizar o valor de 2020
+                em 2031, caso o valor de 2030 ainda não esteja disponível. <b>Esse recurso foi incluído devido ao
+                    adiamento do censo de 2020, que é realizado a cada 10 anos e foi afetado pela pandemia.</b> O campo
+                de busca retroativa aceita valores numéricos e permite prolongar o período de atualização das variáveis.
+            </p>
+            </p>
+            <img src="./imagens/Calcular indicadores.png" alt="">
+            <p class="titulo"><b>Figura 14:</b> Interface que calcula os indicadores</p>
+
+            <h3 id="resultados-indicadores">Resultados</h2>
+                <p>Ao finalizar o cálculo dos indicadores, uma nova interface será exibida para escolher o método de
+                    exibição dos resultados: tabela ou gráfico de barras.</p>
+                <img src="./imagens/Resultados.png" alt="">
+                <p class="titulo"><b>Figura 15:</b> Interface de escolha do método de exibição dos resultados</p>
+
+                <p>Ao selecionar a opção de exibição dos indicadores em forma de tabela, uma nova interface será
+                    apresentada com duas tabelas distintas. Na tabela superior, todos os indicadores calculados serão
+                    exibidos em uma tabela com informações detalhadas, incluindo o código do indicador, número da ODS,
+                    número da meta, nome do indicador, código do município, nome do município, nome da unidade
+                    federativa, ano, resultado, valor oficial e indicador padrão. Indicadores calculados somente com
+                    valores oficiais serão marcados como "true" e terão sua cor na tabela em verde, enquanto que
+                    indicadores marcados como "false" terão a cor vermelha. Indicadores padrão serão marcados com a cor
+                    azul, e os demais com a cor amarela.
+                </p>
+                <p>
+                    Na tabela inferior, serão apresentados os indicadores que ainda não foram calculados. Nessa tabela,
+                    é possível obter informações relevantes, como o código e nome do indicador, método de cálculo,
+                    código e nome da variável, ano, valor da variável e valor oficial. É possível editar as variáveis
+                    que estão sem valor ou com o valor oficial "false", para então recalcular o indicador com as novas
+                    informações. Para isso, basta inserir o novo valor no campo "valor da variável", selecionar a
+                    variável para armazenar o novo valor no banco de dados e, em seguida, selecionar o indicador para
+                    recalcular e clicar em "calcular". As linhas que correspondem a cada indicador serão destacadas em
+                    amarelo, enquanto as linhas das variáveis usadas no cálculo serão exibidas em branco.</p>
+                <img class="resultado" src="./imagens/Resultado tabela com tudo.png" alt="">
+                <p class="titulo"><b>Figura 16:</b> Interface para exibição dos resultados em forma de tabelas</p>
+
+                <p>Cada indicador apresenta um botão que, ao ser acionado, abre uma interface que exibe as variáveis
+                    utilizadas no cálculo do indicador. Nessa interface, são mostradas informações como o código do
+                    indicador, ano, método de cálculo e resultado para o indicador. Para cada variável, são exibidos o
+                    código, nome, valor, ano, valor atualizado e valor oficial. Além disso, a interface conta com dois
+                    botões: "Excluir resultado" e "Recalcular indicador". O botão "Excluir resultado" remove o valor do
+                    indicador no banco de dados e transfere o indicador para a tabela na parte inferior. Já o botão
+                    "Recalcular indicador" só funciona para os indicadores que não foram calculados com os valores
+                    oficiais (ou seja, aqueles que possuem o valor oficial igual a "false"). Ao clicar em "Recalcular
+                    indicador", ele será transferido para a tabela inferior, mas seu valor permanecerá salvo no banco de
+                    dados.</p>
+                <img src="./imagens/Mostrar calculos.png" alt="">
+                <p class="titulo"><b>Figura 17:</b> Interface que exibe as variáveis utilizadas no cálculo do indicador
+                </p>
+
+                <p>Quando a opção de exibição dos indicadores em formato de gráfico de barras é selecionada, uma nova
+                    interface é apresentada, contendo um gráfico de barras e uma legenda que apresenta o nome e o código
+                    dos indicadores correspondentes. No gráfico, apenas os indicadores que possuem resultado e valores
+                    entre 0 e 100 serão mostrados. As barras são coloridas de acordo com o seu valor, onde as barras
+                    vermelhas correspondem aos valores de 0 a 30, as barras amarelas correspondem aos valores de 30 a
+                    70, e as barras verdes correspondem aos valores de 70 a 100. Ademais, é possível filtrar o gráfico
+                    de acordo com as ODS dos indicadores.</p>
+                <img class="resultado" src="./imagens/Resultado grafico.png" alt="">
+                <p class="titulo"><b>Figura 18:</b> Interface para exibição dos resultados em forma de gráfico de
+                    barras.
+                </p>
+        </section>
+
+        <section class="recalcular-indicadores">
+            <h2>Recalcular indicadores</h2>
+            <p>A interface de cálculo de indicadores é responsável por fazer as buscas das variáveis dos indicadores nos
+                bancos de dados públicos e, em seguida, realizar o cálculo do indicador. Esse processo é aplicado apenas
+                para os valores das variáveis e dos indicadores que não estão cadastrados no banco de dados. Isso
+                significa que, se uma variável ou um indicador já tiver um valor no banco de dados, a interface não
+                busca um novo valor e não recalcula o indicador.</p>
+            <p>Por outro lado, a interface que recalcula indicadores realiza uma busca completa nas bases de dados,
+                independentemente de os valores já estarem cadastrados ou não. Ela busca os valores atualizados de todas
+                as variáveis e recalcula todos os indicadores, independentemente de já terem sido calculados
+                anteriormente. Isso garante que todos os valores estejam atualizados e que todos os indicadores estejam
+                corretos.</p>
+            <p>Em resumo, a principal diferença entre as duas interfaces é que a interface que recalcula indicadores
+                busca os valores atualizados de todas as variáveis e recalcula todos os indicadores, enquanto a
+                interface de cálculo de indicadores realiza o cálculo apenas para valores que não estão cadastrados no
+                banco de dados.</p>
+            <img src="./imagens/Recalcular indicadores.png" alt="">
+            <p class="titulo"><b>Figura 19:</b> Interface que recalcula os indicadores</p>
+        </section>
+
+        <section id="banco">
+            <h2>Banco de dados</h2>
+            <p>A seção de banco de dados permite a criação, exclusão e importação de tabelas no banco de dados.</p>
+        </section>
+
+        <section class="criar-tabelas">
+            <h2>Criar tabelas</h2>
+            <p>Ao selecionar a opção "Criar tabelas", todas as tabelas necessárias para o funcionamento do software
+                serão criadas no banco de dados, caso ainda não existam. É possível visualizar as tabelas criadas na <a
+                    href="banco.html" class="link-externo">seção Banco
+                    de Dados.</a></p>
+        </section>
+
+        <section class="excluir-tabelas">
+            <h2>Excluir tabelas</h2>
+            <p>Ao selecionar a opção "Excluir tabelas", todas as tabelas criadas no banco de dados serão removidas,
+                independentemente de estarem preenchidas ou não. É importante ter cuidado ao utilizar essa opção, pois
+                todas as informações sobre os indicadores de cidades inteligentes disponíveis no banco de dados serão
+                apagadas.</p>
+        </section>
+
+        <section class="importar-tabelas">
+            <h2>Importar tabelas</h2>
+            <p>A opção de importar tabelas permite a importação de todas as tabelas incluídas no conjunto inicial de
+                dados fornecido pelo software. Esse conjunto de dados contém informações completas sobre as tabelas de
+                municípios e ODS, bem como variáveis e indicadores considerados padrão. Cada tabela é um arquivo
+                diferente no formato .csv com os respectivos nomes TabelaMunicipios.csv, TabelaODS.csv,
+                TabelaVariaveis.csv e TabelaIndicadores.csv. Esses arquivos podem ser baixados na <a
+                    href="instalacao.html" class="link-externo">seção Instalação.</a> Durante a importação dessas
+                tabelas, cada campo é separado pelo símbolo de barra vertical "|" para garantir o correto funcionamento
+                do software. Para visualizar os campos de cada tabela importada, basta acessar a <a
+                    href="banco.html#importados" class="link-externo">seção "Importados" na
+                    área de Banco de dados.</a></p>
+        </section>
+
+        <section id="ajuda">
+            <h2>Ajuda</h2>
+            <p>A seção de ajuda oferece acesso à documentação e ao tutorial do software por meio de um link para o site
+                correspondente.</p>
+        </section>
+
+        <section class="tutorial">
+            <h2>Tutorial</h2>
+            <p>Ao clicar na opção de tutorial, o usuário será redirecionado para o site com informações detalhadas sobre
+                como utilizar o software, incluindo exemplos práticos e passo a passo para executar as principais
+                funcionalidades.</p>
+        </section>
+
+        <section class="documentacao">
+            <h2>Documentação</h2>
+            <p>Ao selecionar a opção de documentação, o usuário será direcionado para o javadoc do software, onde poderá
+                encontrar informações técnicas sobre a implementação das funcionalidades e classes utilizadas no
+                programa.</p>
+        </section>
+    </main>
+    <script src="../js/funcionalidades.js"></script>
+</body>
+
+</html>

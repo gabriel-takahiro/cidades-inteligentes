@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Como usar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../css/uso.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="secao-titulo">
+            <p class="titulo-programa">Indicadores de cidades inteligentes</p>
+        </div>
+        <ul>
+            <li><a href="index.html">Sobre</a></li>
+            <li><a href="instalacao.html">Instalação</a></li>
+            <li><a class="ativa" href="#uso">Como usar</a>
+                <ul class="submenu">
+                    <li><a href="#login" behavior="smooth">Login</a></li>
+                    <li><a href="#calcular-indicadores">Calcular indicadores</a></li>
+                    <li><a href="#resultados">Resultados</a></li>
+                </ul>
+            </li>
+            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+            <li><a href="banco.html">Banco de dados</a></li>
+            <li><a href="documentacao.html">Documentação</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="uso">
+            <h1>Como utilizar o programa</h1>
+            <hr class="linha-horizontal">
+        </section>
+
+        <section id="login">
+            <h2>Login</h2>
+            <p>Após completar a instalação do programa, basta executá-lo para começar a utilizá-lo. Ao abrir o
+                programa, você será direcionado para uma interface de login onde deverá informar o nome de usuário, a
+                senha e o nome da base de dados que será utilizada. Caso não possua uma tabela específica, deixe o campo
+                em branco. É possível também selecionar a opção de abertura do
+                tutorial ao realizar a conexão com o banco de dados.</p>
+            <img src="./imagens/login.png" alt="">
+            <p class="titulo"><b>Figura 1:</b> Interface de login</p>
+        </section>
+
+        <section id="calcular-indicadores">
+            <h2>Calcular indicadores</h2>
+            <p>Na parte superior do programa há uma barra de menus com diversas opções, entre elas: Indicadores,
+                Variáveis, Metas, ODS, Consultas, Cálculos, Banco de dados e Ajuda. Para calcular os indicadores,
+                basta clicar em Cálculos e selecionar a opção Calcular Indicadores.</p>
+            <img src="./imagens/Calcular.png" alt="">
+            <p class="titulo"><b>Figura 2:</b> Barra de menu, calcular indicadores</p>
+            <p>Nessa interface, você poderá selecionar os indicadores que deseja calcular e escolher se quer realizar o
+                cálculo para um município específico ou para todos os municípios. Caso selecione a opção para um
+                município específico, será necessário informar o CEP do município, o ano
+                para o cálculo dos indicadores e a quantidade de anos para a busca retroativa das variáveis. Se
+                selecionar a opção para todos os municípios, não será necessário informar o CEP. Após inserir todas
+                as informações necessárias, clique em Consultar para realizar o cálculo dos indicadores.</p>
+            <img src="./imagens/Calculo um municipio.png" alt="">
+            <p class="titulo"><b>Figura 3:</b> Calcular indicadores para um município</p>
+            <img src="./imagens/Calculo todos municipios.png" alt="">
+            <p class="titulo"><b>Figura 4:</b> Calcular indicadores para todos os municípios</p>
+        </section>
+
+        <section id="resultados">
+            <h2>Resultados</h2>
+            <p>Ao finalizar o cálculo dos indicadores, uma nova interface será exibida para escolher o método de
+                exibição dos resultados: tabela ou gráfico de barras.</p>
+            <img src="./imagens/Resultados.png" alt="">
+            <p class="titulo"><b>Figura 5:</b> Interface de escolha do método de exibição dos resultados</p>
+
+            <p>Ao selecionar a opção de exibição dos indicadores em forma de tabela, uma nova interface será apresentada
+                com duas tabelas distintas. Na tabela superior, todos os indicadores calculados serão exibidos em uma
+                tabela com informações detalhadas, incluindo o código do indicador, número da ODS, número da meta, nome
+                do indicador, código do município, nome do município, nome da unidade federativa, ano, resultado, valor
+                oficial e indicador padrão. Cada indicador possui um botão que, ao ser clicado, exibe uma interface com
+                as variáveis utilizadas no cálculo do indicador. Indicadores calculados somente com valores oficiais
+                serão marcados como "true" e terão sua cor na tabela em verde, enquanto que indicadores marcados como
+                "false" terão a cor vermelha. Indicadores padrão serão marcados com a cor azul, e os demais com a cor
+                amarela.
+            </p>
+            <p>
+                Já na tabela inferior, serão exibidos os indicadores que não foram calculados. Nessa tabela, é possível
+                visualizar informações como o código do indicador, nome do indicador, método de cálculo, código da
+                variável, nome da variável, ano, valor da variável e valor oficial. É possível editar os indicadores que
+                estão sem valor ou com valor oficial "false", e recalcular o indicador com as novas informações. As
+                linhas correspondentes a cada indicador terão a cor amarela, enquanto as linhas com as variáveis
+                utilizadas no cálculo terão a cor branca.</p>
+            <img class="resultado" src="./imagens/Resultado tabela com tudo.png" alt="">
+            <p class="titulo"><b>Figura 6:</b> Interface para exibição dos resultados em forma de tabelas</p>
+
+            <p>Ao selecionar a opção de exibição dos indicadores em formato de gráfico de barras, uma nova interface
+                será apresentada com um gráfico de barras e uma legenda contendo o nome e o código dos indicadores
+                correspondentes. No gráfico, somente os indicadores com resultado e valores entre 0 e 100 serão
+                exibidos. Também é possível filtrar o gráfico de acordo com as ODS dos indicadores.</p>
+            <img class="resultado" src="./imagens/Resultado grafico.png" alt="">
+            <p class="titulo"><b>Figura 7:</b> Interface para exibição dos resultados em forma de gráfico de barras.
+            </p>
+
+            <p>Além disso, o programa oferece ainda diversas outras funcionalidades que podem ser vistas na <a
+                    href="funcionalidades.html" class="link-externo">seção Funcionalidades.</a></p>
+        </section>
+    </main>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

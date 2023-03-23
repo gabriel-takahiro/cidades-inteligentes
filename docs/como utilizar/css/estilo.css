@@ -1,0 +1,136 @@
+body {
+    background: linear-gradient(to bottom, #f1faf2, #e1f8e4);
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background: linear-gradient(to bottom, #222222, #202020, #181818);
+    overflow-y: auto;
+    color: #fff;
+    padding: 0;
+}
+
+.titulo-programa {
+    text-align: center;
+    margin: 5px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.secao-titulo {
+    background: linear-gradient(to bottom, #00d118, #003006);
+    padding: 5px;
+    font-size: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 5px;
+    padding: 0;
+}
+
+nav li {
+    margin: 6px 0;
+}
+
+nav a {
+    color: #fff;
+    display: block;
+    padding: 4px 8px;
+    text-align: left;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: aqua;
+}
+
+.ativa {
+    color: rgb(0, 255, 85);
+}
+
+.atual {
+    color: aqua;
+}
+
+.submenu {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.submenu a {
+    padding: 0 0 4px 0;
+    font-size: 14px;
+}
+
+main {
+    margin: 0 auto 0 250px;
+    max-width: 960px;
+    padding: 0 20px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+section {
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
+
+p {
+    margin: 20px 0;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.link-externo {
+    color: blue;
+    text-decoration: none;
+}
+
+.link-externo:hover {
+    color: rgb(0, 83, 139);
+}
+
+.titulo {
+    text-align: center;
+}
+
+::selection {
+    background-color: rgb(8, 146, 100);
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #324633;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #202c1a;
+}
+
+::-webkit-scrollbar-track {
+    background: #a5afa3;
+    border-radius: 10px;
+}
