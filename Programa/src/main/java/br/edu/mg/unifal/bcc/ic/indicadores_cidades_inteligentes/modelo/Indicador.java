@@ -26,6 +26,7 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 */
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,24 +34,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.CadastradosIndicadorDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.CalculoIndicadorDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.DataDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.IndicadorDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.PossuiVariavelDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.ValorVariavelDAO;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.AbreChaves;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.AbreColchetes;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.AbreParenteses;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Calculo;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.CompostoCalculo;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Default;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Divisao;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Multiplicacao;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.SequenciaCalculo;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Soma;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.Subtracao;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.CadastradosIndicadorDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.CalculoIndicadorDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.DataDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.IndicadorDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.PossuiVariavelDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.ValorVariavelDAO;
 
 /**
  * Classe que representa a tabela indicador do banco de dados.
@@ -76,7 +66,7 @@ public class Indicador {
 
 	/**
 	 * 
-	 * @param codigo  código do indicador
+	 * @param codigo         código do indicador
 	 * @param metodo_calculo método de cálculo
 	 */
 	public Indicador(int codigo, String metodo_calculo) {
@@ -86,11 +76,11 @@ public class Indicador {
 
 	/**
 	 * 
-	 * @param codigo  código do indicador
-	 * @param nome    nome do indicador
-	 * @param meta    meta do indicador
+	 * @param codigo         código do indicador
+	 * @param nome           nome do indicador
+	 * @param meta           meta do indicador
 	 * @param metodo_calculo método de cálculo
-	 * @param padrao  true caso o indicador seja padrão
+	 * @param padrao         true caso o indicador seja padrão
 	 */
 	public Indicador(int codigo, String nome, String meta, String metodo_calculo, boolean padrao) {
 		this.codigo = codigo;
@@ -102,16 +92,16 @@ public class Indicador {
 
 	/**
 	 * 
-	 * @param codigo      código do indicador
-	 * @param nome        nome do indicador
-	 * @param metodo_calculo     método de cálculo
-	 * @param eixo        eixo do indicador
-	 * @param tipo_plano  tipo de plano
-	 * @param nome_plano  nome do plano
-	 * @param descricao   descrição do indicador
-	 * @param informacoes informações técnicas do indicador
-	 * @param meta        meta do indicador
-	 * @param padrao      true caso o indicador seja padrão
+	 * @param codigo         código do indicador
+	 * @param nome           nome do indicador
+	 * @param metodo_calculo método de cálculo
+	 * @param eixo           eixo do indicador
+	 * @param tipo_plano     tipo de plano
+	 * @param nome_plano     nome do plano
+	 * @param descricao      descrição do indicador
+	 * @param informacoes    informações técnicas do indicador
+	 * @param meta           meta do indicador
+	 * @param padrao         true caso o indicador seja padrão
 	 */
 	public Indicador(int codigo, String nome, String metodo_calculo, String eixo, String tipo_plano, String nome_plano,
 			String descricao, String informacoes, String meta, boolean padrao) {
@@ -149,19 +139,9 @@ public class Indicador {
 			CalculoIndicadorDAO calculoIndicadorDAO, PossuiVariavelDAO possuiVariavelDAO, String data, DataDAO dataDAO,
 			boolean recalcular, int valorRetroativo) {
 
-		List<String> seqCalculo = SequenciaCalculo.lista(this.metodo_calculo);
 		CalculoIndicador indicadorCalculado = new CalculoIndicador("-", "", true);
 
 		try {
-			CompostoCalculo compostoCalculo = new CompostoCalculo(variaveis, codigo_municipio, valorVariavelDAO,
-					calculoIndicadorDAO, possuiVariavelDAO, data, dataDAO, recalcular, valorRetroativo, seqCalculo, 0,
-					0, 0, "", new ArrayList<Integer>(), true);
-
-			Calculo calculoIndicador = new Multiplicacao(new Divisao(
-					new Soma(new Subtracao(new AbreParenteses(new AbreColchetes(new AbreChaves(new Default())))))));
-
-			indicadorCalculado = calculoIndicador.calcular(compostoCalculo);
-
 			if (recalcular) {
 				if (calculoIndicadorDAO.possuiResultado(this.codigo, codigo_municipio, data)) {
 					calculoIndicadorDAO.updateResultado(indicadorCalculado.getResultado(), this.codigo,
@@ -205,26 +185,25 @@ public class Indicador {
 	 * 
 	 * @param nome_indicador       nome do indicador
 	 * @param metodo_calculo       método de cálculo do indicador
-	 * @param eixo                eixo do indicador
+	 * @param eixo                 eixo do indicador
 	 * @param tipo_plano           tipo de plano
 	 * @param nome_plano           nome do plano
-	 * @param descricao           descrição do indicador
+	 * @param descricao            descrição do indicador
 	 * @param informacoes_tecnicas informações técnicas do indicador
-	 * @param meta                meta do indicador
+	 * @param meta                 meta do indicador
 	 */
 	public static void cadastrarIndicador(String nome_indicador, String metodo_calculo, String eixo, String tipo_plano,
 			String nome_plano, String descricao, String informacoes_tecnicas, String meta) {
 
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			CadastradosIndicadorDAO cadastroIndicadorDAO = new CadastradosIndicadorDAO(
-					ConnectionFactory.recuperarConexao());
+			CadastradosIndicadorDAO cadastroIndicadorDAO = new CadastradosIndicadorDAO(connection);
 
-			cadastroIndicadorDAO.cadastrarIndicador(nome_indicador, metodo_calculo, eixo, tipo_plano, nome_plano, descricao,
-					informacoes_tecnicas, meta);
+			cadastroIndicadorDAO.cadastrarIndicador(nome_indicador, metodo_calculo, eixo, tipo_plano, nome_plano,
+					descricao, informacoes_tecnicas, meta);
 
 		} catch (Exception e) {
-			throw new RuntimeException("Não é permitido cadastrar um indicador com um método de cálculo já existente");
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 
@@ -236,9 +215,9 @@ public class Indicador {
 	 *                         permite selecionar os indicadores
 	 */
 	public static void mostrarIndicadores(JTable tableIndicadores, boolean seleciona) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			IndicadorDAO indicadorDAO = new IndicadorDAO(ConnectionFactory.recuperarConexao());
+			IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
 
 			indicadorDAO.mostrarIndicadores(tableIndicadores, seleciona);
 
@@ -248,14 +227,22 @@ public class Indicador {
 	}
 
 	/**
-	 * Preenche uma tabela apenas com os indicadores presentes na lista de indicadores
-	 * passada por parâmetro
+	 * Preenche uma tabela apenas com os indicadores presentes na lista de
+	 * indicadores passada por parâmetro
 	 * 
 	 * @param tableIndicadores tabela a ser utilizada
 	 * @param listaIndicadores lista de indicadores selecionados
 	 */
-	public static void mostrarIndicadores(JTable tableIndicadores, List<Indicador> listaIndicadores) {
-		try {
+	public static void mostrarIndicadores(JTable tableIndicadores, List<Integer> listaIndicadores) {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			if(listaIndicadores.isEmpty()) {
+				throw new RuntimeException("Não há indicadores");
+			}
+			
+			IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
+
+			List<Indicador> listaIndicadoresCompleto = indicadorDAO.buscarIndicadorCompleto(listaIndicadores);
+
 			int coluna = 5;
 
 			DefaultTableModel model = (DefaultTableModel) tableIndicadores.getModel();
@@ -269,7 +256,7 @@ public class Indicador {
 
 			model.setColumnIdentifiers(nomeColuna);
 
-			listaIndicadores.forEach(indicador -> {
+			listaIndicadoresCompleto.forEach(indicador -> {
 				String[] linha = { Integer.toString(indicador.codigo), indicador.nome, indicador.meta,
 						indicador.metodo_calculo, Boolean.toString(indicador.padrao) };
 				model.addRow(linha);
@@ -284,16 +271,17 @@ public class Indicador {
 
 	/**
 	 * Preenche uma tabela apenas com os indicadores que não possuem resultado
+	 * 
 	 * @param tableIndicadoresSemResultado tabela a ser utilizar
-	 * @param indicadoresNaoValorados lista de indicadores sem resultado
-	 * @param codigo_municipio código do município
-	 * @param data ano
+	 * @param indicadoresNaoValorados      lista de indicadores sem resultado
+	 * @param codigo_municipio             código do município
+	 * @param data                         ano
 	 */
 	public static void mostrarIndicadoresSemResultado(JTable tableIndicadoresSemResultado,
 			ArrayList<IndicadoresBuscados> indicadoresNaoValorados, int codigo_municipio, String data) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			IndicadorDAO indicadorDAO = new IndicadorDAO(ConnectionFactory.recuperarConexao());
+			IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
 
 			indicadorDAO.mostrarIndicadoresSemResultado(tableIndicadoresSemResultado, indicadoresNaoValorados,
 					codigo_municipio, data);
@@ -305,13 +293,14 @@ public class Indicador {
 
 	/**
 	 * Busca o código do indicador a partir do método de cálculo dele
+	 * 
 	 * @param metodoCalculo método de cálculo
 	 * @return código do indicador
 	 */
 	public static int buscaCodigo(String metodoCalculo) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			IndicadorDAO indicadorDAO = new IndicadorDAO(ConnectionFactory.recuperarConexao());
+			IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
 
 			return indicadorDAO.buscaCodigo(metodoCalculo);
 
@@ -322,13 +311,14 @@ public class Indicador {
 
 	/**
 	 * Busca o código e o método de cálculo do indicador a partir do código dele
+	 * 
 	 * @param codigo_indicador código do indicador
 	 * @return indicador contendo o código e o método de cálculo
 	 */
 	public static Indicador buscarCodigoEMetodo(int codigo_indicador) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			IndicadorDAO indicadorDAO = new IndicadorDAO(ConnectionFactory.recuperarConexao());
+			IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
 
 			Indicador indicador = indicadorDAO.buscarCodigoEMetodo(codigo_indicador);
 			return indicador;
@@ -340,15 +330,16 @@ public class Indicador {
 
 	/**
 	 * Exclui uma lista de indicadores do banco de dados
+	 * 
 	 * @param listaIndicadores lista de indicadores a serem excluídos
 	 */
-	public static void excluir(List<Indicador> listaIndicadores) {
-		try {
+	public static void excluir(List<Integer> listaIndicadores) {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			IndicadorDAO indicadorDAO = new IndicadorDAO(ConnectionFactory.recuperarConexao());
+			IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
 
-			for (Indicador indicador : listaIndicadores) {
-				indicadorDAO.excluir(indicador);
+			for (Integer codigo : listaIndicadores) {
+				indicadorDAO.excluir(codigo);
 			}
 
 		} catch (Exception e) {
@@ -358,13 +349,14 @@ public class Indicador {
 
 	/**
 	 * Busca um indicador contendo todas as informações
+	 * 
 	 * @param indicador indicador com apenas algumas informações
 	 * @return indicador com todas as informações
 	 */
 	public static Indicador buscaIndicador(Indicador indicador) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			IndicadorDAO indicadorDAO = new IndicadorDAO(ConnectionFactory.recuperarConexao());
+			IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
 
 			return indicadorDAO.buscaIndicador(indicador);
 
@@ -374,44 +366,45 @@ public class Indicador {
 	}
 
 	/**
-	 * Atualiza um indicador no banco de dados com as informações passadas por parâmetro
-	 * @param codigo_indicador código do indicador
-	 * @param nome_indicador nome do indicador
-	 * @param metodo_calculo método de cálculo do indicador
-	 * @param eixo eixo do indicador
-	 * @param tipo_plano tipo de plano do indicador
-	 * @param nome_plano nome do plano
-	 * @param descricao descrição do indicador
+	 * Atualiza um indicador no banco de dados com as informações passadas por
+	 * parâmetro
+	 * 
+	 * @param codigo_indicador     código do indicador
+	 * @param nome_indicador       nome do indicador
+	 * @param metodo_calculo       método de cálculo do indicador
+	 * @param eixo                 eixo do indicador
+	 * @param tipo_plano           tipo de plano do indicador
+	 * @param nome_plano           nome do plano
+	 * @param descricao            descrição do indicador
 	 * @param informacoes_tecnicas informações técnicas do indicador
-	 * @param meta meta do indicador
-	 * @param padrao true caso o indicador seja padrão
+	 * @param meta                 meta do indicador
+	 * @param padrao               true caso o indicador seja padrão
 	 */
 	public static void atualizarIndicador(int codigo_indicador, String nome_indicador, String metodo_calculo,
 			String eixo, String tipo_plano, String nome_plano, String descricao, String informacoes_tecnicas,
 			String meta, boolean padrao) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			CadastradosIndicadorDAO cadastroIndicadorDAO = new CadastradosIndicadorDAO(
-					ConnectionFactory.recuperarConexao());
+			CadastradosIndicadorDAO cadastroIndicadorDAO = new CadastradosIndicadorDAO(connection);
 
 			cadastroIndicadorDAO.atualizarIndicador(codigo_indicador, nome_indicador, metodo_calculo, eixo, tipo_plano,
 					nome_plano, descricao, informacoes_tecnicas, meta, padrao);
 
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao atualizar o indicador: " + codigo_indicador);
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 
 	/**
 	 * Atualiza o método de cálculo do indicador
+	 * 
 	 * @param codigo_indicador código do indicador
-	 * @param metodo_calculo método de cálculo
+	 * @param metodo_calculo   método de cálculo
 	 */
 	public static void atualizarMetodoCalculo(int codigo_indicador, String metodo_calculo) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			CadastradosIndicadorDAO cadastroIndicadorDAO = new CadastradosIndicadorDAO(
-					ConnectionFactory.recuperarConexao());
+			CadastradosIndicadorDAO cadastroIndicadorDAO = new CadastradosIndicadorDAO(connection);
 
 			cadastroIndicadorDAO.atualizarMetodoCalculo(codigo_indicador, metodo_calculo);
 
@@ -424,7 +417,11 @@ public class Indicador {
 	 * Padroniza o método de cálculo de todos os indicadores importados
 	 */
 	public void padronizarMetodoCalculo() {
-		new IndicadorDAO(ConnectionFactory.recuperarConexao()).padronizarMetodoCalculo();
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			new IndicadorDAO(connection).padronizarMetodoCalculo();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	/**

@@ -49,19 +49,21 @@ public class ImportarBD {
 	 * @return lista com as operações realizadas 
 	 */
 	public static List<ResultadoOperacao> importarTudo() {
-		Connection connection = ConnectionFactory.recuperarConexao();
-		
-		operacoes = new ArrayList<ResultadoOperacao>();
-		operacoes.add(new ResultadoOperacao("Criar tabelas para importar", null));
-		operacoes.addAll(CriarBD.criarTudoImportados(connection));
-		
-		operacoes.add(new ResultadoOperacao("Importar tabelas", null));
-		importarPlanilha(connection);
-		importarMunicipios(connection);
-		importarVariaveis(connection);
-		importarODS(connection);
-		
-		return operacoes;
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			operacoes = new ArrayList<ResultadoOperacao>();
+			operacoes.add(new ResultadoOperacao("Criar tabelas para importar", null));
+			operacoes.addAll(CriarBD.criarTudoImportados(connection));
+			
+			operacoes.add(new ResultadoOperacao("Importar tabelas", null));
+			importarPlanilha(connection);
+			importarMunicipios(connection);
+			importarVariaveis(connection);
+			importarODS(connection);
+			
+			return operacoes;
+		}catch (Exception e) {
+			return operacoes;
+		}
 	}
 
 	/**

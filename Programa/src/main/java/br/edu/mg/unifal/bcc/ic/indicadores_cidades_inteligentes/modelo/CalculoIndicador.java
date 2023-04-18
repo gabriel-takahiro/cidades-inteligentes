@@ -26,21 +26,23 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 */
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo;
 
+import java.sql.Connection;
 import java.util.ArrayList;
-//import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.CalculoIndicadorDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.DataDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.IndicadorDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.MunicipioDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.PossuiVariavelDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.ValorVariavelDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.VariavelDAO;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.confirmacao.JanelaMensagem;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.CompostoCalculo;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.JanelaMensagem;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.calculo.ProgressoCalculo;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.CalculaIndicador;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.ParametrosBuscaValorVariavel;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.CalculoIndicadorDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.IndicadorDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.MunicipioDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.PossuiVariavelDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.ValorVariavelDAO;
 
 /**
  * Classe que representa a tabela calculo_indicador do banco de dados.
@@ -145,12 +147,12 @@ public class CalculoIndicador {
 	 * @param data                         ano
 	 * @return lista com os indicadores encontrados
 	 */
-	public static List<IndicadoresBuscados> buscarIndicadoresList(ArrayList<Indicador> listaIndicadoresSelecionados,
+	public static List<IndicadoresBuscados> buscarIndicadoresList(ArrayList<Integer> listaIndicadoresSelecionados,
 			int codigoMunicipio, String data) {
 		List<IndicadoresBuscados> listaIndicadoresCalculados = new ArrayList<IndicadoresBuscados>();
 
-		try {
-			CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(ConnectionFactory.recuperarConexao());
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(connection);
 
 			listaIndicadoresCalculados = calculoIndicadorDAO.buscarResultadosList(codigoMunicipio, data,
 					listaIndicadoresSelecionados);
@@ -179,135 +181,186 @@ public class CalculoIndicador {
 	 *                                     retroativa das variáveis
 	 * @return uma lista com os indicadores calculados
 	 */
-	public static List<IndicadoresBuscados> listaIndicadoresCalculados(
-			ArrayList<Indicador> listaIndicadoresSelecionados, int codigoMunicipio, String data, boolean recalcular,
-			int valorRetroativo) {
+	public static List<IndicadoresBuscados> calculaIndicadores(List<Integer> listaIndicadoresSelecionados,
+			int codigoMunicipio, String data, boolean recalcular, int valorRetroativo) {
 		List<IndicadoresBuscados> listaIndicadoresCalculados = new ArrayList<IndicadoresBuscados>();
 
-		try {
-
-			CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(ConnectionFactory.recuperarConexao());
-			Set<CalculoIndicador> resultados = calculoIndicadorDAO.buscarResultadosSet(codigoMunicipio, data);
-
-			VariavelDAO variavelDAO = new VariavelDAO(ConnectionFactory.recuperarConexao());
-			List<Variavel> variaveis = variavelDAO.buscarLista();
-
-			ValorVariavelDAO valorVariavelDAO = new ValorVariavelDAO(ConnectionFactory.recuperarConexao());
-			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(ConnectionFactory.recuperarConexao());
-			DataDAO dataDAO = new DataDAO(ConnectionFactory.recuperarConexao());
-
-			if (recalcular) {
-				for (Indicador ic : listaIndicadoresSelecionados) {
-					ic.calculaIndicador(variaveis, codigoMunicipio, valorVariavelDAO, calculoIndicadorDAO,
-							possuiVariavelDAO, data, dataDAO, recalcular, valorRetroativo);
-
-				}
-			} else {
-				for (Indicador ic : listaIndicadoresSelecionados) {
-					if (!possuiResultado(resultados, ic.getCodigo())) {
-						ic.calculaIndicador(variaveis, codigoMunicipio, valorVariavelDAO, calculoIndicadorDAO,
-								possuiVariavelDAO, data, dataDAO, recalcular, valorRetroativo);
-					}
-				}
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			// Calcula primeiro os indicadores que são utilizados como variáveis no método
+			// de cálculo
+			List<Integer> listaIndicadoresVariaveis = new IndicadorDAO(connection)
+					.buscaIndicadoresComoVariaveis(listaIndicadoresSelecionados);
+			if (!listaIndicadoresVariaveis.isEmpty()) {
+				calculaIndicadores(listaIndicadoresVariaveis, codigoMunicipio, data, recalcular, valorRetroativo);
 			}
 
-			listaIndicadoresCalculados = calculoIndicadorDAO.buscarResultadosList(codigoMunicipio, data,
-					listaIndicadoresSelecionados);
+			ExecutorService executor = Executors.newFixedThreadPool(10);
+			CalculaIndicador calculaIndicador = new CalculaIndicador();
+
+			ParametrosBuscaValorVariavel parametros = new ParametrosBuscaValorVariavel(data, codigoMunicipio,
+					valorRetroativo, recalcular);
+
+			if (recalcular) {
+				long start = System.currentTimeMillis();
+				List<Variavel> listaVariaveisRelacionadas = new PossuiVariavelDAO(connection)
+						.buscaVariaveisRelacionadas(listaIndicadoresSelecionados);
+
+				listaVariaveisRelacionadas = variaveisNaoBD(listaVariaveisRelacionadas);
+				
+				ProgressoCalculo.setValorTotal(listaVariaveisRelacionadas);
+
+				calculaIndicador.buscarVariaveisUmMunicipio(executor, listaVariaveisRelacionadas, parametros);
+
+				ExecutorService executor2 = Executors.newFixedThreadPool(10);
+
+				IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
+				List<Indicador> listaIndicadoresMetodoCalculo = indicadorDAO
+						.buscarCodigoEMetodo(listaIndicadoresSelecionados);
+
+				calculaIndicador.calcularIndicador(executor2, listaIndicadoresMetodoCalculo, parametros);
+
+				CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(connection);
+
+				listaIndicadoresCalculados = calculoIndicadorDAO.buscarResultadosList(codigoMunicipio, data,
+						listaIndicadoresSelecionados);
+
+				long end = System.currentTimeMillis();
+				System.out.println((end - start) + " ms");
+
+			} else {
+				long start = System.currentTimeMillis();
+
+				List<Integer> listaIndicadoresNaoCalculados = new CalculoIndicadorDAO(connection)
+						.buscaIndicadoresNaoCalculados(listaIndicadoresSelecionados, parametros);
+
+				// Caso todos os indicadores já tenham sido calculados, basta buscar os
+				// resultados dos indicadores
+				
+				if (!(listaIndicadoresNaoCalculados == null || listaIndicadoresNaoCalculados.isEmpty())) {
+
+					List<Variavel> listaVariaveisRelacionadas = new PossuiVariavelDAO(connection)
+							.buscaVariaveisRelacionadas(listaIndicadoresNaoCalculados);
+
+					listaVariaveisRelacionadas = variaveisNaoBD(listaVariaveisRelacionadas);
+					
+					List<Variavel> listaVariaveisNaoValoradas = new ValorVariavelDAO(connection)
+							.buscaVariaveisNaoValoradas(listaVariaveisRelacionadas, parametros);
+
+					ProgressoCalculo.setValorTotal(listaVariaveisNaoValoradas);
+
+					calculaIndicador.buscarVariaveisUmMunicipio(executor, listaVariaveisNaoValoradas, parametros);
+
+					ExecutorService executor2 = Executors.newFixedThreadPool(10);
+
+					IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
+
+					List<Indicador> listaIndicadoresMetodoCalculo = indicadorDAO
+							.buscarCodigoEMetodo(listaIndicadoresSelecionados);
+
+					calculaIndicador.calcularIndicador(executor2, listaIndicadoresMetodoCalculo, parametros);
+				}
+
+				CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(connection);
+
+				listaIndicadoresCalculados = calculoIndicadorDAO.buscarResultadosList(codigoMunicipio, data,
+						listaIndicadoresSelecionados);
+
+				long end = System.currentTimeMillis();
+				System.out.println((end - start) + " ms");
+			}
 			return listaIndicadoresCalculados;
 
 		} catch (Exception e) {
 			throw new RuntimeException("Falha ao tentar mostrar a lista dos indicadores calculados para: "
-					+ codigoMunicipio + ",  " + data);
+					+ codigoMunicipio + ",  " + data + " " + e.getMessage());
 		}
 	}
 
-	/**
-	 * Realiza o cálculo do indicador a partir do seu código e método de cálculo
-	 * @param codigo_indicador código do indicador
-	 * @param compostoCalculo conjunto de valores que compõem o cálculo do indicador
-	 * @return resultado do indicador
-	 */
-	public static double calcularIndicador(int codigo_indicador, CompostoCalculo compostoCalculo) {
+	public static void calculaIndicadoresTodosMunicipios(List<Integer> listaIndicadoresSelecionados, String data,
+			boolean recalcular, int valorRetroativo) {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			
+			List<Integer> listaIndicadoresVariaveis = new IndicadorDAO(connection)
+					.buscaIndicadoresComoVariaveis(listaIndicadoresSelecionados);
+			if (!listaIndicadoresVariaveis.isEmpty()) {
+				calculaIndicadoresTodosMunicipios(listaIndicadoresVariaveis, data, recalcular, valorRetroativo);
+			}
+			
+			List<Municipio> listaMunicipios = new MunicipioDAO(connection).buscarTodosMunicipiosComNome();
 
-		try {
-			IndicadorDAO indicadorDAO = new IndicadorDAO(ConnectionFactory.recuperarConexao());
-			Indicador indicadorCalculo = indicadorDAO.buscarCodigoEMetodo(codigo_indicador);
+			List<Variavel> listaVariaveisRelacionadas = new PossuiVariavelDAO(connection)
+					.buscaVariaveisRelacionadas(listaIndicadoresSelecionados);
 
-			indicadorCalculo.calculaIndicador(compostoCalculo.getVariaveis(), compostoCalculo.getCodigo_municipio(),
-					compostoCalculo.getValorVariavelDAO(), compostoCalculo.getCalculoIndicadorDAO(),
-					compostoCalculo.getPossuiVariavelDAO(), compostoCalculo.getData(), compostoCalculo.getDataDAO(),
-					compostoCalculo.isRecalcular(), compostoCalculo.getValorRetroativo());
+			listaVariaveisRelacionadas = variaveisNaoBD(listaVariaveisRelacionadas);
 
-			String resultado = compostoCalculo.getCalculoIndicadorDAO().buscaResultado(codigo_indicador,
-					compostoCalculo.getCodigo_municipio(), compostoCalculo.getData());
-			return Double.parseDouble(resultado.replace(",", "."));
-
-		} catch (Exception e) {
-			throw new RuntimeException("Falha ao tentar calcular o indicador: " + codigo_indicador + " municipio: "
-					+ compostoCalculo.getCodigo_municipio() + " data: " + compostoCalculo.getData() + e);
-		}
-	}
-
-	/**
-	 * Realiza o cálculo de indicadores para todos os municípios
-	 * @param data ano
-	 * @param recalcular true caso seja necessário recalcular os indicadores que já possuírem resultado
-	 * @param listaIndicadoresSelecionados lista de indicadores que serão calculados
-	 * @param valorRetroativo anos a mais utilizados para a busca retroativa das variáveis
-	 */
-	public static void calcularTodosMunicipios(String data, boolean recalcular,
-			ArrayList<Indicador> listaIndicadoresSelecionados, int valorRetroativo) {
-
-		try {
-			CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(ConnectionFactory.recuperarConexao());
-
-			MunicipioDAO municipioDAO = new MunicipioDAO(ConnectionFactory.recuperarConexao());
-			List<Integer> codigos = new ArrayList<Integer>();
-			codigos = municipioDAO.buscarTodosMunicipios();
-			Set<CalculoIndicador> resultados = calculoIndicadorDAO.buscarResultadosTodosMunicipios(codigos, data);
-
-			VariavelDAO variavelDAO = new VariavelDAO(ConnectionFactory.recuperarConexao());
-			List<Variavel> variaveis = variavelDAO.buscarLista();
-
-			ValorVariavelDAO valorVariavelDAO = new ValorVariavelDAO(ConnectionFactory.recuperarConexao());
-			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(ConnectionFactory.recuperarConexao());
-			DataDAO dataDAO = new DataDAO(ConnectionFactory.recuperarConexao());
-
-			if (recalcular) {
-				for (Indicador ic : listaIndicadoresSelecionados) {
-					for (int codigoMunicipio : codigos) {
-						System.out.println(ic.getCodigo() + "  : " + codigoMunicipio);
-						ic.calculaIndicador(variaveis, codigoMunicipio, valorVariavelDAO, calculoIndicadorDAO,
-								possuiVariavelDAO, data, dataDAO, true, valorRetroativo);
-					}
-				}
-			} else {
-				for (Indicador ic : listaIndicadoresSelecionados) {
-					for (int codigoMunicipio : codigos) {
-						if (!(possuiResultado(resultados, ic.getCodigo(), codigoMunicipio))) {
-							System.out.println(ic.getCodigo() + "  : " + codigoMunicipio);
-							ic.calculaIndicador(variaveis, codigoMunicipio, valorVariavelDAO, calculoIndicadorDAO,
-									possuiVariavelDAO, data, dataDAO, true, valorRetroativo);
-						}
-					}
-				}
+			if (!recalcular) {
+				listaVariaveisRelacionadas = new ValorVariavelDAO(connection)
+						.buscaVariaveisNaoValoradas(listaVariaveisRelacionadas, data, valorRetroativo);
 			}
 
-		} catch (Exception e) {
-			throw new RuntimeException("Falha ao tentar calcular os indicadores para todos os municípios." + e);
-		}
+			ProgressoCalculo.variaveisTodosMunicipios(listaVariaveisRelacionadas);
+			
+			ParametrosBuscaValorVariavel parametros = new ParametrosBuscaValorVariavel(data, valorRetroativo,
+					recalcular);
 
+			ExecutorService executor = Executors.newFixedThreadPool(10);
+			
+			CalculaIndicador calculaIndicador = new CalculaIndicador();
+			
+
+			long start = System.currentTimeMillis();
+			calculaIndicador.buscarVariaveisTodosMunicipios(executor, listaVariaveisRelacionadas, parametros);
+			long end = System.currentTimeMillis();
+			System.out.println("Tempo: " + (end - start) + " ms");
+			
+			ProgressoCalculo.setValorTotal(listaMunicipios.size());
+			for (Municipio municipio : listaMunicipios) {
+
+				ProgressoCalculo.atualizarValorAtual(municipio.getNome());
+
+				parametros = new ParametrosBuscaValorVariavel(data, municipio.getCodigo(), valorRetroativo, recalcular);
+
+				List<Integer> listaIndicadoresSelecionadosNaoCalculados = listaIndicadoresSelecionados;
+
+				if (!recalcular) {
+					listaIndicadoresSelecionadosNaoCalculados = new CalculoIndicadorDAO(connection)
+							.buscaIndicadoresNaoCalculados(listaIndicadoresSelecionadosNaoCalculados, parametros);
+				}
+
+				IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
+				ExecutorService executor2 = Executors.newFixedThreadPool(10);
+				List<Indicador> listaIndicadoresMetodoCalculo = indicadorDAO.buscarCodigoEMetodo(listaIndicadoresSelecionados);
+				
+				calculaIndicador.calcularIndicador(executor2, listaIndicadoresMetodoCalculo, parametros);
+			}
+			long end2 = System.currentTimeMillis();
+			System.out.println("Tempo total: " + (end2 - start) + " ms");
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao calcular os indicadores para todos os municípios; Data: " + data
+					+ " Erro: " + e.getMessage());
+		}
+	}
+
+	private static List<Variavel> variaveisNaoBD(List<Variavel> listaVariaveisRelacionadas) {
+		List<Variavel> listaVariaveisNaoBD = new ArrayList<>();
+		for (Variavel variavel : listaVariaveisRelacionadas) {
+			if (!variavel.getTipoBanco().equals("BD")) {
+				listaVariaveisNaoBD.add(variavel);
+			}
+		}
+		return listaVariaveisNaoBD;
 	}
 
 	/**
 	 * Exclui um indicador calculado do banco de dados
+	 * 
 	 * @param codigo_indicador código do indicador a ser excluído
 	 * @param codigo_municipio código do município
-	 * @param data ano
+	 * @param data             ano
 	 */
 	public static void excluir(int codigo_indicador, int codigo_municipio, String data) {
-		try {
-			CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(ConnectionFactory.recuperarConexao());
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(connection);
 			calculoIndicadorDAO.excluir(codigo_indicador, codigo_municipio, data);
 		} catch (Exception e) {
 			new JanelaMensagem(e.getMessage());

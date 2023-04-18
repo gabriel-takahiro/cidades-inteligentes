@@ -26,13 +26,14 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 */
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.VariavelDAO;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.VariavelDAO;
 
 /**
  * Classe que representa a tabela variavel do banco de dados.
@@ -62,7 +63,6 @@ public class Variavel {
 	 * @param codigo_banco    código do banco
 	 */
 	public Variavel(int codigo_variavel, String codigo_banco) {
-		super();
 		this.codigo_variavel = codigo_variavel;
 		this.codigo_banco = codigo_banco;
 	}
@@ -103,6 +103,20 @@ public class Variavel {
 	}
 
 	/**
+	 * 
+	 * @param codigo_variavel código da variável
+	 * @param banco           nome do banco
+	 * @param codigo_banco    código do banco
+	 * @param atualizacao     período de atualização
+	 */
+	public Variavel(int codigo_variavel, String banco, String codigo_banco, String atualizacao) {
+		this.codigo_variavel = codigo_variavel;
+		this.banco = banco;
+		this.codigo_banco = codigo_banco;
+		this.atualizacao = atualizacao;
+	}
+
+	/**
 	 * Faz a busca do valor da variável na base de dados que ela se encontra
 	 * 
 	 * @param data             ano
@@ -132,9 +146,9 @@ public class Variavel {
 	 *                       selecionar as ods
 	 */
 	public static void mostrarVariaveis(JTable tableVariaveis, boolean seleciona) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			VariavelDAO variavelDAO = new VariavelDAO(ConnectionFactory.recuperarConexao());
+			VariavelDAO variavelDAO = new VariavelDAO(connection);
 
 			variavelDAO.mostrarVariaveis(tableVariaveis, seleciona);
 
@@ -152,6 +166,9 @@ public class Variavel {
 	 */
 	public static void mostrarVariaveis(JTable tableVariaveis, List<Variavel> listaVariaveis) {
 		try {
+			if(listaVariaveis.isEmpty()) {
+				throw new RuntimeException("Não há variáveis");
+			}
 			int coluna = 6;
 
 			DefaultTableModel model = (DefaultTableModel) tableVariaveis.getModel();
@@ -188,9 +205,9 @@ public class Variavel {
 	 */
 	public static void cadastrarVariavel(int codigo_variavel, String tipo_banco, String nome_variavel,
 			String codigo_banco, String atualizacao) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			VariavelDAO variavelDAO = new VariavelDAO(ConnectionFactory.recuperarConexao());
+			VariavelDAO variavelDAO = new VariavelDAO(connection);
 
 			variavelDAO.cadastrarVariavel(codigo_variavel, tipo_banco, nome_variavel, codigo_banco, atualizacao);
 
@@ -208,9 +225,9 @@ public class Variavel {
 	 * @return variável contendo todas as informações
 	 */
 	public static Variavel buscaVariavel(Variavel variavel) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			VariavelDAO variavelDAO = new VariavelDAO(ConnectionFactory.recuperarConexao());
+			VariavelDAO variavelDAO = new VariavelDAO(connection);
 
 			return variavelDAO.buscaVariavel(variavel);
 
@@ -231,14 +248,14 @@ public class Variavel {
 	 */
 	public static void atualizarVariavel(int codigo_variavel, String tipo_banco, String nome_variavel,
 			String codigo_banco, String atualizacao, boolean padrao, int codigo_antigo) {
-		try {
-			VariavelDAO variavelDAO = new VariavelDAO(ConnectionFactory.recuperarConexao());
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			VariavelDAO variavelDAO = new VariavelDAO(connection);
 
 			variavelDAO.atualizarVariavel(codigo_variavel, tipo_banco, nome_variavel, codigo_banco, atualizacao, padrao,
 					codigo_antigo);
 
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao atualizar a variável: " + codigo_variavel);
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 
@@ -248,9 +265,9 @@ public class Variavel {
 	 * @param listaVariaveis lista de variáveis a serem excluídas
 	 */
 	public static void excluir(List<Variavel> listaVariaveis) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			VariavelDAO variavelDAO = new VariavelDAO(ConnectionFactory.recuperarConexao());
+			VariavelDAO variavelDAO = new VariavelDAO(connection);
 
 			for (Variavel variavel : listaVariaveis) {
 				variavelDAO.excluir(variavel);
@@ -307,5 +324,16 @@ public class Variavel {
 	 */
 	public String getTipoBanco() {
 		return banco;
+	}
+
+	public static void verificaVariaveis(List<Integer> listaVariaveis) {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+
+			VariavelDAO variavelDAO = new VariavelDAO(connection);
+
+			variavelDAO.verificaVariaveis(listaVariaveis);
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 }

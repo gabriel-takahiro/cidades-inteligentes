@@ -27,14 +27,15 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo;
 
-import java.util.ArrayList;
+import java.sql.Connection;
 import java.util.List;
 
 import javax.swing.JTable;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.IndicadorDAO;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.PossuiVariavelDAO;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo.SequenciaCalculo;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.IndicadorDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.PossuiVariavelDAO;
 
 /**
  * Classe que representa a tabela possui_variavel do banco de dados.
@@ -47,19 +48,21 @@ public class PossuiVariavel {
 
 	private int codigo_variavel;
 	private int codigo_indicador;
-	
+
 	/**
 	 * Edita a tabela para mostrar os valores utilizados para calcular o indicador
 	 * 
-	 * @param tabela tabela que será editada
-	 * @param indicador indicador que será analisado
-	 * @param valorRetroativo quantos anos a mais foram utilizados para buscar os valores das variáveis
-	 * @throws RuntimeException se falhar na busca dos valores que compõem o indicador
+	 * @param tabela          tabela que será editada
+	 * @param indicador       indicador que será analisado
+	 * @param valorRetroativo quantos anos a mais foram utilizados para buscar os
+	 *                        valores das variáveis
+	 * @throws RuntimeException se falhar na busca dos valores que compõem o
+	 *                          indicador
 	 */
 	public static void tabelaCalculos(JTable tabela, IndicadoresBuscados indicador, int valorRetroativo) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 
-			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(ConnectionFactory.recuperarConexao());
+			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(connection);
 
 			possuiVariavelDAO.tabelaCalculos(tabela, indicador, valorRetroativo);
 
@@ -67,119 +70,81 @@ public class PossuiVariavel {
 			throw new RuntimeException("Falha na tabela de calculos de possui variavel.");
 		}
 	}
-	
-	/**
-	 * Insere na tabela possui_variavel o código da variável e o código do indicador a partir de
-	 * um método de cálculo.
-	 *  
-	 * @param metodoCalculo método de cálculo do indicador
-	 * @throws RuntimeException se ocorrer um erro ao salvar o valor na tabela possui_variavel
-	 */
-	public static void inserir(String metodoCalculo) {
-		try {
-			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(ConnectionFactory.recuperarConexao());
 
-			List<Integer> variaveis = sequenciaVariaveis(metodoCalculo);
+	/**
+	 * Insere na tabela possui_variavel o código da variável e o código do indicador
+	 * a partir de um método de cálculo.
+	 * 
+	 * @param metodoCalculo método de cálculo do indicador
+	 * @param listaVariaveis 
+	 * @throws RuntimeException se ocorrer um erro ao salvar o valor na tabela
+	 *                          possui_variavel
+	 */
+	public static void inserir(String metodoCalculo, List<Integer> listaVariaveis) {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(connection);
+
 			int codigo = Indicador.buscaCodigo(metodoCalculo);
-			for (int var : variaveis) {
-				PossuiVariavel pv = new PossuiVariavel(var, codigo);
-				possuiVariavelDAO.salvar(pv);
+			for (int var : listaVariaveis) {
+				possuiVariavelDAO.salvar(new PossuiVariavel(var, codigo));
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("Erro ao inserir IndicadorValorVariavel.");
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 
 	/**
-	 * Insere na tabela possui_variavel o código da variável e o código do indicador para todos
-	 * os indicadores cadastrados no banco de dados
+	 * Insere na tabela possui_variavel o código da variável e o código do indicador
+	 * para todos os indicadores cadastrados no banco de dados
 	 * 
-	 * @throws RuntimeException se ocorrer um erro ao salvar o valor na tabela possui_variavel
+	 * @throws RuntimeException se ocorrer um erro ao salvar o valor na tabela
+	 *                          possui_variavel
 	 */
 	public static void insereTodos() {
-		try {
-			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(ConnectionFactory.recuperarConexao());
-			IndicadorDAO indicadorDAO = new IndicadorDAO(ConnectionFactory.recuperarConexao());
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(connection);
+			IndicadorDAO indicadorDAO = new IndicadorDAO(connection);
 
 			List<Indicador> indicadores = indicadorDAO.buscarCodigoEMetodo();
 
 			for (Indicador indicador : indicadores) {
-				List<Integer> variaveis = sequenciaVariaveis(indicador.getCalculo());
+				List<Integer> variaveis = SequenciaCalculo.listaVariaveis(indicador.getCalculo());
 				for (int var : variaveis) {
 					PossuiVariavel pv = new PossuiVariavel(var, indicador.getCodigo());
 					possuiVariavelDAO.salvar(pv);
 				}
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao inserir o indicador vairavel.");
+			throw new RuntimeException("Falha ao inserir o indicador variavel.");
 		}
 	}
 
 	/**
-	 * Recebe o método de cálculo e devolve uma lista de inteiros contendo os códigos das variáveis
+	 * Substitui o código antigo da variável pelo novo para todos os métodos de
+	 * cálculo que utilizam essa variável
 	 * 
-	 * @param metodoCalculo método de cálculo do indicador
-	 * @return uma lista de inteiros que representa os códigos das variáveis do indicador
-	 */
-	private static List<Integer> sequenciaVariaveis(String metodoCalculo) {
-		metodoCalculo = metodoCalculo.replace(" ", "");
-		String valor = "";
-		String aux;
-		ArrayList<String> seqCalculo = new ArrayList<String>();
-		for (int i = 0; i < metodoCalculo.length(); i++) {
-			aux = metodoCalculo.substring(i, i + 1);
-			if (aux.equals("×") || aux.equals("x") || aux.equals("/") || aux.equals("(") || aux.equals(")")
-					|| aux.equals("+") || aux.equals("-") || aux.equals("[") || aux.equals("]") || aux.equals("{")
-					|| aux.equals("}")) {
-				if (!valor.isEmpty()) {
-					seqCalculo.add(valor);
-				}
-				seqCalculo.add(aux);
-				valor = "";
-			} else {
-				valor = valor.concat(aux);
-			}
-		}
-		if (!valor.isEmpty()) {
-			seqCalculo.add(valor);
-		}
-
-		ArrayList<Integer> variaveis = new ArrayList<Integer>();
-
-		for (int i = 0; i < seqCalculo.size(); i++) {
-			if (seqCalculo.get(i).equals("×") || seqCalculo.get(i).equals("x") || seqCalculo.get(i).equals("/")
-					|| seqCalculo.get(i).equals("(") || seqCalculo.get(i).equals(")") || seqCalculo.get(i).equals("+")
-					|| seqCalculo.get(i).equals("-")) {
-			} else if (seqCalculo.get(i).equals("[") || seqCalculo.get(i).equals("{")) {
-				i += 2;
-			} else {
-				variaveis.add(Integer.parseInt(seqCalculo.get(i)));
-			}
-		}
-
-		return variaveis;
-	}
-	
-	/**
-	 * Substitui o código antigo da variável pelo novo para todos os métodos de cálculo que utilizam essa variável
-	 * @param codigo_antigo código antigo da variável
+	 * @param codigo_antigo   código antigo da variável
 	 * @param codigo_variavel código novo da variável
 	 */
 	public static void atualizarVariaveis(int codigo_antigo, int codigo_variavel) {
-		new PossuiVariavelDAO(ConnectionFactory.recuperarConexao()).atualizarVariaveis(codigo_antigo, codigo_variavel);
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			new PossuiVariavelDAO(connection).atualizarVariaveis(codigo_antigo, codigo_variavel);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
-	
+
 	/**
 	 * Constrói um objeto contendo o código da variável e do indicador
 	 * 
-	 * @param codigo_variavel código da variável
+	 * @param codigo_variavel  código da variável
 	 * @param codigo_indicador código do indicador
 	 */
 	public PossuiVariavel(int codigo_variavel, int codigo_indicador) {
 		this.codigo_variavel = codigo_variavel;
 		this.codigo_indicador = codigo_indicador;
 	}
-	
+
 	/**
 	 * 
 	 * @return código do indicador
@@ -196,5 +161,15 @@ public class PossuiVariavel {
 		return codigo_variavel;
 	}
 
+	public static void excluir(String metodoCalculo) {
+		try (Connection connection = ConnectionFactory.recuperarConexao();) {
+			PossuiVariavelDAO possuiVariavelDAO = new PossuiVariavelDAO(connection);
+
+			int codigo = Indicador.buscaCodigo(metodoCalculo);
+			possuiVariavelDAO.excluir(codigo);
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
 
 }

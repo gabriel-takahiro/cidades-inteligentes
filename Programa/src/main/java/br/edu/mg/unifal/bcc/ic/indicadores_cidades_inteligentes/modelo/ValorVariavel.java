@@ -26,8 +26,11 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 */
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.ValorVariavelDAO;
+import java.sql.Connection;
+
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.DataDAO;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.ValorVariavelDAO;
 
 /**
  * Classe que representa a tabela valor_variavel do banco de dados.
@@ -44,6 +47,19 @@ public class ValorVariavel {
 	private String valor;
 	private boolean valor_oficial;
 	
+	
+	public ValorVariavel() {}
+	
+	/**
+	 * 
+	 * @param codigo_variavel código da variável
+	 * @param data ano
+	 */
+	public ValorVariavel(int codigo_variavel, String data) {
+		this.codigo_variavel = codigo_variavel;
+		this.data = data;
+	}
+	
 	/**
 	 * 
 	 * @param valor valor da variável
@@ -52,6 +68,28 @@ public class ValorVariavel {
 	public ValorVariavel(String valor, boolean valor_real) {
 		this.valor = valor;
 		this.valor_oficial = valor_real;
+	}
+	
+	/**
+	 * 
+	 * @param valor valor da variável
+	 * @param data ano
+	 */
+	public ValorVariavel(String valor, String data) {
+		this.valor = valor;
+		this.data = data;
+	}
+	
+	/**
+	 * 
+	 * @param valor valor da variável
+	 * @param valor_real true caso o valor seja oficial
+	 * @param data ano
+	 */
+	public ValorVariavel(String valor, boolean valor_real, String data) {
+		this.valor = valor;
+		this.valor_oficial = valor_real;
+		this.data = data;
 	}
 
 	/**
@@ -68,6 +106,14 @@ public class ValorVariavel {
 		this.valor = valor;
 	}
 	
+	
+
+	public ValorVariavel(int codigo_municipio, String data, String valor) {
+		this.codigo_municipio = codigo_municipio;
+		this.data = data;
+		this.valor = valor;
+	}
+
 	/**
 	 * Insere o valor da variável, caso o valor da variável ja esteja cadastrada no banco de dados, o valor é atualizado 
 	 * @param codigo_variavel código da variável
@@ -75,15 +121,17 @@ public class ValorVariavel {
 	 * @param data ano
 	 * @param valor valor da variável
 	 */
-	public static void tentarInserirValorVariavel(int codigo_variavel, int codigo_municipio, String data, float valor) {
-		try {
+	public static void inserirUpdateValorVariavel(int codigo_variavel, int codigo_municipio, String data, String resultado, boolean atualizado, boolean valor_oficial) {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			ValorVariavelDAO valorVariavelDAO = new ValorVariavelDAO(ConnectionFactory.recuperarConexao());
+			new DataDAO(connection).atualizaData(data);
+			
+			ValorVariavelDAO valorVariavelDAO = new ValorVariavelDAO(connection);
 
-			valorVariavelDAO.tentarInserirValorVariavel(codigo_variavel, codigo_municipio, data, valor);
+			valorVariavelDAO.inserirUpdateValorVariavel(codigo_variavel, codigo_municipio, data, resultado, atualizado, valor_oficial);
 
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao inserir valor variavel: " + codigo_variavel + " Valor: " + valor);
+			throw new RuntimeException("Falha ao inserir valor variavel: " + codigo_variavel + " Valor: " + resultado);
 		}
 	}
 	

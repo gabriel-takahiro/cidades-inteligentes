@@ -52,30 +52,33 @@ public class ExcluirTabelaBD {
 	 * @return lista com as operações realizadas 
 	 */
 	public static List<ResultadoOperacao> excluirTodas(boolean excluirApenasImportados) {
-		Connection connection = ConnectionFactory.recuperarConexao();
-
-		operacoes = new ArrayList<ResultadoOperacao>();
-
-		if (!excluirApenasImportados) {
-			excluirCalculoIndicador(connection);
-			excluirData(connection);
-			excluirIndicador(connection);
-			excluirMeta(connection);
-			excluirMunicipio(connection);
-			excluirODS(connection);
-			excluirPossuiVariavel(connection);
-			excluirValorVariavel(connection);
-			excluirVariavel(connection);
-			excluirTipoPeriodo(connection);
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			operacoes = new ArrayList<ResultadoOperacao>();
+			
+			if (!excluirApenasImportados) {
+				excluirCalculoIndicador(connection);
+				excluirData(connection);
+				excluirIndicador(connection);
+				excluirMeta(connection);
+				excluirMunicipio(connection);
+				excluirODS(connection);
+				excluirPossuiVariavel(connection);
+				excluirValorVariavel(connection);
+				excluirVariavel(connection);
+				excluirTipoPeriodo(connection);
+			}
+			
+			excluirImportadosPlanilha(connection);
+			excluirImportadosMunicipio(connection);
+			excluirImportadosVariaveis(connection);
+			excluirImportadosODS(connection);
+			excluirEsquemaImportados(connection);
+			
+			return operacoes;
+		}catch (Exception e) {
+			return operacoes;
 		}
 
-		excluirImportadosPlanilha(connection);
-		excluirImportadosMunicipio(connection);
-		excluirImportadosVariaveis(connection);
-		excluirImportadosODS(connection);
-		excluirEsquemaImportados(connection);
-
-		return operacoes;
 	}
 
 	/**

@@ -50,22 +50,26 @@ public class CriarBD {
 	 * @return lista com as operações realizadas
 	 */
 	public static List<ResultadoOperacao> criarTudo() {
-		Connection connection = ConnectionFactory.recuperarConexao();
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			operacoes = new ArrayList<ResultadoOperacao>();
+			
+			criarODS(connection);
+			criarMeta(connection);
+			criarIndicador(connection);
+			criarTipoPeriodo(connection);
+			criarVariavel(connection);
+			criarPossuiVariavel(connection);
+			criarData(connection);
+			criarMunicipio(connection);
+			criarCalculoIndicador(connection);
+			criarValorVariavel(connection);
+			
+			return operacoes;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return operacoes;
+		}
 
-		operacoes = new ArrayList<ResultadoOperacao>();
-
-		criarODS(connection);
-		criarMeta(connection);
-		criarIndicador(connection);
-		criarTipoPeriodo(connection);
-		criarVariavel(connection);
-		criarPossuiVariavel(connection);
-		criarData(connection);
-		criarMunicipio(connection);
-		criarCalculoIndicador(connection);
-		criarValorVariavel(connection);
-
-		return operacoes;
 	}
 
 	/**

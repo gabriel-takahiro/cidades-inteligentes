@@ -26,14 +26,15 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 */
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.MetaDAO;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.MetaDAO;
 
 /**
  * Classe que representa a tabela meta do banco de dados.
@@ -78,9 +79,9 @@ public class Meta {
 	 * @param comboBoxMeta comboBox a ser utilizado
 	 */
 	public static void buscarMetas(JComboBox<String> comboBoxMeta) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			MetaDAO metaDAO = new MetaDAO(ConnectionFactory.recuperarConexao());
+			MetaDAO metaDAO = new MetaDAO(connection);
 
 			metaDAO.buscarMetas(comboBoxMeta);
 
@@ -97,9 +98,9 @@ public class Meta {
 	 * @param numero_ods  número da ods
 	 */
 	public static void cadastrarMeta(String numero_meta, String texto_meta, int numero_ods) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			MetaDAO metaDAO = new MetaDAO(ConnectionFactory.recuperarConexao());
+			MetaDAO metaDAO = new MetaDAO(connection);
 
 			metaDAO.cadastrarMeta(numero_meta, texto_meta, numero_ods);
 
@@ -136,9 +137,9 @@ public class Meta {
 	 *                   selecionar as metas
 	 */
 	public static void mostrarMetas(JTable tableMetas, boolean seleciona) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			MetaDAO metaDAO = new MetaDAO(ConnectionFactory.recuperarConexao());
+			MetaDAO metaDAO = new MetaDAO(connection);
 
 			metaDAO.mostrarMetas(tableMetas, seleciona);
 
@@ -156,11 +157,16 @@ public class Meta {
 	 */
 	public static void mostrarMetas(JTable tableMetas, List<Meta> listaMetas) {
 		try {
+			if (listaMetas.isEmpty()) {
+				throw new RuntimeException("Não há metas");
+			}
+			
 			int coluna = 3;
 
 			DefaultTableModel model = (DefaultTableModel) tableMetas.getModel();
 			String[] nomeColuna = new String[coluna];
 
+			
 			nomeColuna[0] = "ODS";
 			nomeColuna[1] = "Número da meta";
 			nomeColuna[2] = "Texto";
@@ -183,9 +189,9 @@ public class Meta {
 	 * @return meta com todas as informações
 	 */
 	public static Meta buscaMeta(Meta meta) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			MetaDAO metaDAO = new MetaDAO(ConnectionFactory.recuperarConexao());
+			MetaDAO metaDAO = new MetaDAO(connection);
 
 			return metaDAO.buscaMeta(meta);
 
@@ -202,8 +208,8 @@ public class Meta {
 	 * @param meta_antiga numero da meta antiga
 	 */
 	public static void atualizarMeta(String numero_meta, String texto_meta, int numero_ods, String meta_antiga) {
-		try {
-			MetaDAO metaDAO = new MetaDAO(ConnectionFactory.recuperarConexao());
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			MetaDAO metaDAO = new MetaDAO(connection);
 
 			metaDAO.atualizarMeta(numero_meta, texto_meta, numero_ods, meta_antiga);
 		} catch (Exception e) {
@@ -216,9 +222,9 @@ public class Meta {
 	 * @param listaMetas lista de metas a serem excluídas
 	 */
 	public static void excluir(List<Meta> listaMetas) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			MetaDAO metaDAO = new MetaDAO(ConnectionFactory.recuperarConexao());
+			MetaDAO metaDAO = new MetaDAO(connection);
 
 			for (Meta meta : listaMetas) {
 				metaDAO.excluir(meta);

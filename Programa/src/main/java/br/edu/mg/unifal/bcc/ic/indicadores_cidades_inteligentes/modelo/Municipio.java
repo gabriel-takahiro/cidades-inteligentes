@@ -30,14 +30,15 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Connection;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.MunicipioDAO;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.MunicipioDAO;
 
 /**
  * Classe que representa a tabela municipio do banco de dados.
@@ -55,6 +56,16 @@ public class Municipio {
 
 	public Municipio() {
 
+	}
+	
+	/**
+	 * 
+	 * @param codigo código do município
+	 * @param nome   nome do município
+	 */
+	public Municipio(int codigo, String nome) {
+		this.codigo = codigo;
+		this.nome = nome;
 	}
 
 	/**
@@ -148,9 +159,9 @@ public class Municipio {
 	 */
 	private static void verificaExistenciaDoMunicipio(int codigo, String municipio, String uf) {
 
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			MunicipioDAO municipioDAO = new MunicipioDAO(ConnectionFactory.recuperarConexao());
+			MunicipioDAO municipioDAO = new MunicipioDAO(connection);
 
 			municipioDAO.verificaExistencia(codigo, municipio, uf);
 

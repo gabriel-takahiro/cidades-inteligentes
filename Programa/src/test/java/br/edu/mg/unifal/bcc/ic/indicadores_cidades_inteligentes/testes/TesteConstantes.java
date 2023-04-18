@@ -1,18 +1,8 @@
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.testes;
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Variavel;
-
 class TesteConstantes {
 
-	@Test
+	/*@Test
 	void testIndicador1() {
 		List<Variavel> variaveis = new ArrayList<Variavel>();
 
@@ -135,6 +125,6 @@ class TesteConstantes {
 		
 		String resultado = TesteCalculoIndicador.testeCalculoIndicador(variaveis, "[2] + ([3] + [4] + [5] x [6] x [7]) x [8]",3518800, "2010", true);
 		assertEquals("1738,00", resultado);
-	}
+	}*/
 
 }

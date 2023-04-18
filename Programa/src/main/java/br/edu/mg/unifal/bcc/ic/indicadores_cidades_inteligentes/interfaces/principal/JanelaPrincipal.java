@@ -31,10 +31,10 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Frame;
-import java.beans.PropertyVetoException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -47,29 +47,27 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.CadastrarIndicadores;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.CadastrarMetas;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.CadastrarODS;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.CadastrarVariaveis;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.CalcularIndicadores;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.ConexaoBD;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.ConsultarIndicadoresCalculados;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.CriarTabelas;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.EditarIndicadores;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.EditarMetas;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.EditarODS;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.EditarVariaveis;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.ExcluirTabelas;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.ImportarTabelas;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.MostrarCalculos;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.MostrarIndicadores;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.MostrarMetas;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.MostrarODS;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.MostrarVariaveis;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.RecalcularIndicadores;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.TabelaIndicadoresCalculados;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.Tabelas;
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.Tutorial;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.bd.CriarTabelas;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.bd.ExcluirTabelas;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.bd.ImportarTabelas;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.calculo.CalcularIndicadores;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.calculo.ConsultarIndicadoresCalculados;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.calculo.RecalcularIndicadores;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.calculo.resultado.MostrarCalculos;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.calculo.resultado.TabelaIndicadoresCalculados;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.indicadores.CadastrarIndicadores;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.indicadores.EditarIndicadores;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.indicadores.MostrarIndicadores;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.metas.CadastrarMetas;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.metas.EditarMetas;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.metas.MostrarMetas;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.ods.CadastrarODS;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.ods.EditarODS;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.ods.MostrarODS;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.variaveis.CadastrarVariaveis;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.variaveis.EditarVariaveis;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.variaveis.MostrarVariaveis;
 
 /**
  * Classe responsável pela interface principal do programa
@@ -105,11 +103,11 @@ public class JanelaPrincipal extends JFrame {
 	private static CalcularIndicadores janelaCalcularIndicadores;
 	private static RecalcularIndicadores janelaRecalcularIndicadores;
 
-	private static Tutorial janelaTutorial;
-
 	private static CriarTabelas janelaCriarTabelas;
 	private static ExcluirTabelas janelaExcluirTabelas;
 	private static ImportarTabelas janelaImportarTabelas;
+
+	public static ExecutorService executor = Executors.newFixedThreadPool(3);
 
 	/**
 	 * Executa a interface principal do programa
@@ -324,20 +322,6 @@ public class JanelaPrincipal extends JFrame {
 
 	/**
 	 * 
-	 * @param janelaTutorial interface que contém o tutorial
-	 */
-	public static void setJanelaTutorial(Tutorial janelaTutorial) {
-		JanelaPrincipal.janelaTutorial = janelaTutorial;
-		JanelaPrincipal.janelaTutorial.moveToFront();
-		try {
-			JanelaPrincipal.janelaTutorial.setMaximum(true);
-		} catch (PropertyVetoException e) {
-			System.out.println(e);
-		}
-	}
-
-	/**
-	 * 
 	 * @param janelaCriarTabelas interface que cria as tabelas no banco de dados
 	 */
 	public static void setJanelaCriarTabelas(CriarTabelas janelaCriarTabelas) {
@@ -491,17 +475,10 @@ public class JanelaPrincipal extends JFrame {
 	}
 
 	/**
-	 * Exibe a interface que contém o tutorial
-	 */
-	public static void tutorial() {
-		janelaTutorial.abrirJanela(janelaTutorial, desktopPane);
-	}
-
-	/**
 	 * Instancia todas as interfaces do programa
 	 * 
-	 * @param abrirTutorial verifica se é necessário mostrar a interface "tutorial"
-	 *                      após realizar o login
+	 * @param abrirTutorial verifica se é necessário abrir o tutorial após fazer o
+	 *                      login
 	 */
 	public void instanciarJanelas(boolean abrirTutorial) {
 		instanciarIndicadores();
@@ -624,32 +601,20 @@ public class JanelaPrincipal extends JFrame {
 	/**
 	 * Instancia a interface tutorial
 	 * 
-	 * @param abrirTutorial verifica se é necessário mostrar a interface "tutorial"
-	 *                      após realizar o login
+	 * @param abrirTutorial verifica se é necessário mostrar o tutorial após
+	 *                      realizar o login
 	 */
 	public static void instanciarTutorial(boolean abrirTutorial) {
 
-//		janelaTutorial = new Tutorial();
-//		desktopPane.add(janelaTutorial);
-//		if (abrirTutorial) {
-//			janelaTutorial.setVisible(true);
-//		} else {
-//			janelaTutorial.setVisible(false);
-//		}
-//
-//		try {
-//			janelaTutorial.setMaximum(true);
-//		} catch (PropertyVetoException e) {
-//			System.out.println(e);
-//		}
-
-		try {
-			Desktop desktop = Desktop.getDesktop();
-			URI uri = new URI(
-					"https://gabriel-takahiro.github.io/cidades-inteligentes/como%20utilizar/html/index.html");
-			desktop.browse(uri);
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (abrirTutorial) {
+			try {
+				Desktop desktop = Desktop.getDesktop();
+				URI uri = new URI(
+						"https://gabriel-takahiro.github.io/cidades-inteligentes/como%20utilizar/html/index.html");
+				desktop.browse(uri);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -762,6 +727,14 @@ public class JanelaPrincipal extends JFrame {
 	public static void atualizarMetas() {
 		atualizarIndicadores();
 
+		try {
+			if (!(janelaCadastrarIndicadores.isClosed())) {
+				CadastrarIndicadores.mostrarMetas();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 		try {
 			if (!(janelaMostrarMetas.isClosed())) {
 				Tabelas.mostrarMetas(MostrarMetas.getTable());

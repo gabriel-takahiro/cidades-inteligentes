@@ -42,6 +42,8 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.banco_dados.ResultadoOperacao;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.calculo.resultado.MostrarCalculos;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.internas.calculo.resultado.ParametrosMostrarCalculo;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.interfaces.principal.JanelaPrincipal;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.ColunaBotao;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Indicador;
@@ -58,6 +60,10 @@ import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.Variavel;
  */
 public class Tabelas {
 
+	private static Color corPadrao = new Color(255,255,255);
+	private static Color corItemSelecionado = new Color(210, 255, 220);
+	private static Color corItemAtual = new Color(160, 160, 230);
+	
 	/**
 	 * Seleciona todos os campos da tabela
 	 * 
@@ -76,13 +82,11 @@ public class Tabelas {
 	 * @param table tabela que será utilizada
 	 * @return lista com os indicadores selecionados
 	 */
-	public static ArrayList<Indicador> indicadoresSelecionados(JTable table) {
-		ArrayList<Indicador> indicadores = new ArrayList<Indicador>();
+	public static ArrayList<Integer> indicadoresSelecionados(JTable table) {
+		ArrayList<Integer> indicadores = new ArrayList<Integer>();
 		for (int i = 0; i < table.getRowCount(); i++) {
 			if (table.getValueAt(i, 5).toString().equals("true")) {
-				indicadores.add(new Indicador(Integer.parseInt((String) table.getValueAt(i, 0)),
-						(String) table.getValueAt(i, 1), (String) table.getValueAt(i, 2),
-						(String) table.getValueAt(i, 3), Boolean.parseBoolean((String) table.getValueAt(i, 4))));
+				indicadores.add(Integer.parseInt((String) table.getValueAt(i, 0)));
 			}
 		}
 		return indicadores;
@@ -141,6 +145,8 @@ public class Tabelas {
 		for (int i = 0; i < table.getRowCount(); i++) {
 			table.setValueAt(false, i, coluna);
 		}
+		
+		centralizaTabela(table, coluna);
 	}
 
 	/**
@@ -161,6 +167,8 @@ public class Tabelas {
 			}
 		});
 		Indicador.mostrarIndicadores(table, false);
+		
+		centralizaTabela(table);
 	}
 
 	/**
@@ -260,34 +268,35 @@ public class Tabelas {
 
 			private static final long serialVersionUID = 1L;
 
-			boolean[] canEdit = new boolean[] { false, false, false, false, false, true, true, false, true };
+			boolean[] canEdit = new boolean[] { false, false, false, false, false, false, true, true, false, true };
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
 
-				if (tableIndicadoresSemResultado.getValueAt(rowIndex, 7).equals("true")) {
+				if (tableIndicadoresSemResultado.getValueAt(rowIndex, 8).equals("true")) {
 					return false;
 				}
 
-				if (columnIndex == 8) {
+				if (columnIndex == 9) {
 					return true;
 				}
-				if (tableIndicadoresSemResultado.getValueAt(rowIndex, 7).equals("")
-						|| tableIndicadoresSemResultado.getValueAt(rowIndex, 7).equals(null)) {
+				if (tableIndicadoresSemResultado.getValueAt(rowIndex, 8).equals("")
+						|| tableIndicadoresSemResultado.getValueAt(rowIndex, 8).equals(null)) {
 					return false;
 				}
 				return canEdit[columnIndex];
 			}
 		});
+
 		Indicador.mostrarIndicadoresSemResultado(tableIndicadoresSemResultado, indicadoresNaoValorados,
 				codigo_municipio, data);
 
-		TableColumn tc = tableIndicadoresSemResultado.getColumnModel().getColumn(8);
+		TableColumn tc = tableIndicadoresSemResultado.getColumnModel().getColumn(9);
 		tc.setCellEditor(tableIndicadoresSemResultado.getDefaultEditor(Boolean.class));
 		tc.setCellRenderer(tableIndicadoresSemResultado.getDefaultRenderer(Boolean.class));
 
 		for (int i = 0; i < tableIndicadoresSemResultado.getRowCount(); i++) {
-			tableIndicadoresSemResultado.setValueAt(false, i, 8);
+			tableIndicadoresSemResultado.setValueAt(false, i, 9);
 		}
 		zebraTabela(tableIndicadoresSemResultado, codigo_municipio);
 		tableIndicadoresSemResultado.getTableHeader().setReorderingAllowed(false);
@@ -321,6 +330,8 @@ public class Tabelas {
 		for (int i = 0; i < table.getRowCount(); i++) {
 			table.setValueAt(false, i, coluna);
 		}
+		
+		centralizaTabela(table, coluna);
 	}
 
 	/**
@@ -341,6 +352,8 @@ public class Tabelas {
 			}
 		});
 		Meta.mostrarMetas(table, false);
+		
+		centralizaTabela(table);
 	}
 
 	/**
@@ -412,6 +425,8 @@ public class Tabelas {
 		for (int i = 0; i < table.getRowCount(); i++) {
 			table.setValueAt(false, i, coluna);
 		}
+		
+		centralizaTabela(table, coluna);
 	}
 
 	/**
@@ -432,6 +447,8 @@ public class Tabelas {
 			}
 		});
 		ODS.mostrarODS(table, false);
+		
+		centralizaTabela(table);
 	}
 
 	/**
@@ -503,6 +520,8 @@ public class Tabelas {
 		for (int i = 0; i < table.getRowCount(); i++) {
 			table.setValueAt(false, i, coluna);
 		}
+		
+		centralizaTabela(table, coluna);
 	}
 
 	/**
@@ -523,6 +542,8 @@ public class Tabelas {
 			}
 		});
 		Variavel.mostrarVariaveis(table, false);
+		
+		centralizaTabela(table);
 	}
 
 	/**
@@ -582,8 +603,9 @@ public class Tabelas {
 	/**
 	 * Mostra o resultado das operações que criam no banco de dados
 	 * 
-	 * @param table tabela que será utilizada
-	 * @param resultadoOperacoes lista com os resultados das operações e as operações
+	 * @param table              tabela que será utilizada
+	 * @param resultadoOperacoes lista com os resultados das operações e as
+	 *                           operações
 	 */
 	public static void logCriar(JTable table, List<ResultadoOperacao> resultadoOperacoes) {
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[][] {}) {
@@ -630,6 +652,9 @@ public class Tabelas {
 					label.setForeground(Color.BLACK);
 					return label;
 				}
+				
+				label.setHorizontalAlignment(JLabel.CENTER);
+				
 				label.setBackground(new Color(255, 173, 173));
 				label.setForeground(Color.BLACK);
 				return label;
@@ -650,7 +675,11 @@ public class Tabelas {
 		tableIndicadoresComResultado.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 
 			private static final long serialVersionUID = 1L;
-
+			private Color corIndicadorValorOficial = new Color(173, 255, 180);
+			private Color corIndicadorValorNaoOficial = new Color(255, 173, 173);
+			private Color corIndicadorPadrao = new Color(178, 252, 255);
+			private Color corIndicadorNaoPadrao = new Color(250, 255, 178);
+			
 			@Override
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
 					boolean hasFocus, int row, int column) {
@@ -659,30 +688,37 @@ public class Tabelas {
 
 				Object texto = table.getValueAt(row, coluna);
 
+				// Centralizar conteúdo das células
+				label.setHorizontalAlignment(JLabel.CENTER);
+				
+				if (texto != null && texto.toString().equals("false")) {
+					label.setBackground(corIndicadorValorNaoOficial);
+					label.setForeground(Color.BLACK);
+				}else {
+					label.setBackground(corIndicadorValorOficial);
+					label.setForeground(Color.BLACK);
+				}
+
 				if (column == 10) {
 					texto = table.getValueAt(row, column);
 					if (texto.equals("false")) {
-						label.setBackground(new Color(250, 255, 178));
+						label.setBackground(corIndicadorNaoPadrao);
 						label.setForeground(Color.BLACK);
-						return label;
 					} else {
-						label.setBackground(new Color(178, 252, 255));
+						label.setBackground(corIndicadorPadrao);
 						label.setForeground(Color.BLACK);
-						return label;
 					}
 				}
-
-				if (texto != null && texto.toString().equals("false")) {
-					label.setBackground(new Color(255, 173, 173));
+				
+				if (isSelected) {
+					label.setBackground(corItemAtual);
 					label.setForeground(Color.BLACK);
-					return label;
 				}
-
-				label.setBackground(new Color(173, 255, 180));
-				label.setForeground(Color.BLACK);
 				return label;
 			}
 		});
+		tableIndicadoresComResultado.setSelectionBackground(corItemAtual);
+		tableIndicadoresComResultado.setSelectionForeground(Color.BLACK);
 	}
 
 	/**
@@ -693,25 +729,118 @@ public class Tabelas {
 	 * @param codigo_municipio              código do município
 	 */
 	public static void zebraTabela(JTable tabelaIndicadoresSemResultado, int codigo_municipio) {
+		// Definir cor de fundo e cor de texto das células não selecionadas
 		tabelaIndicadoresSemResultado.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+			private static final long serialVersionUID = 1L;
+			private Color indicadorSelecionado = new Color(255, 220, 110);
+			private Color indicadorNaoSelecionado = new Color(250, 255, 178);
+			private Color variavelSelecionada = new Color(220, 220, 220);
+			
+			@Override
+			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+					boolean hasFocus, int row, int column) {
+				JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row,
+						column);
 
+				// Centralizar conteúdo das células
+				label.setHorizontalAlignment(JLabel.CENTER);
+				
+				if (!(table.getValueAt(row, 0).equals("") || table.getValueAt(row, 0).equals(null))) {
+					if (table.getValueAt(row, 9) != null && table.getValueAt(row, 9).toString().equals("true")) {
+						label.setBackground(indicadorSelecionado);
+						label.setForeground(Color.BLACK);
+						return label;
+					} else {
+						label.setBackground(indicadorNaoSelecionado);
+						label.setForeground(Color.BLACK);
+					}
+				} else {
+					if (table.getValueAt(row, 9) != null && table.getValueAt(row, 9).toString().equals("true")) {
+						label.setBackground(variavelSelecionada);
+						label.setForeground(Color.BLACK);
+						return label;
+					} else {
+						label.setBackground(corPadrao);
+						label.setForeground(Color.BLACK);
+					}
+				}
+
+				// Definir cor de fundo das células selecionadas
+				if (isSelected) {
+					label.setBackground(corItemAtual);
+					label.setForeground(new Color(0, 0, 0));
+				}
+
+				return label;
+			}
+		});
+		tabelaIndicadoresSemResultado.setSelectionBackground(corItemAtual);
+	    tabelaIndicadoresSemResultado.setSelectionForeground(new Color(0, 0, 0));
+	}
+	
+	private static void centralizaTabela(JTable table) {
+		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
 					boolean hasFocus, int row, int column) {
-				JLabel label = (JLabel) super.getTableCellRendererComponent(tabelaIndicadoresSemResultado, value,
-						isSelected, hasFocus, row, column);
+				JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row,
+						column);
 
-				if (!(table.getValueAt(row, 0).equals("") || table.getValueAt(row, 0).equals(null))) {
-					label.setBackground(new Color(250, 255, 178));
-					label.setForeground(new Color(0, 0, 0));
-					return label;
+				// Centralizar conteúdo das células
+				label.setHorizontalAlignment(JLabel.CENTER);
+
+				// Definir cor de fundo das células selecionadas
+				if (isSelected) {
+					label.setBackground(corItemAtual);
+					label.setForeground(Color.BLACK);
+				}else {
+					label.setBackground(corPadrao);
+					label.setForeground(Color.BLACK);
 				}
-				label.setBackground(new Color(255, 255, 255));
-				label.setForeground(new Color(0, 0, 0));
+
 				return label;
 			}
 		});
+		table.setSelectionBackground(corItemAtual);
+		table.setSelectionForeground(Color.BLACK);
 	}
+	
+	private static void centralizaTabela(JTable table, int coluna) {
+		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+					boolean hasFocus, int row, int column) {
+				JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row,
+						column);
+
+				// Centralizar conteúdo das células
+				label.setHorizontalAlignment(JLabel.CENTER);
+
+				if(table.getValueAt(row, coluna).toString().equals("true")) {
+					label.setBackground(corItemSelecionado);
+					label.setForeground(Color.BLACK);
+					return label;
+				}
+				
+
+				// Definir cor de fundo das células selecionadas
+				if (isSelected) {
+					label.setBackground(corItemAtual);
+					label.setForeground(Color.BLACK);
+				}else {
+					label.setBackground(corPadrao);
+					label.setForeground(Color.BLACK);
+				}
+
+				return label;
+			}
+		});
+		table.setSelectionBackground(corItemAtual);
+		table.setSelectionForeground(Color.BLACK);
+	}
+
 }

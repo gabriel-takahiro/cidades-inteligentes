@@ -45,8 +45,6 @@ public class ConnectionFactory {
 	
 	public static DataSource dataSource;
 
-	private static Connection connection;
-
 	/**
 	 * Cria conexões com o banco de dados
 	 * 
@@ -60,40 +58,21 @@ public class ConnectionFactory {
 		comboPooledDataSource.setUser(usuario);
 		comboPooledDataSource.setPassword(senha);
 		
-		comboPooledDataSource.setAcquireRetryDelay(0);
-		comboPooledDataSource.setAcquireRetryAttempts(0);
+		comboPooledDataSource.setAcquireRetryDelay(100);
+		comboPooledDataSource.setAcquireRetryAttempts(10);
+		comboPooledDataSource.setIdleConnectionTestPeriod(30);
+		comboPooledDataSource.setInitialPoolSize(10);
+		comboPooledDataSource.setMaxPoolSize(50);
 		dataSource = comboPooledDataSource;
 	}
 
 	/**
-	 * Iniciar uma conexão no banco de dados
-	 * 
-	 * @throws RuntimeException se não conseguir iniciar uma conexão no banco de dados
-	 */
-	public static void iniciarConexao() {
-		try {
-			connection = dataSource.getConnection();
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	/**
-	 * Recupera uma conexão já existente com banco de dados
-	 * 
-	 * @return uma conexão já existente com o banco de dados
-	 */
-	public static Connection recuperarConexao() {
-		return connection;
-	}
-
-	/**
-	 * Recupera uma nova conexão com o banco de dados
+	 * Recupera uma conexão com o banco de dados
 	 * 
 	 * @return uma nova conexão com o banco de dados
 	 * @throws RuntimeException se não conseguir iniciar uma nova conexão no banco de dados
 	 */
-	public Connection recuperarNovaConexao() {
+	public static Connection recuperarConexao() {
 		try {
 			return dataSource.getConnection();
 		} catch (SQLException e) {

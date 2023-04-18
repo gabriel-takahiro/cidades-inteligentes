@@ -27,7 +27,9 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.calculo;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Classe responsável por realizar o desmembramento do método de cálculo em uma
@@ -45,8 +47,7 @@ public class SequenciaCalculo {
 	 * @param metodoCalculo método de cálculo
 	 * @return lista contendo o cada elemento do método de cálculo
 	 */
-	// Função que separa cada elemento do método do cálculo
-	public static List<String> lista(String metodoCalculo) {
+	public static List<String> listaSimbolos(String metodoCalculo) {
 		String calculo = metodoCalculo.replace(" ", "");
 		String valor = "";
 		String aux;
@@ -69,5 +70,33 @@ public class SequenciaCalculo {
 			seqCalculo.add(valor);
 		}
 		return seqCalculo;
+	}
+
+	public static List<Integer> listaVariaveis(String metodoCalculo) {
+		List<String> listaSimbolos = listaSimbolos(metodoCalculo);
+		List<Integer> listaVariaveis = new ArrayList<>();
+		
+		boolean variavel = true;
+		for (String simbolo : listaSimbolos) {
+			if(simbolo.equals("×") || simbolo.equals("x") || simbolo.equals("/") || simbolo.equals("(") || simbolo.equals(")")
+					|| simbolo.equals("+") || simbolo.equals("-") || simbolo.equals("[") || simbolo.equals("]") || simbolo.equals("{")
+					|| simbolo.equals("}")) {
+				if(simbolo.equals("[") || simbolo.equals("{")) {
+					variavel = false;
+				}
+				if(simbolo.equals("]") || simbolo.equals("}")) {
+					variavel = true;
+				}
+			}else {
+				if(variavel) {
+					listaVariaveis.add(Integer.parseInt(simbolo));
+				}
+			}
+		}
+		
+		Set<Integer> set = new LinkedHashSet<>(listaVariaveis);
+		List<Integer> listaVariaveisSemDuplicatas = new ArrayList<>(set);
+		
+		return listaVariaveisSemDuplicatas;
 	}
 }

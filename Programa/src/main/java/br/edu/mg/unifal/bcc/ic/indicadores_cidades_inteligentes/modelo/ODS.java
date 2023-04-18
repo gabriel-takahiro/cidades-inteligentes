@@ -26,14 +26,15 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 */
 package br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.dao.ODSDAO;
 import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.factory.ConnectionFactory;
+import br.edu.mg.unifal.bcc.ic.indicadores_cidades_inteligentes.modelo.dao.ODSDAO;
 
 /**
  * Classe que representa a tabela ods do banco de dados.
@@ -64,9 +65,9 @@ public class ODS {
 	 * @param comboBoxODS comboBox a ser utilizada
 	 */
 	public static void buscarODS(JComboBox<Object> comboBoxODS) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			ODSDAO odsDAO = new ODSDAO(ConnectionFactory.recuperarConexao());
+			ODSDAO odsDAO = new ODSDAO(connection);
 
 			odsDAO.buscarODS(comboBoxODS);
 
@@ -83,9 +84,9 @@ public class ODS {
 	 *                  selecionar as ods
 	 */
 	public static void mostrarODS(JTable tableODS, boolean seleciona) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			ODSDAO oDSDAO = new ODSDAO(ConnectionFactory.recuperarConexao());
+			ODSDAO oDSDAO = new ODSDAO(connection);
 
 			oDSDAO.mostrarODS(tableODS, seleciona);
 
@@ -100,8 +101,8 @@ public class ODS {
 	 * @param ods ods a ser cadastrada
 	 */
 	public static void cadastrarODS(ODS ods) {
-		try {
-			ODSDAO oDSDAO = new ODSDAO(ConnectionFactory.recuperarConexao());
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			ODSDAO oDSDAO = new ODSDAO(connection);
 
 			oDSDAO.cadastrarODS(ods.numero_ods, ods.nome_objetivo);
 		} catch (Exception e) {
@@ -116,8 +117,8 @@ public class ODS {
 	 * @return ods com todas as informações
 	 */
 	public static ODS buscaODS(ODS ods) {
-		try {
-			ODSDAO oDSDAO = new ODSDAO(ConnectionFactory.recuperarConexao());
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			ODSDAO oDSDAO = new ODSDAO(connection);
 
 			return oDSDAO.buscaODS(ods.numero_ods, ods.nome_objetivo);
 
@@ -133,8 +134,8 @@ public class ODS {
 	 * @param numero_ods número da ods a ser atualizada
 	 */
 	public static void atualizarODS(ODS ods, int numero_ods) {
-		try {
-			ODSDAO oDSDAO = new ODSDAO(ConnectionFactory.recuperarConexao());
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			ODSDAO oDSDAO = new ODSDAO(connection);
 
 			oDSDAO.atualizarODS(ods.nome_objetivo, numero_ods);
 		} catch (Exception e) {
@@ -151,6 +152,9 @@ public class ODS {
 	 */
 	public static void mostrarODS(JTable tableODS, List<ODS> listaODS) {
 		try {
+			if(listaODS.isEmpty()) {
+				throw new RuntimeException("Não há metas");
+			}
 			int coluna = 2;
 
 			DefaultTableModel model = (DefaultTableModel) tableODS.getModel();
@@ -177,9 +181,9 @@ public class ODS {
 	 * @param listaODS lista de ods a serem excluídas
 	 */
 	public static void excluir(List<ODS> listaODS) {
-		try {
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
 
-			ODSDAO oDSDAO = new ODSDAO(ConnectionFactory.recuperarConexao());
+			ODSDAO oDSDAO = new ODSDAO(connection);
 
 			for (ODS ods : listaODS) {
 				oDSDAO.excluir(ods);

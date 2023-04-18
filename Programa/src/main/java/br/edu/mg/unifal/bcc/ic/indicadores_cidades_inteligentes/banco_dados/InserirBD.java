@@ -50,17 +50,20 @@ public class InserirBD {
 	 * @return lista com as operações realizadas 
 	 */
 	public static List<ResultadoOperacao> inserirTudo() {
-		Connection connection = ConnectionFactory.recuperarConexao();
-		
-		operacoes = new ArrayList<ResultadoOperacao>();
-		
-		inserirODS(connection);
-		inserirMetas(connection);
-		inserirIndicadores(connection);
-		inserirVariaveis(connection);
-		inserirMunicipios(connection);
-		
-		return operacoes;
+		try (Connection connection = ConnectionFactory.recuperarConexao();){
+			operacoes = new ArrayList<ResultadoOperacao>();
+			
+			inserirODS(connection);
+			inserirMetas(connection);
+			inserirIndicadores(connection);
+			inserirVariaveis(connection);
+			inserirMunicipios(connection);
+			
+			return operacoes;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return operacoes;
+		}
 	}
 
 	/**
