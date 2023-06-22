@@ -86,10 +86,10 @@ public class ConsultarIndicadoresCalculados extends JanelasInternas {
 	 */
 	public ConsultarIndicadoresCalculados() {
 		setTitle("Consultar indicadores");
-		setBounds(100, 100, 690, 323);
+		setBounds(100, 100, 720, 323);
 		setLocation(0, 0);
 		setVisible(true);
-		setMaximizable(false);
+		setMaximizable(true);
 		setResizable(true);
 		setClosable(true);
 		setIconifiable(true);
@@ -148,7 +148,7 @@ public class ConsultarIndicadoresCalculados extends JanelasInternas {
 			 * Seleciona todos os indicadores
 			 */
 			public void actionPerformed(ActionEvent e) {
-				int posicaoBoxSeleciona = 5;
+				int posicaoBoxSeleciona = 6;
 				if(btnSelecionarTodos.getText().equals("Selecionar Todos")) {
 					btnSelecionarTodos.setText("Desmarcar Todos");
 					Tabelas.selecionarTodos(posicaoBoxSeleciona, table);
@@ -161,53 +161,53 @@ public class ConsultarIndicadoresCalculados extends JanelasInternas {
 		btnSelecionarTodos.setFont(new Font("Arial", Font.PLAIN, 16));
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-				.createSequentialGroup().addContainerGap()
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPaneTabela, GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-								.addComponent(lblAno, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(textFieldData, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(lblListaDosIndicadores, GroupLayout.PREFERRED_SIZE, 172,
-										GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnSelecionarTodos, GroupLayout.PREFERRED_SIZE, 170,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(2))
-						.addComponent(btnTabelaIndicadores, GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
-						.addComponent(btnTabelaDeIndicadoresCalculados, GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE))
-				.addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-				.createSequentialGroup().addContainerGap()
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblAno, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-								.addComponent(textFieldData, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblListaDosIndicadores, GroupLayout.PREFERRED_SIZE, 25,
-										GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnSelecionarTodos, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(scrollPaneTabela, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(btnTabelaIndicadores, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnTabelaDeIndicadoresCalculados,
-						GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-				.addContainerGap()));
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPaneTabela, GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblAno, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textFieldData, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+							.addGap(56)
+							.addComponent(lblListaDosIndicadores, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSelecionarTodos, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+						.addComponent(btnTabelaIndicadores, GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+						.addComponent(btnTabelaDeIndicadoresCalculados, GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblAno, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+						.addComponent(textFieldData, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSelecionarTodos, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblListaDosIndicadores, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addComponent(scrollPaneTabela, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnTabelaIndicadores, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnTabelaDeIndicadoresCalculados, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
 
 		table = new JTable();
 		scrollPaneTabela.setViewportView(table);
 		getContentPane().setLayout(groupLayout);
 		try {
-			Tabelas.mostrarIndicadores(5, table);
+			Tabelas.mostrarIndicadores(6, table);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -298,6 +298,8 @@ public class ConsultarIndicadoresCalculados extends JanelasInternas {
 			JanelaPrincipal.abrirJanelas(new GraficoIndicadores(listaIndicadoresSelecionados, nomeMunicipio,
 					codigo_municipio, textFieldData.getText()));
 		} catch (Exception e1) {
+			System.out.println(e1);
+			System.out.println(e1.getLocalizedMessage() + " " + e1.getStackTrace());
 			new JanelaMensagem("CEP inválido.");
 		}
 	}

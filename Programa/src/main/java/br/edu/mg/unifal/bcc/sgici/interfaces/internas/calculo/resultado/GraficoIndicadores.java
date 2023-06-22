@@ -31,10 +31,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -61,6 +64,7 @@ import br.edu.mg.unifal.bcc.sgici.modelo.ODS;
 
 /**
  * Classe responsável pela interface que exibe o gráfico dos indicadores
+ * 
  * @author Gabriel Takahiro
  * @version 0.2
  */
@@ -69,29 +73,26 @@ public class GraficoIndicadores extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JScrollPane scrollPane;
+	private JComboBox<Object> comboBoxPagina;
+	private ArrayList<IndicadoresBuscados> indicadoresPorODS;
 
 	/**
 	 * Seleciona os indicadores que serão exibidos no gráfico
+	 * 
 	 * @param indicadoresCalculados indicadores que foram calculados
 	 * @return conjunto dos valores dos indicadores selecionados
 	 */
-	public static CategoryDataset createDataSet(List<IndicadoresBuscados> indicadoresCalculados) {
+	public static CategoryDataset createDataSet(List<IndicadoresBuscados> indicadoresCalculados, int pagina) {
 
+		int quantidadePorPagina = 20; 
 		DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-		int i = 0;
-		for (IndicadoresBuscados indicadoresBuscados : indicadoresCalculados) {
-			if (indicadoresBuscados.getResultado().equals("-")
-					|| Double.parseDouble(indicadoresBuscados.getResultado().replace(",", ".")) > 100.0) {
-
+		for(int i = quantidadePorPagina*(pagina-1); i < pagina*quantidadePorPagina && i <= (indicadoresCalculados.size()-1); i++) {
+			if (indicadoresCalculados.get(i).getResultado().equals("-")
+					|| Double.parseDouble(indicadoresCalculados.get(i).getResultado().replace(",", ".")) > 100.0) {
+				
 			} else {
-				dataSet.addValue(Double.parseDouble(indicadoresBuscados.getResultado().replace(",", ".")),
-						String.valueOf(indicadoresBuscados.getCodigo_indicador()) + ":"
-								+ indicadoresBuscados.getNome_indicador(),
-						"");
-				i++;
-				if(i >= 35) {
-					return dataSet;
-				}
+				dataSet.addValue(Double.parseDouble(indicadoresCalculados.get(i).getResultado().replace(",", ".")),
+						String.valueOf(indicadoresCalculados.get(i).getCodigo_indicador()) + ":" + indicadoresCalculados.get(i).getNome_indicador(),"");
 			}
 		}
 		return dataSet;
@@ -99,12 +100,13 @@ public class GraficoIndicadores extends JInternalFrame {
 
 	/**
 	 * Cria um gráfico de barras
+	 * 
 	 * @param dataSet conjunto dos valores dos indicadores calculados
 	 * @return gráfico de barras
 	 */
 	public static JFreeChart createBarChart(CategoryDataset dataSet) {
 
-		JFreeChart graficoBarras = ChartFactory.createBarChart("Indicadores Calculados", "Indicadores", "Porcentagem",
+		JFreeChart graficoBarras = ChartFactory.createBarChart("Indicadores Calculados", "Indicadores", "Valores de 0 a 100",
 				dataSet, PlotOrientation.HORIZONTAL, true, true, false);
 
 		return graficoBarras;
@@ -112,12 +114,13 @@ public class GraficoIndicadores extends JInternalFrame {
 
 	/**
 	 * Cria um painel com o gráfico de barras
+	 * 
 	 * @param indicadoresCalculados lista de indicadores calculados
 	 * @return painel do gráfico
 	 */
-	public static ChartPanel criarGrafico(List<IndicadoresBuscados> indicadoresCalculados) {
+	public static ChartPanel criarGrafico(List<IndicadoresBuscados> indicadoresCalculados, int pagina) {
 
-		CategoryDataset dataSet = createDataSet(indicadoresCalculados);
+		CategoryDataset dataSet = createDataSet(indicadoresCalculados, pagina);
 
 		JFreeChart grafico = createBarChart(dataSet);
 
@@ -127,9 +130,9 @@ public class GraficoIndicadores extends JInternalFrame {
 		plot.setRangeGridlinePaint(Color.lightGray);
 		plot.setOutlineVisible(false);
 		grafico.getLegend().setFrame(BlockBorder.NONE);
-		grafico.getLegend().setItemLabelPadding(new RectangleInsets(0.5, 5.0, 0.5, 60));
-		grafico.getLegend().setPadding(new RectangleInsets(40.0, 10.0, 0.0, 0.0));
-		grafico.getLegend().setItemFont(new Font("Arial", Font.BOLD, 12));
+		grafico.getLegend().setItemLabelPadding(new RectangleInsets(3.8, 10, 3.8, 0));
+		grafico.getLegend().setPadding(new RectangleInsets(45, 10, 3.8, 3.8));
+		grafico.getLegend().setItemFont(new Font("Arial", Font.BOLD, 14));
 		grafico.getLegend().setPosition(RectangleEdge.RIGHT);
 
 		CategoryPlot barraItem = grafico.getCategoryPlot();
@@ -153,11 +156,11 @@ public class GraficoIndicadores extends JInternalFrame {
 		return painelDoGrafico;
 	}
 
-
-
 	/**
-	 * Colore o gráfico em verde (entre 70 e 100), amarelo (entre 35 e 70) e vermelho (entre 0 e 35)
-	 * @param barraItem barras do gráfico
+	 * Colore o gráfico em verde (entre 70 e 100), amarelo (entre 35 e 70) e
+	 * vermelho (entre 0 e 35)
+	 * 
+	 * @param barraItem             barras do gráfico
 	 * @param indicadoresCalculados lista de indicadores calculados
 	 */
 	private static void colorirGrafico(CategoryPlot barraItem, List<IndicadoresBuscados> indicadoresCalculados) {
@@ -181,10 +184,14 @@ public class GraficoIndicadores extends JInternalFrame {
 
 	/**
 	 * Executa a interface que exibe o gráfico de barras dos indicadores
-	 * @param listaIndicadoresSelecionados lista dos indicadores que foram selecionados para montar o gráfico
-	 * @param nomeMunicipio nome do município que está sendo calculado os indicadores
-	 * @param codigo_municipio código do município que está sendo calculado os indicadores
-	 * @param data dados relativo ao ano
+	 * 
+	 * @param listaIndicadoresSelecionados lista dos indicadores que foram
+	 *                                     selecionados para montar o gráfico
+	 * @param nomeMunicipio                nome do município que está sendo
+	 *                                     calculado os indicadores
+	 * @param codigo_municipio             código do município que está sendo
+	 *                                     calculado os indicadores
+	 * @param data                         dados relativo ao ano
 	 */
 	public GraficoIndicadores(ArrayList<Integer> listaIndicadoresSelecionados, String nomeMunicipio,
 			int codigo_municipio, String data) {
@@ -202,7 +209,11 @@ public class GraficoIndicadores extends JInternalFrame {
 			}
 		}
 
-		setBounds(100, 100, 880, 400);
+		indicadoresPorODS = indicadoresValorados;
+		int quantidadeIndicadores = indicadoresValorados.size();
+		int quantidadePorPagina = 20;
+
+		setBounds(100, 100, 900, 400);
 
 		scrollPane = new JScrollPane();
 
@@ -215,9 +226,48 @@ public class GraficoIndicadores extends JInternalFrame {
 		JLabel lblNewLabelODS = new JLabel("ODS:");
 		lblNewLabelODS.setFont(new Font("Arial", Font.PLAIN, 16));
 
+		comboBoxPagina = new JComboBox<Object>();
+		comboBoxPagina.setFont(new Font("Arial", Font.PLAIN, 16));
+
+		for (int i = 1; (i - 1) * quantidadePorPagina <= quantidadeIndicadores; i++) {
+			comboBoxPagina.addItem(i);
+		}
+		comboBoxPagina.setSelectedIndex(0);
+		comboBoxPagina.setMaximumRowCount(5);
+		
 		JComboBox<Object> comboBoxODS = new JComboBox<Object>();
+		comboBoxODS.addItem("Todos");
+		ODS.buscarODS(comboBoxODS);
 		comboBoxODS.setFont(new Font("Arial", Font.PLAIN, 16));
+		comboBoxODS.setSelectedIndex(0);
 		comboBoxODS.setMaximumRowCount(5);
+		
+		comboBoxODS.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				comboBoxPagina.setModel(new DefaultComboBoxModel<>());
+				comboBoxPagina.setMaximumRowCount(5);
+				indicadoresPorODS = new ArrayList<IndicadoresBuscados>();
+
+				if (comboBoxODS.getSelectedItem().equals("Todos")) {
+					indicadoresPorODS = indicadoresValorados;
+					for (int i = 1; (i - 1) * quantidadePorPagina <= quantidadeIndicadores; i++) {
+						comboBoxPagina.addItem(i);
+					}
+					return;
+				}
+
+				for (IndicadoresBuscados indicador : indicadoresValorados) {
+					if (indicador.getOds() == Integer.parseInt(comboBoxODS.getSelectedItem().toString())) {
+						indicadoresPorODS.add(indicador);
+					}
+				}
+
+				int quantidadeIndicadoresPorODS = indicadoresPorODS.size();
+				for (int i = 1; (i - 1) * quantidadePorPagina <= quantidadeIndicadoresPorODS; i++) {
+					comboBoxPagina.addItem(i);
+				}
+			}
+		});
 
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
@@ -225,30 +275,35 @@ public class GraficoIndicadores extends JInternalFrame {
 			 * Faz um gráfico para a ODS selecionada
 			 */
 			public void actionPerformed(ActionEvent e) {
-				if (comboBoxODS.getSelectedItem().equals("Todos")) {
-					scrollPane.setViewportView(GraficoIndicadores.criarGrafico(indicadoresValorados));
-					return;
-				}
-				CalcularParaODS(indicadoresValorados, comboBoxODS.getSelectedItem().toString());
+				scrollPane.setViewportView(GraficoIndicadores.criarGrafico(indicadoresPorODS,
+						Integer.parseInt(comboBoxPagina.getSelectedItem().toString())));
 			}
 		});
 		btnConfirmar.setFont(new Font("Arial", Font.PLAIN, 16));
+
+		JLabel lblPagina = new JLabel("Página:");
+		lblPagina.setFont(new Font("Arial", Font.PLAIN, 16));
+
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addContainerGap()
 				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
 								.addComponent(lblData, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(lblMunicipio, GroupLayout.PREFERRED_SIZE, 443, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-								.addComponent(lblNewLabelODS, GroupLayout.PREFERRED_SIZE, 56,
+								.addComponent(lblMunicipio, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE).addGap(12)
+								.addComponent(lblNewLabelODS, GroupLayout.PREFERRED_SIZE, 50,
 										GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(comboBoxODS, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnConfirmar,
-										GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(comboBoxODS, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(12)
+								.addComponent(lblPagina, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(comboBoxPagina, GroupLayout.PREFERRED_SIZE, 48,
+										GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnConfirmar)))
 				.addContainerGap()));
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addContainerGap()
@@ -256,22 +311,17 @@ public class GraficoIndicadores extends JInternalFrame {
 						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblData, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblMunicipio, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboBoxODS, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblNewLabelODS, GroupLayout.PREFERRED_SIZE, 23,
 										GroupLayout.PREFERRED_SIZE))
-						.addGroup(
-								groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(comboBoxODS, GroupLayout.PREFERRED_SIZE, 25,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnConfirmar)))
+						.addComponent(btnConfirmar)
+						.addComponent(lblPagina, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBoxPagina, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
 				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE).addContainerGap()));
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE).addContainerGap()));
 		getContentPane().setLayout(groupLayout);
 
-		comboBoxODS.addItem("Todos");
-		ODS.buscarODS(comboBoxODS);
-		comboBoxODS.setSelectedIndex(0);
-
-		scrollPane.setViewportView(GraficoIndicadores.criarGrafico(indicadoresValorados));
+		scrollPane.setViewportView(GraficoIndicadores.criarGrafico(indicadoresPorODS, Integer.parseInt(comboBoxPagina.getSelectedItem().toString())));
 
 		setVisible(true);
 		setMaximizable(true);
@@ -285,20 +335,5 @@ public class GraficoIndicadores extends JInternalFrame {
 		setClosable(true);
 		setIconifiable(true);
 
-	}
-
-	/**
-	 * Monta um gráfico de barras com base na ODS que está sendo passada como parâmetro
-	 * @param listaIndicadoresSelecionados lista dos indicadores selecionados
-	 * @param ods número da ods para separar os indicadores
-	 */
-	private void CalcularParaODS(ArrayList<IndicadoresBuscados> listaIndicadoresSelecionados, String ods) {
-		ArrayList<IndicadoresBuscados> indicadoresPorODS = new ArrayList<IndicadoresBuscados>();
-		for (IndicadoresBuscados indicador : listaIndicadoresSelecionados) {
-			if (indicador.getOds() == Integer.parseInt(ods)) {
-				indicadoresPorODS.add(indicador);
-			}
-		}
-		scrollPane.setViewportView(GraficoIndicadores.criarGrafico(indicadoresPorODS));
 	}
 }

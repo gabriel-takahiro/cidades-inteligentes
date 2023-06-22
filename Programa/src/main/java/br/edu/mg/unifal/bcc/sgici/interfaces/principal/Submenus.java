@@ -390,6 +390,25 @@ public class Submenus {
 		menuBancoDados.add(submenuImportarTabelas);
 		listaSubmenus.add(submenuImportarTabelas);
 	}
+	
+	/**
+	 * Cria o submenu que importa os valores das variáveis para o banco de dados
+	 * 
+	 * @param menuBancoDados menu do banco de dados
+	 */
+	public static void importarValorVariavel(JMenu menuBancoDados) {
+		JMenuItem submenuImportarValorVariavel = new JMenuItem("Importar valores");
+		submenuImportarValorVariavel.addActionListener(new ActionListener() {
+			/**
+			 * Abre a interface que importa os valores das variáveis no banco de dados
+			 */
+			public void actionPerformed(ActionEvent e) {
+				JanelaPrincipal.importarValorVariavel();
+			}
+		});
+		menuBancoDados.add(submenuImportarValorVariavel);
+		listaSubmenus.add(submenuImportarValorVariavel);
+	}
 
 	/**
 	 * Cria o submenu que restaura os dados do banco de dados para o modelo inicial

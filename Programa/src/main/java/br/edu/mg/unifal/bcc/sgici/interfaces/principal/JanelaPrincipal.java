@@ -51,6 +51,7 @@ import br.edu.mg.unifal.bcc.sgici.interfaces.internas.Tabelas;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.bd.CriarTabelas;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.bd.ExcluirTabelas;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.bd.ImportarTabelas;
+import br.edu.mg.unifal.bcc.sgici.interfaces.internas.bd.ImportarValorVariavel;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.bd.RestaurarPadrao;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.calculo.CalcularIndicadores;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.calculo.ConsultarIndicadoresCalculados;
@@ -107,6 +108,7 @@ public class JanelaPrincipal extends JFrame {
 	private static CriarTabelas janelaCriarTabelas;
 	private static ExcluirTabelas janelaExcluirTabelas;
 	private static ImportarTabelas janelaImportarTabelas;
+	private static ImportarValorVariavel janelaImportarValorVariavel;
 	private static RestaurarPadrao janelaRestaurarPadrao;
 
 	public static ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -351,7 +353,21 @@ public class JanelaPrincipal extends JFrame {
 		JanelaPrincipal.janelaImportarTabelas = janelaImportarTabelas;
 		JanelaPrincipal.janelaImportarTabelas.moveToFront();
 	}
+	
+	/**
+	 * 
+	 * @param janelaImportarValorVariavel interface que importa o valor das variáveis no banco de
+	 *                              dados
+	 */
+	public static void setJanelaImportarValorVariavel(ImportarValorVariavel janelaImportarValorVariavel) {
+		JanelaPrincipal.janelaImportarValorVariavel = janelaImportarValorVariavel;
+		JanelaPrincipal.janelaImportarValorVariavel.moveToFront();
+	}
 
+	/**
+	 * 
+	 * @param janelaRestaurarPadrao interface que restaura os dados das tabelas para o modelo padrão
+	 */
 	public static void setJanelaRestaurarPadrao(RestaurarPadrao janelaRestaurarPadrao) {
 		JanelaPrincipal.janelaRestaurarPadrao = janelaRestaurarPadrao;
 		JanelaPrincipal.janelaRestaurarPadrao.moveToFront();
@@ -484,6 +500,13 @@ public class JanelaPrincipal extends JFrame {
 	}
 
 	/**
+	 * Exibe a interface que importa os valores das variáveis para o banco de dados
+	 */
+	public static void importarValorVariavel() {
+		janelaImportarValorVariavel.abrirJanela(janelaImportarValorVariavel, desktopPane);
+	}
+	
+	/**
 	 * Exibe a interface que restaura as tabelas para o formato padrão no banco de
 	 * dados
 	 */
@@ -538,8 +561,8 @@ public class JanelaPrincipal extends JFrame {
 	 *                      login
 	 * @param configuracao  configuração de desempenho
 	 */
-	public void instanciarJanelas(boolean abrirTutorial, Configuracao configuracao) {
-		setTitle("Sistema de gestao de indicadores para cidades inteligentes (Desempenho: " + configuracao + ")");
+	public void instanciarJanelas(boolean abrirTutorial, Configuracao configuracao, String tabela) {
+		setTitle("Sistema de gestao de indicadores para cidades inteligentes (Tabela: " + tabela + ",  Desempenho: " + configuracao + ")");
 		setConfiguracao(configuracao);
 		instanciarIndicadores();
 		instanciarVariaveis();
@@ -656,6 +679,10 @@ public class JanelaPrincipal extends JFrame {
 		janelaImportarTabelas = new ImportarTabelas();
 		desktopPane.add(janelaImportarTabelas);
 		janelaImportarTabelas.setVisible(false);
+		
+		janelaImportarValorVariavel = new ImportarValorVariavel();
+		desktopPane.add(janelaImportarValorVariavel);
+		janelaImportarValorVariavel.setVisible(false);
 
 		janelaRestaurarPadrao = new RestaurarPadrao();
 		desktopPane.add(janelaRestaurarPadrao);
@@ -698,7 +725,7 @@ public class JanelaPrincipal extends JFrame {
 	public static void atualizarIndicadores() {
 		try {
 			if (!(janelaEditarIndicadores.isClosed())) {
-				Tabelas.mostrarIndicadores(5, EditarIndicadores.getTable());
+				Tabelas.mostrarIndicadores(6, EditarIndicadores.getTable());
 			}
 		} catch (Exception e) {
 			System.out.println(e);
@@ -714,7 +741,7 @@ public class JanelaPrincipal extends JFrame {
 
 		try {
 			if (!(janelaCalcularIndicadores.isClosed())) {
-				Tabelas.mostrarIndicadores(5, CalcularIndicadores.getTable());
+				Tabelas.mostrarIndicadores(6, CalcularIndicadores.getTable());
 			}
 		} catch (Exception e) {
 			System.out.println(e);
@@ -722,7 +749,7 @@ public class JanelaPrincipal extends JFrame {
 
 		try {
 			if (!(janelaRecalcularIndicadores.isClosed())) {
-				Tabelas.mostrarIndicadores(5, RecalcularIndicadores.getTable());
+				Tabelas.mostrarIndicadores(6, RecalcularIndicadores.getTable());
 			}
 		} catch (Exception e) {
 			System.out.println(e);
@@ -730,7 +757,7 @@ public class JanelaPrincipal extends JFrame {
 
 		try {
 			if (!(janelaConsultarIndicadoresCalculados.isClosed())) {
-				Tabelas.mostrarIndicadores(5, ConsultarIndicadoresCalculados.getTable());
+				Tabelas.mostrarIndicadores(6, ConsultarIndicadoresCalculados.getTable());
 			}
 		} catch (Exception e) {
 			System.out.println(e);

@@ -36,6 +36,8 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -77,8 +79,9 @@ public class Tabelas {
 		for (int i = 0; i < table.getRowCount(); i++) {
 			table.setValueAt(true, i, coluna);
 		}
+		table.repaint();
 	}
-	
+
 	/**
 	 * Desmarca todos os campos de uma determinada coluna na tabela.
 	 * 
@@ -89,6 +92,7 @@ public class Tabelas {
 		for (int i = 0; i < table.getRowCount(); i++) {
 			table.setValueAt(false, i, coluna);
 		}
+		table.repaint();
 	}
 
 	/**
@@ -99,7 +103,7 @@ public class Tabelas {
 	 */
 	public static ArrayList<Integer> indicadoresSelecionados(JTable table) {
 		int posicaoCodigo = 0;
-		int posicaoBoxSelecionar = 5;
+		int posicaoBoxSelecionar = 6;
 		ArrayList<Integer> indicadores = new ArrayList<Integer>();
 		for (int i = 0; i < table.getRowCount(); i++) {
 			if (table.getValueAt(i, posicaoBoxSelecionar).toString().equals("true")) {
@@ -117,8 +121,8 @@ public class Tabelas {
 	 */
 	public static Indicador indicadorSelecionado(JTable table) {
 		int posicaoCodigo = 0;
-		int posicaoMetodoCalculo = 3;
-		int posicaoBoxSelecionar = 5;
+		int posicaoMetodoCalculo = 4;
+		int posicaoBoxSelecionar = 6;
 		Indicador indicador = new Indicador();
 		int j = 0;
 		for (int i = 0; i < table.getRowCount(); i++) {
@@ -148,7 +152,7 @@ public class Tabelas {
 
 			private static final long serialVersionUID = 1L;
 
-			boolean[] canEdit = new boolean[] { false, false, false, false, false, true };
+			boolean[] canEdit = new boolean[] { false, false, false, false, false, false, true };
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -166,6 +170,7 @@ public class Tabelas {
 			table.setValueAt(false, i, coluna);
 		}
 
+		listenerCheckBox(table, coluna);
 		centralizaTabela(table, coluna);
 	}
 
@@ -179,7 +184,7 @@ public class Tabelas {
 
 			private static final long serialVersionUID = 1L;
 
-			boolean[] canEdit = new boolean[] { false, false, false, false, false };
+			boolean[] canEdit = new boolean[] { false, false, false, false, false, false };
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -216,8 +221,7 @@ public class Tabelas {
 
 			private static final long serialVersionUID = 1L;
 
-			boolean[] canEdit = new boolean[] { false, false, false, false, false, false, false, false, false, false,
-					false, true };
+			boolean[] canEdit = new boolean[] { false, false, false, false, false, false, false, false, false, false, true };
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -226,31 +230,29 @@ public class Tabelas {
 		});
 		DefaultTableModel model = (DefaultTableModel) tableIndicadoresComResultado.getModel();
 
-		String[] nomeColuna = new String[12];
+		String[] nomeColuna = new String[11];
 		nomeColuna[0] = "Código do indicador";
-		nomeColuna[1] = "Número da ODS";
-		nomeColuna[2] = "Número da meta";
+		nomeColuna[1] = "ODS";
+		nomeColuna[2] = "Meta";
 		nomeColuna[3] = "Nome do indicador";
-		nomeColuna[4] = "Código do município";
-		nomeColuna[5] = "Nome do município";
-		nomeColuna[6] = "Nome da UF";
-		nomeColuna[7] = "Data";
-		nomeColuna[8] = "Resultado";
-		nomeColuna[9] = "Valor oficial";
-		nomeColuna[10] = "Indicador padrão";
-		nomeColuna[11] = "Mostrar cálculos";
+		nomeColuna[4] = "Descrição";
+		nomeColuna[5] = "Código do município";
+		nomeColuna[6] = "Data";
+		nomeColuna[7] = "Resultado";
+		nomeColuna[8] = "Valor oficial";
+		nomeColuna[9] = "Indicador padrão";
+		nomeColuna[10] = "Mostrar cálculos";
 		model.setColumnIdentifiers(nomeColuna);
 
 		for (IndicadoresBuscados indicador : indicadoresValorados) {
 			String[] linha = { Integer.toString(indicador.getCodigo_indicador()), Integer.toString(indicador.getOds()),
 					indicador.getMeta(), indicador.getNome_indicador(),
-					Integer.toString(indicador.getCodigo_municipio()), indicador.getNome_municipio(),
-					indicador.getNome_uf(), indicador.getData(), indicador.getResultado(),
+					indicador.getDescricao(), Integer.toString(codigo_municipio), indicador.getData(), indicador.getResultado(),
 					Boolean.toString(indicador.isValor_oficial()), Boolean.toString(indicador.isPadrao()) };
 			model.addRow(linha);
 		}
 
-		int posicaoValorOficial = 9;
+		int posicaoValorOficial = 8;
 		corNaLinha(tableIndicadoresComResultado, posicaoValorOficial);
 		tableIndicadoresComResultado.getTableHeader().setReorderingAllowed(false);
 		Action mostrarCalculo = new AbstractAction() {
@@ -275,7 +277,7 @@ public class Tabelas {
 				}
 			}
 		};
-		new ColunaBotao(tableIndicadoresComResultado, mostrarCalculo, 11, "Mostrar");
+		new ColunaBotao(tableIndicadoresComResultado, mostrarCalculo, 10, "Mostrar");
 	}
 
 	/**
@@ -328,6 +330,8 @@ public class Tabelas {
 		for (int i = 0; i < tableIndicadoresSemResultado.getRowCount(); i++) {
 			tableIndicadoresSemResultado.setValueAt(false, i, posicaoBoxSeleciona);
 		}
+
+		listenerCheckBox(tableIndicadoresSemResultado, posicaoBoxSeleciona);
 		zebraTabela(tableIndicadoresSemResultado, codigo_municipio);
 		tableIndicadoresSemResultado.getTableHeader().setReorderingAllowed(false);
 	}
@@ -361,6 +365,7 @@ public class Tabelas {
 			table.setValueAt(false, i, coluna);
 		}
 
+		listenerCheckBox(table, coluna);
 		centralizaTabela(table, coluna);
 	}
 
@@ -468,6 +473,7 @@ public class Tabelas {
 			table.setValueAt(false, i, coluna);
 		}
 
+		listenerCheckBox(table, coluna);
 		centralizaTabela(table, coluna);
 	}
 
@@ -570,6 +576,7 @@ public class Tabelas {
 			table.setValueAt(false, i, coluna);
 		}
 
+		listenerCheckBox(table, coluna);
 		centralizaTabela(table, coluna);
 	}
 
@@ -745,7 +752,8 @@ public class Tabelas {
 			private Color corIndicadorValorNaoOficial = new Color(255, 173, 173);
 			private Color corIndicadorPadrao = new Color(178, 252, 255);
 			private Color corIndicadorNaoPadrao = new Color(250, 255, 178);
-
+			private int colunaPadrao = 9;
+			
 			@Override
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
 					boolean hasFocus, int row, int column) {
@@ -765,7 +773,7 @@ public class Tabelas {
 					label.setForeground(Color.BLACK);
 				}
 
-				if (column == 10) {
+				if (column == colunaPadrao) {
 					texto = table.getValueAt(row, column);
 					if (texto.equals("false")) {
 						label.setBackground(corIndicadorNaoPadrao);
@@ -922,5 +930,24 @@ public class Tabelas {
 		});
 		table.setSelectionBackground(corItemAtual);
 		table.setSelectionForeground(Color.BLACK);
+	}
+
+	/**
+	 * Método responsável por criar um ouvinte para quando o valor do checkBox for
+	 * alterado, e no momento que for alterado será atualizado a pintura da tabela.
+	 * 
+	 * @param table  tabela a ser colocada o listener
+	 * @param coluna coluna em que o checkBox está presente
+	 */
+	private static void listenerCheckBox(JTable table, int coluna) {
+		TableModelListener tableModelListener = new TableModelListener() {
+			@Override
+			public void tableChanged(TableModelEvent e) {
+				if (e.getColumn() == coluna) {
+					table.repaint();
+				}
+			}
+		};
+		table.getModel().addTableModelListener(tableModelListener);
 	}
 }

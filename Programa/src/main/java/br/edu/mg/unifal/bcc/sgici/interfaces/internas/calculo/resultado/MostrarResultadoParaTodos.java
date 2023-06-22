@@ -218,7 +218,7 @@ public class MostrarResultadoParaTodos extends JInternalFrame {
 		scrollPaneTabela.setViewportView(table);
 		getContentPane().setLayout(groupLayout);
 		try {
-			Indicador.mostrarIndicadores(table, false);
+			Indicador.mostrarIndicadores(table, listaIndicadoresSelecionados);
 			Tabelas.centralizaTabela(table);
 		} catch (Exception e1) {
 			new JanelaMensagem(e1.getMessage());

@@ -39,6 +39,7 @@ public class IndicadoresBuscados {
 	private int ods;
 	private String meta;
 	private String nome_indicador;
+	private String descricao;
 	private int codigo_municipio;
 	private String nome_municipio;
 	private String data;
@@ -67,13 +68,14 @@ public class IndicadoresBuscados {
 	 *                         API SIDRA
 	 * @param padrao           true caso o indicador seja padrão
 	 */
-	public IndicadoresBuscados(int codigo_indicador, int ods, String meta, String nome_indicador, int codigo_municipio,
+	public IndicadoresBuscados(int codigo_indicador, int ods, String meta, String nome_indicador, String descricao, int codigo_municipio,
 			String nome_municipio, String data, String resultado, String nome_uf, String metodo_calculo,
 			String data_variaveis, boolean valor_oficial, boolean padrao) {
 		this.codigo_indicador = codigo_indicador;
 		this.ods = ods;
 		this.meta = meta;
 		this.nome_indicador = nome_indicador;
+		this.descricao = descricao;
 		this.codigo_municipio = codigo_municipio;
 		this.nome_municipio = nome_municipio;
 		this.data = data;
@@ -189,4 +191,11 @@ public class IndicadoresBuscados {
 		return data_variaveis;
 	}
 
+	/**
+	 * 
+	 * @return descrição do indicador
+	 */
+	public String getDescricao() {
+		return descricao;
+	}
 }

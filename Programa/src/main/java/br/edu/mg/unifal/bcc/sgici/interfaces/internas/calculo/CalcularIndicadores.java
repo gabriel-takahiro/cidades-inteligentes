@@ -51,6 +51,8 @@ import br.edu.mg.unifal.bcc.sgici.interfaces.internas.JanelasInternas;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.Tabelas;
 import br.edu.mg.unifal.bcc.sgici.interfaces.principal.JanelaPrincipal;
 import br.edu.mg.unifal.bcc.sgici.modelo.Municipio;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 /**
  * Classe responsável por calcular os indicadores de cidades inteligentes.
@@ -95,43 +97,32 @@ public class CalcularIndicadores extends JanelasInternas {
 		setBounds(100, 100, 720, 450);
 		setLocation(0, 0);
 		setVisible(true);
-		setMaximizable(false);
+		setMaximizable(true);
 		setClosable(true);
-		setResizable(false);
+		setResizable(true);
 		setIconifiable(true);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		JLabel lblIndicadoresConsulta = new JLabel("Selecione os indicadores para o cálculo:");
 		lblIndicadoresConsulta.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIndicadoresConsulta.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblIndicadoresConsulta.setBounds(10, 11, 504, 30);
-		contentPane.add(lblIndicadoresConsulta);
 
 		JScrollPane scrollPaneTabela = new JScrollPane();
-		scrollPaneTabela.setBounds(10, 49, 684, 163);
-		contentPane.add(scrollPaneTabela);
 
 		table = new JTable();
 		scrollPaneTabela.setViewportView(table);
 
 		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 223, 704, 2);
-		contentPane.add(separator);
 
 		JLabel lblDigiteUmCep = new JLabel("Digite um CEP do município:");
 		lblDigiteUmCep.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDigiteUmCep.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteUmCep.setBounds(20, 280, 345, 30);
-		contentPane.add(lblDigiteUmCep);
 
 		campoFormatadoCep = new JFormattedTextField();
 		campoFormatadoCep.setFont(new Font("Arial", Font.PLAIN, 16));
-		campoFormatadoCep.setBounds(375, 280, 110, 30);
-		contentPane.add(campoFormatadoCep);
 
 		JRadioButton rdbtnParaUmMunicipio = new JRadioButton("Realizar os cálculos para um município");
 		rdbtnParaUmMunicipio.setSelected(true);
@@ -148,8 +139,6 @@ public class CalcularIndicadores extends JanelasInternas {
 			}
 		});
 		rdbtnParaUmMunicipio.setFont(new Font("Arial", Font.PLAIN, 16));
-		rdbtnParaUmMunicipio.setBounds(10, 233, 312, 30);
-		contentPane.add(rdbtnParaUmMunicipio);
 
 		rdbtnConsultarParaTodos = new JRadioButton("Realizar os cálculos para todos os municípios ");
 		rdbtnConsultarParaTodos.addActionListener(new ActionListener() {
@@ -165,14 +154,10 @@ public class CalcularIndicadores extends JanelasInternas {
 			}
 		});
 		rdbtnConsultarParaTodos.setFont(new Font("Arial", Font.PLAIN, 16));
-		rdbtnConsultarParaTodos.setBounds(332, 232, 362, 30);
-		contentPane.add(rdbtnConsultarParaTodos);
 
 		JLabel lblDigiteUmAno = new JLabel("Digite um ano para o cálculo (Formato AAAA):");
 		lblDigiteUmAno.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDigiteUmAno.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteUmAno.setBounds(20, 325, 345, 30);
-		contentPane.add(lblDigiteUmAno);
 
 		MaskFormatter mascaraAno;
 		try {
@@ -182,8 +167,6 @@ public class CalcularIndicadores extends JanelasInternas {
 			e2.printStackTrace();
 		}
 		textFieldAno.setFont(new Font("Arial", Font.PLAIN, 16));
-		textFieldAno.setBounds(375, 325, 110, 30);
-		contentPane.add(textFieldAno);
 		textFieldAno.setColumns(10);
 
 		JButton btnConsultar = new JButton("Calcular");
@@ -197,8 +180,6 @@ public class CalcularIndicadores extends JanelasInternas {
 
 		});
 		btnConsultar.setFont(new Font("Arial", Font.PLAIN, 16));
-		btnConsultar.setBounds(500, 280, 194, 116);
-		contentPane.add(btnConsultar);
 
 		JButton btnSelecionarTodos = new JButton("Selecionar Todos");
 		btnSelecionarTodos.addActionListener(new ActionListener() {
@@ -206,7 +187,7 @@ public class CalcularIndicadores extends JanelasInternas {
 			 * Seleciona todos indicadores da tabela
 			 */
 			public void actionPerformed(ActionEvent e) {
-				int posicaoBoxSeleciona = 5;
+				int posicaoBoxSeleciona = 6;
 				if(btnSelecionarTodos.getText().equals("Selecionar Todos")) {
 					btnSelecionarTodos.setText("Desmarcar Todos");
 					Tabelas.selecionarTodos(posicaoBoxSeleciona, table);
@@ -217,23 +198,87 @@ public class CalcularIndicadores extends JanelasInternas {
 			}
 		});
 		btnSelecionarTodos.setFont(new Font("Arial", Font.PLAIN, 16));
-		btnSelecionarTodos.setBounds(524, 11, 170, 30);
-		contentPane.add(btnSelecionarTodos);
 
 		JLabel lblAnosAMais = new JLabel("Anos a mais para busca retroativa das variáveis:");
 		lblAnosAMais.setHorizontalAlignment(SwingConstants.LEFT);
 		lblAnosAMais.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblAnosAMais.setBounds(20, 366, 345, 30);
-		contentPane.add(lblAnosAMais);
 
 		formattedTextFieldAnos = new JFormattedTextField("0");
 		formattedTextFieldAnos.setFont(new Font("Arial", Font.PLAIN, 16));
-		formattedTextFieldAnos.setBounds(375, 366, 110, 30);
-		contentPane.add(formattedTextFieldAnos);
 
 		try {
-			int posicaoBoxSeleciona = 5;
+			int posicaoBoxSeleciona = 6;
 			Tabelas.mostrarIndicadores(posicaoBoxSeleciona, table);
+			GroupLayout gl_contentPane = new GroupLayout(contentPane);
+			gl_contentPane.setHorizontalGroup(
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(10)
+						.addComponent(lblIndicadoresConsulta, GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+						.addGap(10)
+						.addComponent(btnSelecionarTodos, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+						.addGap(10))
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(10)
+						.addComponent(scrollPaneTabela, GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+						.addGap(10))
+					.addComponent(separator, GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(10)
+						.addComponent(rdbtnParaUmMunicipio, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
+						.addGap(10)
+						.addComponent(rdbtnConsultarParaTodos, GroupLayout.PREFERRED_SIZE, 357, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(20, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(20)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(lblDigiteUmCep, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblDigiteUmAno, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblAnosAMais, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE))
+						.addGap(10)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(campoFormatadoCep, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+							.addComponent(textFieldAno, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+							.addComponent(formattedTextFieldAnos, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+						.addGap(15)
+						.addComponent(btnConsultar, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+						.addGap(10))
+			);
+			gl_contentPane.setVerticalGroup(
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGap(6)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(lblIndicadoresConsulta, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnSelecionarTodos, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+						.addGap(8)
+						.addComponent(scrollPaneTabela, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+						.addGap(11)
+						.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGap(7)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(1)
+								.addComponent(rdbtnParaUmMunicipio, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+							.addComponent(rdbtnConsultarParaTodos, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+						.addGap(17)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(lblDigiteUmCep, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+								.addGap(15)
+								.addComponent(lblDigiteUmAno, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+								.addGap(11)
+								.addComponent(lblAnosAMais, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(campoFormatadoCep, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+								.addGap(15)
+								.addComponent(textFieldAno, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+								.addGap(11)
+								.addComponent(formattedTextFieldAnos, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGap(19))
+			);
+			contentPane.setLayout(gl_contentPane);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

@@ -30,8 +30,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,11 +50,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.JanelaMensagem;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.Tabelas;
@@ -131,13 +127,13 @@ public class TabelaIndicadoresCalculados extends JInternalFrame {
 
 		JScrollPane scrollPaneTabelaIndicadoresComResultado = new JScrollPane();
 
-		lblNewLabel = new JLabel("Indicadores com valor:");
+		lblNewLabel = new JLabel("Indicadores com resultado:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
 		JScrollPane scrollPaneTabelaIndicadoresSemResultado = new JScrollPane();
 
-		JLabel lblIndicadoresSemValor = new JLabel("Indicadores sem valor:");
+		JLabel lblIndicadoresSemValor = new JLabel("Indicadores sem resultado:");
 		lblIndicadoresSemValor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIndicadoresSemValor.setFont(new Font("Arial", Font.PLAIN, 16));
 
@@ -205,52 +201,56 @@ public class TabelaIndicadoresCalculados extends JInternalFrame {
 		btnExportar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setDialogTitle("Salvar como");
-				fileChooser.setFileFilter(new FileNameExtensionFilter("Arquivos do Excel (*.xlsx)", "xlsx"));
-				int userSelection = fileChooser.showSaveDialog(null);
-				if (userSelection == JFileChooser.APPROVE_OPTION) {
-					// Criar o arquivo Excel com o nome e o diretório escolhidos pelo usuário
-					File fileToSave = fileChooser.getSelectedFile();
-					String filePath = fileToSave.getAbsolutePath();
-					// Verificar se o nome do arquivo possui a extensão .xlsx, se não, adicionar
-					// automaticamente
-					if (!filePath.endsWith(".xlsx")) {
-						filePath += ".xlsx";
-						fileToSave = new File(filePath);
-					}
-					try {
-						XSSFWorkbook workbook = new XSSFWorkbook();
-						XSSFSheet sheet = workbook.createSheet("Dados da tabela");
-						// Copiar os dados da tabela para o arquivo Excel, incluindo o cabeçalho
-						XSSFRow headerRow = sheet.createRow(0);
-						for (int j = 0; j < tableIndicadoresComResultado.getColumnCount() - 1; j++) {
-							XSSFCell cell = headerRow.createCell(j);
-							cell.setCellValue(tableIndicadoresComResultado.getColumnName(j));
-						}
-						for (int i = 0; i < tableIndicadoresComResultado.getRowCount(); i++) {
-							XSSFRow row = sheet.createRow(i + 1);
-							for (int j = 0; j < tableIndicadoresComResultado.getColumnCount() - 1; j++) {
-								XSSFCell cell = row.createCell(j);
-								try {
-									cell.setCellValue(tableIndicadoresComResultado.getValueAt(i, j).toString());
-								} catch (Exception e1) {
-									cell.setCellValue("");
-								}
-							}
-						}
+			    JFileChooser fileChooser = new JFileChooser();
+			    fileChooser.setDialogTitle("Salvar como");
+			    fileChooser.setFileFilter(new FileNameExtensionFilter("Arquivos CSV (*.csv)", "csv"));
+			    int userSelection = fileChooser.showSaveDialog(null);
+			    if (userSelection == JFileChooser.APPROVE_OPTION) {
+			        // Criar o arquivo CSV com o nome e o diretório escolhidos pelo usuário
+			        File fileToSave = fileChooser.getSelectedFile();
+			        String filePath = fileToSave.getAbsolutePath();
+			        // Verificar se o nome do arquivo possui a extensão .csv, se não, adicionar automaticamente
+			        if (!filePath.endsWith(".csv")) {
+			            filePath += ".csv";
+			            fileToSave = new File(filePath);
+			        }
+			        try {
+			            BufferedWriter writer = new BufferedWriter(new FileWriter(fileToSave));
+			            
+			            // Escrever o cabeçalho no arquivo CSV
+			            StringBuilder header = new StringBuilder();
+			            for (int j = 0; j < tableIndicadoresComResultado.getColumnCount() - 1; j++) {
+			                header.append(tableIndicadoresComResultado.getColumnName(j));
+			                if (j < tableIndicadoresComResultado.getColumnCount() - 2) {
+			                    header.append("|");
+			                }
+			            }
+			            writer.write(header.toString());
+			            writer.newLine();
 
-						// Salvar o arquivo Excel
-						FileOutputStream outputStream = new FileOutputStream(fileToSave);
-						workbook.write(outputStream);
-						workbook.close();
-						outputStream.close();
+			            // Escrever os dados no arquivo CSV
+			            for (int i = 0; i < tableIndicadoresComResultado.getRowCount(); i++) {
+			                StringBuilder row = new StringBuilder();
+			                for (int j = 0; j < tableIndicadoresComResultado.getColumnCount() - 1; j++) {
+			                    Object value = tableIndicadoresComResultado.getValueAt(i, j);
+			                    if (value != null) {
+			                        row.append(value.toString());
+			                    }
+			                    if (j < tableIndicadoresComResultado.getColumnCount() - 2) {
+			                        row.append("|");
+			                    }
+			                }
+			                writer.write(row.toString());
+			                writer.newLine();
+			            }
 
-						new JanelaMensagem("Tabela salva em " + filePath);
-					} catch (IOException ex) {
-						new JanelaMensagem("Falha ao salvar a tabela em " + filePath);
-					}
-				}
+			            writer.close();
+			            
+			            new JanelaMensagem("Tabela salva em " + filePath);
+			        } catch (IOException ex) {
+			            new JanelaMensagem("Falha ao salvar a tabela em " + filePath);
+			        }
+			    }
 			}
 		});
 

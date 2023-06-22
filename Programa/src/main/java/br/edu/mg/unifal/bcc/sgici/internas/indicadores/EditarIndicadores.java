@@ -91,7 +91,7 @@ public class EditarIndicadores extends JanelasInternas {
 			 * Seleciona todos os indicadores 
 			 */
 			public void actionPerformed(ActionEvent e) {
-				int posicaoBoxSeleciona = 5;
+				int posicaoBoxSeleciona = 6;
 				if(btnSelecionarTodos.getText().equals("Selecionar Todos")) {
 					btnSelecionarTodos.setText("Desmarcar Todos");
 					Tabelas.selecionarTodos(posicaoBoxSeleciona, table);
@@ -159,7 +159,7 @@ public class EditarIndicadores extends JanelasInternas {
 		contentPane.setLayout(gl_contentPane);
 
 		try {
-			Tabelas.mostrarIndicadores(5, table);
+			Tabelas.mostrarIndicadores(6, table);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

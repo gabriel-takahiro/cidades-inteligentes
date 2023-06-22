@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar">
         <div class="secao-titulo">
-            <p class="titulo-programa">Indicadores de cidades inteligentes</p>
+            <p class="titulo-programa">SGICI</p>
         </div>
         <ul>
             <li><a href="index.html">Sobre</a></li>
@@ -192,8 +192,36 @@
                             <td>codigo_banco</td>
                             <td>Texto</td>
                             <td>Pode ser nulo</td>
-                            <td>Este campo armazena o código necessário para acessar o banco de dados da variável. Se a
-                                variável estiver localizada no banco de dados local, o código deve ser nulo.</td>
+                            <td>Este campo armazena o código necessário para acessar o banco de dados da variável. O
+                                código deve seguir os seguintes formatos:
+                                <ul>
+                                    <li><b>BD:</b> Para variáveis localizadas no banco de dados local, o código deve ser
+                                        nulo.</li>
+                                    <li><b>IPEA:</b> Para variáveis localizadas na API Ipeadata, o código a ser
+                                        utilizado é o "SERCODIGO". Esse código é o identificador único da série e pode
+                                        ser consultado na documentação da API disponível em <a
+                                            href="http://www.ipeadata.gov.br/api/" target="_blank"
+                                            class="link-externo">http://www.ipeadata.gov.br/api/</a>. Esse valor pode
+                                        ser
+                                        obtido por meio da utilização da biblioteca ipeadatapy, disponível em <a
+                                            href="https://pypi.org/project/ipeadatapy/" target="_blank"
+                                            class="link-externo">https://pypi.org/project/ipeadatapy/</a>.</li>
+                                    <li><b>SIDRA:</b> Para variáveis localizadas na API SIDRA, o código a ser utilizado
+                                        deve conter os seguintes parâmetros: tabela (t), nível territorial (n),
+                                        variáveis (v), período (p), classificação (c). Esses parâmetros podem ser
+                                        acessados na documentação da API disponível em <a
+                                            href="https://apisidra.ibge.gov.br/home/ajuda" target="_blank"
+                                            class="link-externo">https://apisidra.ibge.gov.br/home/ajuda</a>. O valor
+                                        deve
+                                        estar no seguinte formato: <br> (t)/n1/all/v/(valor)/p/all/(c)/(valor) <br> Os
+                                        valores entre parênteses devem ser substituídos pelos valores encontrados. É
+                                        necessário incluir "n1/all" (nível Brasil) e "p/all" (todos os períodos) no
+                                        código, pois esses valores serão substituídos no programa para realizar a busca
+                                        das variáveis. É possível obter esses valores no acervo Sidra em <a
+                                            href="https://sidra.ibge.gov.br/acervo#/S/Q" target="_blank"
+                                            class="link-externo">https://sidra.ibge.gov.br/acervo#/S/Q</a>.</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td>atualizacao</td>
@@ -796,6 +824,10 @@
                 <p class="titulo"><b>Tabela 13:</b> Tabela importados.planilha</p>
             </div>
         </section>
+        <footer>
+            <hr>
+            <p class="direitos">&copy; <span id="copyright">Copyright 2023</span>, Gabriel Takahiro</p>
+        </footer>
     </main>
     <script src="../js/banco.js"></script>
 </body>

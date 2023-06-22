@@ -151,6 +151,7 @@ public class Menus {
 		Submenus.criarTabelas(menuBancoDados);
 		Submenus.excluirTabelas(menuBancoDados);
 		Submenus.importarTabelas(menuBancoDados);
+		Submenus.importarValorVariavel(menuBancoDados);
 		Submenus.restauraPadrao(menuBancoDados);
 	}
 	

@@ -138,12 +138,12 @@ public class CalculoIndicadorDAO {
 			List<Integer> listaIndicadoresSelecionados) {
 		List<IndicadoresBuscados> resultados = new ArrayList<IndicadoresBuscados>();
 		try {
-			String sqlIndicadoresCalculados = "SELECT codigo_indicador, numero_ods, numero_meta, nome_indicador, codigo_municipio,"
+			String sqlIndicadoresCalculados = "SELECT codigo_indicador, numero_ods, numero_meta, nome_indicador, descricao, codigo_municipio,"
 					+ " nome_municipio, data, resultado, nome_uf, metodo_calculo, data_variaveis, valor_oficial, padrao FROM calculo_indicador"
 					+ " NATURAL JOIN municipio NATURAL JOIN indicador NATURAL JOIN meta NATURAL JOIN ods"
 					+ " WHERE codigo_municipio = ? AND data = ? ORDER BY 2, 3;";
 
-			String sqlIndicadoresNaoCalculados = "SELECT codigo_indicador, numero_ods, numero_meta, nome_indicador, codigo_municipio,"
+			String sqlIndicadoresNaoCalculados = "SELECT codigo_indicador, numero_ods, numero_meta, nome_indicador, descricao, codigo_municipio,"
 					+ " nome_municipio, nome_uf, metodo_calculo, padrao FROM indicador"
 					+ " NATURAL JOIN municipio NATURAL JOIN meta NATURAL JOIN ods"
 					+ " WHERE codigo_municipio = ? AND codigo_indicador = ? ORDER BY 2, 3;";
@@ -158,9 +158,9 @@ public class CalculoIndicadorDAO {
 						for (Integer codigo : listaIndicadoresSelecionados) {
 							if (codigo == rst.getInt(1)) {
 								IndicadoresBuscados resultado = new IndicadoresBuscados(rst.getInt(1), rst.getInt(2),
-										rst.getString(3), rst.getString(4), rst.getInt(5), rst.getString(6),
-										rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10),
-										rst.getString(11), rst.getBoolean(12), rst.getBoolean(13));
+										rst.getString(3), rst.getString(4), rst.getString(5), rst.getInt(6), rst.getString(7),
+										rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11),
+										rst.getString(12), rst.getBoolean(13), rst.getBoolean(14));
 
 								resultados.add(resultado);
 							}
@@ -193,9 +193,9 @@ public class CalculoIndicadorDAO {
 							try (ResultSet rst2 = pstm2.getResultSet()) {
 								if (rst2.next()) {
 									IndicadoresBuscados resultado = new IndicadoresBuscados(rst2.getInt(1),
-											rst2.getInt(2), rst2.getString(3), rst2.getString(4), rst2.getInt(5),
-											rst2.getString(6), data, "-", rst2.getString(7), rst2.getString(8), "",
-											false, rst2.getBoolean(9));
+											rst2.getInt(2), rst2.getString(3), rst2.getString(4), rst2.getString(5), rst2.getInt(6),
+											rst2.getString(7), data, "-", rst2.getString(8), rst2.getString(9), "",
+											false, rst2.getBoolean(10));
 
 									resultados.add(resultado);
 								}

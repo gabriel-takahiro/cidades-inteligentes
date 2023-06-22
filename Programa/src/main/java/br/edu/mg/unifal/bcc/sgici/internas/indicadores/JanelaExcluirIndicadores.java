@@ -47,6 +47,8 @@ import br.edu.mg.unifal.bcc.sgici.interfaces.internas.JanelaMensagem;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.Tabelas;
 import br.edu.mg.unifal.bcc.sgici.interfaces.principal.JanelaPrincipal;
 import br.edu.mg.unifal.bcc.sgici.modelo.Indicador;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 /**
  * Classe responsável pela interface que exclui os indicadores
@@ -60,6 +62,7 @@ public class JanelaExcluirIndicadores extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
+	private JPanel buttonPane;
 
 	/**
 	 * Executa a interface que exclui os indicadores
@@ -71,17 +74,12 @@ public class JanelaExcluirIndicadores extends JDialog {
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Deseja excluir os indicadores:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(10, 11, 634, 30);
-		contentPanel.add(lblNewLabel);
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setBounds(0, 222, 644, 35);
-			contentPanel.add(buttonPane);
+			buttonPane = new JPanel();
 			buttonPane.setLayout(null);
 			{
 				JButton okButton = new JButton("Sim");
@@ -126,8 +124,6 @@ public class JanelaExcluirIndicadores extends JDialog {
 		}
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 39, 634, 168);
-		contentPanel.add(scrollPane);
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
@@ -136,7 +132,7 @@ public class JanelaExcluirIndicadores extends JDialog {
 
 			private static final long serialVersionUID = 1L;
 
-			boolean[] canEdit = new boolean[] { false, false, false, false, false };
+			boolean[] canEdit = new boolean[] { false, false, false, false, false, false };
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -155,12 +151,38 @@ public class JanelaExcluirIndicadores extends JDialog {
 		}
 
 		JSeparator separator = new JSeparator();
-		separator.setBounds(10, 217, 634, 2);
-		contentPanel.add(separator);
+		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
+		gl_contentPanel.setHorizontalGroup(
+			gl_contentPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(10)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(10)
+					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 634, GroupLayout.PREFERRED_SIZE))
+				.addComponent(buttonPane, GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+		);
+		gl_contentPanel.setVerticalGroup(
+			gl_contentPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(6)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(28)
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
+					.addGap(10)
+					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(3)
+					.addComponent(buttonPane, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+		);
+		contentPanel.setLayout(gl_contentPanel);
 
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setResizable(false);
+		setResizable(true);
 		setLocationRelativeTo(null);
 		setAlwaysOnTop(rootPaneCheckingEnabled);
 	}

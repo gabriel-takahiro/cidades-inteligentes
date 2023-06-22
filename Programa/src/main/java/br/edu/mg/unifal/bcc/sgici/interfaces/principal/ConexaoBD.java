@@ -119,7 +119,7 @@ public class ConexaoBD extends JInternalFrame {
 					new ConnectionFactory(textFieldUsuario.getText(), new String(passwordFieldSenha.getPassword()),
 							txtIc.getText(), (Configuracao) comboBoxDesempenho.getSelectedItem());
 					listaMenu.forEach(menu -> menu.setEnabled(true));
-					janelaPrincipal.instanciarJanelas(chckbxNewCheckBox.isSelected(), (Configuracao) comboBoxDesempenho.getSelectedItem());
+					janelaPrincipal.instanciarJanelas(chckbxNewCheckBox.isSelected(), (Configuracao) comboBoxDesempenho.getSelectedItem(), txtIc.getText());
 					dispose();
 				} catch (Exception erro) {
 					System.out.println(erro);
@@ -169,6 +169,7 @@ public class ConexaoBD extends JInternalFrame {
 		comboBoxDesempenho = new JComboBox<Configuracao>(configuracoes);
 		comboBoxDesempenho.setFont(new Font("Arial", Font.PLAIN, 16));
 		comboBoxDesempenho.setBounds(149, 186, 200, 28);
+		comboBoxDesempenho.setSelectedItem(Configuracao.MEDIO);
 		contentPane.add(comboBoxDesempenho);
 
 		setLocation(0, 0);

@@ -247,6 +247,11 @@ public class CalculaIndicador {
 			CalculoDataVariaveis calculoDataVariaveis = montaCalculo(listaCaracteres, parametros);
 			DoubleEvaluator evaluator = new DoubleEvaluator();
 			double resultado = evaluator.evaluate(calculoDataVariaveis.getCalculo().replace("x", "*"));
+			
+			if (Double.isInfinite(resultado) || Double.isNaN(resultado)) {
+	            throw new ArithmeticException("Divisão por zero ocorreu no cálculo");
+	        }
+			
 			CalculoIndicadorDAO calculoIndicadorDAO = new CalculoIndicadorDAO(connection);
 			calculoIndicadorDAO.insereResultado(indicador.getCodigo(), parametros.getCodigoMunicipio(),
 					parametros.getData(), String.format("%.02f", resultado), calculoDataVariaveis.getDataVariaveis(),

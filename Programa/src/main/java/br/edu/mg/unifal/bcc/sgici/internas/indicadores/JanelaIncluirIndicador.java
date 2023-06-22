@@ -42,6 +42,8 @@ import javax.swing.border.EmptyBorder;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.JanelaMensagem;
 import br.edu.mg.unifal.bcc.sgici.interfaces.internas.Tabelas;
 import br.edu.mg.unifal.bcc.sgici.modelo.Indicador;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 /**
  * Classe responsável pela interface que inclui indicadores no método de cálculo
@@ -68,16 +70,11 @@ public class JanelaIncluirIndicador extends JDialog {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Selecione o indicador que deseja incluir:");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(10, 11, 292, 23);
-		contentPane.add(lblNewLabel);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 40, 564, 179);
-		contentPane.add(scrollPane);
 
 		tableIndicadores = new JTable();
 		tableIndicadores.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -109,23 +106,52 @@ public class JanelaIncluirIndicador extends JDialog {
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 16));
-		btnNewButton.setBounds(338, 227, 236, 25);
-		contentPane.add(btnNewButton);
 
 		textFieldCodigo = new JTextField();
-		textFieldCodigo.setBounds(172, 230, 130, 23);
-		contentPane.add(textFieldCodigo);
 		textFieldCodigo.setColumns(10);
 
 		JLabel lblCdigo = new JLabel("Código do indicador:");
 		lblCdigo.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblCdigo.setBounds(10, 230, 152, 23);
-		contentPane.add(lblCdigo);
 
 		Tabelas.mostrarIndicadores(tableIndicadores);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 292, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblCdigo, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+							.addGap(36)
+							.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)))
+					.addGap(5))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(6)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+					.addGap(8)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblCdigo, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(3)
+							.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addGap(3))
+		);
+		contentPane.setLayout(gl_contentPane);
 
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setAlwaysOnTop(rootPaneCheckingEnabled);

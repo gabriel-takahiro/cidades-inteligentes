@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar">
         <div class="secao-titulo">
-            <p class="titulo-programa">Indicadores de cidades inteligentes</p>
+            <p class="titulo-programa">SGICI</p>
         </div>
         <ul>
             <li><a href="index.html">Sobre</a></li>
@@ -64,6 +64,8 @@
                             <li><a class="sub" href=".criar-tabelas">Criar tabelas</a></li>
                             <li><a class="sub" href=".excluir-tabelas">Excluir tabelas</a></li>
                             <li><a class="sub" href=".importar-tabelas">Importar tabelas</a></li>
+                            <li><a class="sub" href=".importar-valores">Importar valores</a></li>
+                            <li><a class="sub" href=".restaurar-padrao">Restaurar padrão</a></li>
                         </ul>
                     </li>
                     <li><a id="sub" href="#ajuda">Ajuda</a>
@@ -83,7 +85,7 @@
         <section id="funcionalidades">
             <h1>Funcionalidades</h1>
             <hr class="linha-horizontal">
-            <p>O programa oferece uma variedade de funcionalidades, que serão descritas a seguir com base nos menus
+            <p>O SGICI oferece uma variedade de funcionalidades, que serão descritas a seguir com base nos menus
                 disponíveis no software.</p>
         </section>
         <section id="indicadores">
@@ -295,12 +297,11 @@
 
                 <p>Ao selecionar a opção de exibição dos indicadores em forma de tabela, uma nova interface será
                     apresentada com duas tabelas distintas. Na tabela superior, todos os indicadores calculados serão
-                    exibidos em uma tabela com informações detalhadas, incluindo o código do indicador, número da ODS,
-                    número da meta, nome do indicador, código do município, nome do município, nome da unidade
-                    federativa, ano, resultado, valor oficial e indicador padrão. Indicadores calculados somente com
-                    valores oficiais serão marcados como "true" e terão sua cor na tabela em verde, enquanto que
-                    indicadores marcados como "false" terão a cor vermelha. Indicadores padrão serão marcados com a cor
-                    azul, e os demais com a cor amarela.
+                    exibidos em uma tabela com informações detalhadas, incluindo o código do indicador, número do ODS,
+                    número da meta, nome do indicador, descrição, código do município, ano, resultado, valor oficial e
+                    indicador padrão. Indicadores calculados somente com valores oficiais serão marcados como "true" e
+                    terão sua cor na tabela em verde, enquanto que indicadores marcados como "false" terão a cor
+                    vermelha. Indicadores padrão serão marcados com a cor azul, e os demais com a cor amarela.
                 </p>
                 <p>
                     Na tabela inferior, serão apresentados os indicadores que ainda não foram calculados. Nessa tabela,
@@ -311,6 +312,11 @@
                     variável para armazenar o novo valor no banco de dados e, em seguida, selecionar o indicador para
                     recalcular e clicar em "calcular". As linhas que correspondem a cada indicador serão destacadas em
                     amarelo, enquanto as linhas das variáveis usadas no cálculo serão exibidas em branco.</p>
+                <p>
+                    É possível exportar a tabela de resultados em formato .csv com o uso de um delimitador "|" para
+                    separar as colunas. Para realizar essa operação, basta clicar no botão "Exportar", escolher o local
+                    onde deseja salvar o arquivo e fornecer um nome para o arquivo.
+                </p>
                 <img class="resultado" src="./imagens/Resultado tabela com tudo.png" alt="">
                 <p class="titulo"><b>Figura 16:</b> Interface para exibição dos resultados em forma de tabelas</p>
 
@@ -392,8 +398,43 @@
                     href="instalacao.html" class="link-externo">seção Instalação.</a> Durante a importação dessas
                 tabelas, cada campo é separado pelo símbolo de barra vertical "|" para garantir o correto funcionamento
                 do software. Para visualizar os campos de cada tabela importada, basta acessar a <a
-                    href="banco.html#importados" class="link-externo">seção "Importados" na
-                    área de Banco de dados.</a></p>
+                    href="banco.html#importados" class="link-externo">seção "Importados"</a> na
+                área de Banco de dados.</p>
+        </section>
+
+        <section class="importar-valores">
+            <h2>Importar valores</h2>
+            <p>A opção de importar valores oferece a funcionalidade de importar os valores das variáveis para o sistema.
+                Para realizar a importação, é necessário selecionar um arquivo no formato .csv que contenha os valores
+                desejados. O arquivo .csv deve seguir um formato específico, conforme exemplificado abaixo:
+                <br><br>
+                codigo_variavel | codigo_municipio | data | valor | valor_atualizado | valor_oficial
+                <br><br>
+                Esse formato corresponde à estrutura da tabela "valor_variavel" que pode ser visto na <a
+                    href="banco.html#valor_variavel" class="link-externo">seção "Valor da variável" </a> na área de
+                Banco de dados. É importante destacar que o delimitador utilizado no arquivo .csv deve ser o caractere
+                "|" em vez do tradicional ",", conforme usualmente adotado. Além disso, é necessário especificar o
+                período de tempo ao qual os dados importados pertencem. Para
+                isso, deve-se informar o ano inicial e o ano final do período. No caso de dados referentes a apenas um
+                ano, basta indicar o mesmo ano tanto para o início quanto para o final do período.
+
+                Essa etapa é fundamental para realizar o mapeamento dos anos na tabela "data" do sistema, garantindo a
+                correta associação dos valores importados.
+            </p>
+            <img src="./imagens/Importar_valores.png" alt="">
+            <p class="titulo"><b>Figura 20:</b> Interface que importa os valores</p>
+        </section>
+
+        <section class="restaurar-padrao">
+            <h2>Restaurar padrão</h2>
+            <p>A opção "Restaurar Padrão" possibilita restaurar o banco de dados para os dados padrões. Ao realizar essa
+                operação, todas as tabelas existentes e suas respectivas informações são excluídas, e em seguida, são
+                criadas e importadas todas as informações padrões relacionadas a indicadores, variáveis, metas e ODS.
+                Essa funcionalidade oferece uma maneira simples de obter os dados iniciais do programa em uma base de
+                dados específica, garantindo que todas as informações estejam em conformidade com o padrão estabelecido.
+                Esteja ciente de que ao executar a operação de restauração padrão, todos os dados existentes
+                serão perdidos permanentemente. Certifique-se de fazer um backup adequado dos dados antes de prosseguir
+                com essa ação.</p>
         </section>
 
         <section id="ajuda">
@@ -415,6 +456,10 @@
                 encontrar informações técnicas sobre a implementação das funcionalidades e classes utilizadas no
                 programa.</p>
         </section>
+        <footer>
+            <hr>
+            <p class="direitos">&copy; <span id="copyright">Copyright 2023</span>, Gabriel Takahiro</p>
+        </footer>
     </main>
     <script src="../js/funcionalidades.js"></script>
 </body>

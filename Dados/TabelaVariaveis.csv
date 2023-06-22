@@ -1,10 +1,4 @@
 codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
-10|BD|Homicídios na população negra||Anual|t
-3960|BD|Número de pessoas de 16 anos ou mais com ocupação||Decenal|t
-4042|BD|Número de empregos formais||Decenal|t
-4067|BD|Número de mulheres mortas por homicídio||Anual|t
-4101|BD|Número de óbitos por armas de fogo||Anual|t
-4121|BD|Rendimento médio real do trabalho principal das pessoas de 16 anos ou mais||Decenal|t
 1|Sidra|População com 10 anos ou mais e recebe até 1/2 salário mínimo|1384/n1/all/v/allxp/p/all/c11570/92973|Decenal|t
 2|Sidra|População com 10 anos ou mais e recebe de 1/2 a 1 salário mínimo|1384/n1/all/v/allxp/p/all/c11570/92974|Decenal|t
 3|Sidra|População com 10 anos ou mais e recebe de 1 a 2 salários mínimos|1384/n1/all/v/allxp/p/all/c11570/92975|Decenal|t
@@ -14,49 +8,32 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 7|Sidra|População com 10 anos ou mais e recebe mais de 20 salários mínimos|1384/n1/all/v/allxp/p/all/c11570/92979|Decenal|t
 8|Sidra|População com 10 anos ou mais e sem rendimento|1384/n1/all/v/allxp/p/all/c11570/92980|Decenal|t
 9|Sidra|População total estimada|6579/n1/all/v/all/p/all|Anual|t
+10|BD|Homicídios na população negra||Anual|t
 11|Sidra|Consumo total de água na indústria, em metros cúbicos (m³)|7499/n1/all/v/448/p/all/c988/48985|Decenal|t
 12|Sidra|Consumo total de água no comércio, em metros cúbicos (m³)|7499/n1/all/v/448/p/all/c988/48984|Decenal|t
 13|Sidra|Consumo total de água doméstico, em metros cúbicos (m³)|7499/n1/all/v/448/p/all/c988/48982|Decenal|t
+14|BD|Consumo total de água na agricultura, em metros cúbicos (m³)||Anual|t
 19|Sidra|População total do município|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/0/d/v93%200|Decenal|t
+27|IPEA|Área total do município em quilômetros quadrados (km²)|AREA|Anual|t
+30|IPEA|Índice de Desenvolvimento Humano (IDH) municipal|ADH_IDHM|Decenal|t
+39|BD|Total de funcionários do município||Anual|t
 41|Sidra|Número total de nascidos vivos no município|2609/n1/all/v/allxp/p/all/c232/0/c240/0/c2/0|Anual|t
+43|Sidra|População na faixa etária de 0 a 14 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1140%201141%201142/d/v93%200|Decenal|t
 44|Sidra|População na faixa etária de 4 a 17 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1141%201142%202487%202498%202499%202500/d/v93%200|Decenal|t
-48|Sidra|População na faixa etária de 5 a 8 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1140%201141/d/v93%200|Decenal|t
+45|Sidra|População na faixa etária de 7 a 14 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1142%202490%202491%202492/d/v93%200|Decenal|t
+47|Sidra|População masculina na faixa etária de 15 a 29 anos|200/n1/all/v/allxp/p/all/c2/4/c1/0/c58/1143%201144%201145/d/v93%200|Decenal|t
+48|Sidra|População na faixa etária de 5 a 8 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1141/d/v93%200|Decenal|t
 49|Sidra|População com 15 anos ou mais|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1143%201144%201145%201146%201147%201148%201149%201150%201151%201152%201153%201154%201155%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|t
 53|Sidra|População com 25 anos ou mais|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1145%201146%201147%201148%201149%201150%201151%201152%201153%201154%201155%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|t
 54|Sidra|Percentual da população idosa no município (mais de 60 anos)|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1152%201153%201154%201155%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|t
 55|Sidra|Número total de domicílios no município|3451/n1/all/v/96/p/all/c1/6795|Decenal|t
+57|BD|Número total de unidades básicas de atendimento em saúde no município||Anual|t
 59|Sidra|Número total de óbitos de crianças com menos de um ano de idade|2654/n1/all/v/allxp/p/all/c244/0/c1836/0/c2/0/c260/5922/c257/0|Anual|t
+60|BD|Número total de equipamentos esportivos públicos||Anual|t
+63|BD|Número total, em metros cúbicos (m³), de água perdida||Anual|t
 64|Sidra|Número total de domicílios que são atendidos pelo abastecimento público de água potável|3218/n1/all/v/allxp/p/all/c61/92853/c299/0/c67/0/c309/0|Decenal|t
 65|Sidra|Número de domicílios sem ligação com a rede de esgoto|1394/n1/all/v/allxp/p/all/c1/0/c458/0/c125/0/c63/0/c11558/119523|Decenal|t
 66|Sidra|Consumo total de água (indústria, comércio, agricultura e doméstico), em metros cúbicos (m³)|7499/n1/all/v/448/p/all/c988/48981|Decenal|t
-75|Sidra|Total de indivíduos com 25 anos ou mais com ensino superior concluído|3457/n1/all/v/allxp/p/all/c1568/99713/c2/0/c133/0/d/v1643%200|Decenal|t
-76|Sidra|Total de indivíduos de 5 até 8 anos (inclusive) plenamente alfabetizados|2104/n1/all/v/allxp/p/all/c133/0/c59/1023/c58/1141/d/v138%200|Decenal|t
-79|Sidra|Número total de indivíduos residentes com renda até 1/4 do salário mínimo|3177/n1/all/v/allxp/p/all/c86/0/c1/0/c2/0/c11570/92983|Decenal|t
-92|Sidra|Número de indivíduos residentes em aglomerados subnormais|1425/n1/all/v/allxp/p/all/c86/0/c1/12458|Decenal|t
-222|Sidra|População total de mulheres no município|200/n1/all/v/allxp/p/all/c2/5/c1/0/c58/0/d/v93%200|Decenal|t
-224|Sidra|População residente com 10 anos ou mais|1384/n1/all/v/allxp/p/all/c11570/0|Decenal|t
-225|Sidra|Total de analfabetos com 15 anos ou mais|2104/n1/all/v/allxp/p/all/c133/0/c59/1024/c58/1143%201144%201145%203244%203299%203300%203301%203520/d/v138%200|Decenal|t
-229|Sidra|Número de nascidos vivos cujas mães tinham 19 anos ou menos|2680/n1/all/v/allxp/p/all/c235/0/c2/0/c237/0/c238/0/c240/5370%205414|Anual|t
-241|Sidra|Número total, em metros cúbicos (m³), de esgoto com tratamento|7479/n1/all/v/756/p/all/c348/8128|Decenal|t
-255|Sidra|Produto Interno Bruto (PIB) do município|5938/n1/all/v/37/p/all/d/v37%200|Anual|t
-268|Sidra|Total de indivíduos de 4 a 17 anos na escola|2976/n1/all/v/allxp/p/all/c11798/0/c1/0/c58/2487%202488%202489%202493%202792%202798%2014433/d/v690%200|Decenal|t
-321|Sidra|Número total, em metros cúbicos (m³), de esgoto gerado|7510/n1/all/v/768/p/all/c988/48981|Decenal|t
-3961|Sidra|Número total de pessoas com 16 anos ou mais|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1144%201145%201146%201147%201148%201149%201150%201151%201152%201153%201154%201155%202499%202500%202501%202502%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|t
-3968|Sidra|Número de domicílios com acesso a serviço de coleta de resíduos domésticos|1395/n1/all/v/allxp/p/all/c1/0/c458/0/c125/0/c61/0/c67/2520/c309/0|Decenal|t
-4007|Sidra|Percentual de participação da indústria no Produto Interno Bruto (PIB) municipal|5938/n1/all/v/520/p/all/d/v520%202|Anual|t
-4022|Sidra|Número de domicílios com acesso à energia elétrica|3513/n1/all/v/96/p/all/c12236/0/c125/0/c63/0/c137/0/c309/0/d/v96%200|Decenal|t
-4023|Sidra|Número de domicílios com acesso a telefone celular|3516/n1/all/v/allxp/p/all/c12062/12210%2012211/c1/0/c386/0/d/v96%200|Decenal|t
-4045|Sidra|Número total de empresas do município|6449/n1/all/v/2585/p/all/c12762/117897|Anual|t
-4055|Sidra|População na faixa etária de 20 a 59 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1144%201145%201146%201147%201148%201149%201150%201151/d/v93%200|Decenal|t
-4095|Sidra|Número de óbitos de crianças menores de 5 anos de idade|2654/n1/all/v/allxp/p/all/c244/0/c1836/0/c2/0/c260/5922%205948%205954/c257/0|Anual|t
-4096|Sidra|Número de óbitos de crianças residentes de 0 a 27 dias de idade|2654/n1/all/v/allxp/p/all/c244/0/c1836/0/c2/0/c260/5923%205931/c257/0|Anual|t
-4192|Sidra|Número de imóveis locados no município|3511/n1/all/v/allxp/p/all/c511/0/c125/0/c137/0/c65/0/c74/0/d/v1549%200|Decenal|t
-4193|Sidra|Número total de imóveis do município|3152/n1/all/v/allxp/p/all/c125/2932/c68/9902|Decenal|t
-14|BD|Consumo total de água na agricultura, em metros cúbicos (m³)||Anual|t
-39|BD|Total de funcionários do município||Anual|t
-57|BD|Número total de unidades básicas de atendimento em saúde no município||Anual|t
-60|BD|Número total de equipamentos esportivos públicos||Anual|t
-63|BD|Número total, em metros cúbicos (m³), de água perdida||Anual|t
 67|BD|Número de domicílios com coleta seletiva||Anual|t
 68|BD|Número total, em quilos (kg), de resíduo urbano gerado pelo município||Anual|t
 69|BD|Número total, em quilos (kg), de resíduo urbano reciclado||Anual|t
@@ -64,19 +41,30 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 71|BD|Número total de livros para adultos disponíveis em bibliotecas municipais||Anual|t
 72|BD|Taxa média de desemprego||Anual|t
 73|BD|Nota do Índice de Desenvolvimento da Educação Básica (IDEB) - Rede municipal - anos iniciais||Anual|t
+75|Sidra|Total de indivíduos com 25 anos ou mais com ensino superior concluído|3457/n1/all/v/allxp/p/all/c1568/99713/c2/0/c133/0/d/v1643%200|Decenal|t
+76|Sidra|Total de indivíduos de 5 até 9 anos (inclusive) plenamente alfabetizados|2104/n1/all/v/allxp/p/all/c133/0/c59/1023/c58/1141/d/v138%200|Decenal|t
 77|BD|Número de matrículas em creches municipais||Anual|t
 78|BD|Número total de inscritos em creches (matrículas efetuadas + vagas solicitadas)||Anual|t
-81|BD|Número total de mortes por homicídio de jovens homens com idade entre 15 e 29 anos||Anual|t
+79|Sidra|Número total de indivíduos residentes com renda até 1/4 do salário mínimo|3177/n1/all/v/allxp/p/all/c86/0/c1/0/c2/0/c11570/92983|Decenal|t
+81|IPEA|Número total de mortes por homicídio de jovens homens com idade entre 15 e 29 anos|HOMICMJ|Anual|t
 83|BD|Número total de roubos no município||Anual|t
 90|BD|Número total de ônibus coletivos no município||Anual|t
+92|Sidra|Número de indivíduos residentes em aglomerados subnormais|1425/n1/all/v/allxp/p/all/c86/0/c1/12458|Decenal|t
 93|BD|Número total, em quilômetros quadrados (km²), de área destinada a conservação||Anual|t
+155|IPEA|Mortalidade até cinco anos de idade|ADH_MORT5|Decenal|t
+222|Sidra|População total de mulheres no município|200/n1/all/v/allxp/p/all/c2/5/c1/0/c58/0/d/v93%200|Decenal|t
+224|Sidra|População residente com 10 anos ou mais|1384/n1/all/v/allxp/p/all/c11570/0|Decenal|t
+225|Sidra|Total de analfabetos com 15 anos ou mais|2104/n1/all/v/allxp/p/all/c133/0/c59/1024/c58/1143%201144%201145%203244%203299%203300%203301%203520/d/v138%200|Decenal|t
 228|BD|Número de nascidos vivos cujas mães fizeram menos de 7 consultas pré-natal||Anual|t
+229|Sidra|Número de nascidos vivos cujas mães tinham 19 anos ou menos|2680/n1/all/v/allxp/p/all/c235/0/c2/0/c237/0/c238/0/c240/5370%205414|Anual|t
 230|BD|Número de óbitos por causas maternas||Anual|t
 231|BD|Número de crianças com baixo peso ao nascer||Anual|t
 232|BD|Número total de crianças menores de 5 anos desnutridas||Anual|t
+233|Sidra|População de crianças menores que 5 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1140/d/v93%200|Decenal|t
 234|BD|Número de pessoas infectadas com dengue, chikungunya ou zika||Anual|t
+241|Sidra|Número total, em metros cúbicos (m³), de esgoto com tratamento|7479/n1/all/v/756/p/all/c348/8128|Decenal|t
 243|BD|Número de catadores incluídos no sistema de coleta seletiva||Anual|t
-244|BD|Número total de catadores||Anual|t
+244|Sidra|Número total de catadores|1235/n1/all/v/allxp/p/all/c58/0|Decenal|t
 245|BD|Número total, em quilos (kg), de resíduo urbano depositado em aterros sanitários||Anual|t
 247|BD|Valor total, em reais (R$), destinados às campanhas de educação cidadã||Anual|t
 248|BD|Verba total destinada a comunicação/publicidade||Anual|t
@@ -84,12 +72,15 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 250|BD|Número de livros infanto - juvenis disponíveis em bibliotecas municipais||Anual|t
 252|BD|Temperatura média mensal||Anual|t
 253|BD|Número de mortes causadas por desastres socioambientais||Anual|t
+255|Sidra|Produto Interno Bruto (PIB) do município|5938/n1/all/v/37/p/all/d/v37%200|Anual|t
 256|BD|Taxa média de desemprego de jovens de 15 a 29 anos||Anual|t
 258|BD|Nota do Índice de Desenvolvimento da Educação Básica (IDEB) - Rede municipal - anos finais||Anual|t
 262|BD|Número de escolas públicas com esporte educacional no turno obrigatório||Anual|t
 263|BD|Número total de escolas públicas no município||Anual|t
 264|BD|Número de escolas públicas de ensino fundamental e médio com acesso à internet||Anual|t
 266|BD|Número de indivíduos até 19 anos com ensino médio concluído||Anual|t
+267|Sidra|População até 19 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1140%201141%201142%201143/d/v93%200|Decenal|t
+268|Sidra|Total de indivíduos de 4 a 17 anos na escola|2976/n1/all/v/allxp/p/all/c11798/0/c1/0/c58/2487%202488%202489%202493%202792%202798%2014433/d/v690%200|Decenal|t
 269|BD|Número total de matrículas em pré-escolas municipais||Anual|t
 270|BD|Número total de inscritos em pré-escolas (matrículas efetuadas + vagas solicitadas)||Anual|t
 271|BD|Número total de matrículas no ensino fundamental em escolas públicas municipais e estaduais||Anual|t
@@ -115,18 +106,21 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 303|BD|Número total de edifícios novos e projetos de reforma||Anual|t
 305|BD|Quantidade total de quilômetros de calçadas||Anual|t
 307|BD|Total de emissões transformadas em CO2 equivalente||Anual|t
-43|Sidra|População na faixa etária de 0 a 14 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1140%201141%201142/d/v93%200|Decenal|t
-267|Sidra|População até 19 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1140%201141%201142%201143/d/v93%200|Decenal|t
-47|Sidra|População masculina na faixa etária de 15 a 29 anos|200/n1/all/v/allxp/p/all/c2/4/c1/0/c58/1143%201144%201145/d/v93%200|Decenal|t
 308|BD|Número de aprendizes contratados||Anual|t
 309|BD|Total de vagas estipuladas pela lei para aprendizes||Anual|t
 311|BD|Valor do orçamento executado decidido participativamente||Anual|t
-312|BD|Orçamento total do município||Anual|t
+312|IPEA|Orçamento total do município|RECORM|Anual|t
 313|BD|Número de secretarias do governo que contam com Conselhos Municipais||Anual|t
 314|BD|Total de secretarias do governo||Anual|t
-320|BD|Número total, em metros cúbicos (m³), de água tratada do município||Anual|t
+320|Sidra|Número total, em metros cúbicos (m³), de água tratada do município por dia|7466/n1/all/v/10646/p/all/c952/48552|Decenal|t
+321|Sidra|Número total, em metros cúbicos (m³), de esgoto gerado|7510/n1/all/v/768/p/all/c988/48981|Decenal|t
 322|BD|Valor total do orçamento, em reais (R$), destinado ao transporte público||Anual|t
 323|BD|Valor total do orçamento da área de transporte do município||Anual|t
+1401|IPEA|Renda domiciliar per capita média do quinto mais pobre|ADH_RDPC1|Decenal|t
+1402|IPEA|Renda domiciliar per capita média do 2° mais pobre|ADH_RDPC2|Decenal|t
+1403|IPEA|Renda domiciliar per capita média do 3° mais pobre|ADH_RDPC3|Decenal|t
+1404|IPEA|Renda domiciliar per capita média do 4° mais pobre|ADH_RDPC4|Decenal|t
+1405|IPEA|Renda domiciliar per capita média do quinto mais rico|ADH_RDPC5|Decenal|t
 3942|BD|Número total, em metros quadrados (m²), de área verde pública por habitante||Anual|t
 3943|BD|Percentual da população que vive em um raio de até 300m de áreas verdes||Anual|t
 3944|BD|Número de quilômetros de calçadas acessíveis||Anual|t
@@ -142,11 +136,14 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 3957|BD|Número total de secretários(as) do governo municipal||Anual|t
 3958|BD|Número de casos de negligência e abandono de crianças e adolescentes registrados no município||Anual|t
 3959|BD|Número de notificações de estupros sofridos por mulheres registrados no município||Anual|t
+3960|BD|Número de pessoas de 16 anos ou mais com ocupação||Decenal|t
+3961|Sidra|Número total de pessoas com 16 anos ou mais|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1144%201145%201146%201147%201148%201149%201150%201151%201152%201153%201154%201155%202499%202500%202501%202502%206802%206803%2092963%2092964%2092965/d/v93%200|Decenal|t
 3962|BD|Recursos do orçamento público destinados à saúde sexual e reprodutiva||Anual|t
 3963|BD|Gasto total em saúde (estadual)||Anual|t
 3964|BD|Orçamento municipal investido em ciência e tecnologia||Anual|t
 3965|BD|Número de espaços e equipamentos públicos com acessibilidade||Anual|t
 3967|BD|Valor do orçamento destinado a ações afirmativas em políticas públicas para a redução da desigualdade||Anual|t
+3968|Sidra|Número de domicílios com acesso a serviço de coleta de resíduos domésticos|1395/n1/all/v/allxp/p/all/c1/0/c458/0/c125/0/c61/0/c67/2520/c309/0|Decenal|t
 3971|BD|Número de pedidos negados no sistema de informação ao cidadão||Anual|t
 3972|BD|Total de pedidos registrados no sistema de informação ao cidadão||Anual|t
 3975|BD|Número de adolescentes cumprindo medidas socioeducativas||Anual|t
@@ -169,8 +166,9 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4000|BD|Número total, em quilômetros quadrados (km²), de cobertura vegetal||Anual|t
 4005|BD|Número de agricultores familiares (culturas e pecuária)||Anual|t
 4006|BD|Número total de agricultores (culturas e pecuária)||Anual|t
+4007|Sidra|Percentual de participação da indústria no Produto Interno Bruto (PIB) municipal|5938/n1/all/v/520/p/all/d/v520%202|Anual|t
 4008|BD|Quantidade de litros de agrotóxicos consumidos no município||Anual|t
-4009|BD|Número total, em quilômetros quadrados (km²), de área plantada||Anual|t
+4009|Sidra|Número total, em hectares, de área plantada|5457/n1/all/v/8331/p/all/c782/0|Anual|t
 4010|BD|Número de amostras irregulares (contaminação por agrotóxicos - culturas que apresentam valores acima do limite máximo de resíduos permitido)||Anual|t
 4011|BD|Número total de amostras (contaminação por agrotóxicos - amostras regulares + amostras irregulares)||Anual|t
 4014|BD|Número de crianças e adolescentes de 0 a 14 anos que sofreram violência sexual||Anual|t
@@ -179,6 +177,8 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4018|BD|Valor do déficit habitacional no município||Anual|t
 4019|BD|Número de registros de violação dos direitos humanos||Anual|t
 4020|BD|Número de escolas da rede municipal que implementam as leis 10.639 e 11.645 para atendimento à diversidade sociocultural (quilombola ou indígena)||Anual|t
+4022|Sidra|Número de domicílios com acesso à energia elétrica|3513/n1/all/v/96/p/all/c12236/0/c125/0/c63/0/c137/0/c309/3011/d/v96%200|Decenal|t
+4023|Sidra|Número de domicílios com acesso a telefone celular|3516/n1/all/v/allxp/p/all/c12062/12210%2012211/c1/0/c386/0/d/v96%200|Decenal|t
 4024|BD|Número de domicílios em área de risco||Anual|t
 4026|BD|Número de matrículas de Educação de Jovens e Adultos (EJA) integrada à educação profissional de nível fundamental e médio||Anual|t
 4033|BD|Número total de matrículas da Educação de Jovens e Adultos (EJA) de nível fundamental e médio||Anual|t
@@ -190,7 +190,9 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4039|BD|Número total de alunos do ensino fundamental (anos iniciais) matriculados na rede municipal||Anual|t
 4040|BD|Número de empregos nas atividades turísticas no município||Anual|t
 4041|BD|Número total de empregos no município||Anual|t
+4042|BD|Número de empregos formais||Decenal|t
 4044|BD|Número de empresas que realizam logística reversa de resíduos||Anual|t
+4045|Sidra|Número total de empresas do município|6449/n1/all/v/2585/p/all/c12762/117897|Anual|t
 4046|BD|Número de escolas públicas com conselhos escolares ativos||Anual|t
 4047|BD|Número de escolas que possuem banheiros, dependências e vias adequadas a pessoas com deficiência e mobilidade reduzida||Anual|t
 4048|BD|Número de escolas com salas de recursos multifuncionais para AEE (Atendimento Educacional Especializado)||Anual|t
@@ -200,6 +202,7 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4052|BD|Número total, em metros cúbicos (m³), esgoto total que chegar ao mar, rios e córregos||Anual|t
 4053|BD|Número de estabelecimentos de saúde cadastrados no SUS que realizam procedimentos para a interrupção voluntária de gravidez para casos previstos em lei||Anual|t
 4054|BD|Número de pessoas identificadas com Índice de Massa Corporal (IMC) maior ou igual a 25 kg/m²||Anual|t
+4055|Sidra|População na faixa etária de 20 a 59 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1144%201145%201146%201147%201148%201149%201150%201151/d/v93%200|Decenal|t
 4056|BD|Número total de famílias residentes cadastradas no Cadástro Único||Anual|t
 4057|BD|Número de famílias residentes cadastradas no Cadastro Único com renda familiar per capita de até meio salário mínimo||Anual|t
 4058|BD|Número total, em quilômetros quadrados (km²), de área de florestamento e reflorestamento||Anual|t
@@ -207,6 +210,7 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4061|BD|Número total de funcionários públicos||Anual|t
 4062|BD|Número de funcionários públicos que sofreram ação administrativa||Anual|t
 4065|BD|Valor do orçamento público destinado à regeneração de recursos naturais, ecossistemas e biodiversidade||Anual|t
+4067|IPEA|Número de mulheres mortas por homicídio|HOMICF|Anual|t
 4072|BD|Quantidade de pessoas feridas em eventos climáticos extremos||Anual|t
 4073|BD|Quantidade de pessoas mortas em eventos climáticos extremos||Anual|t
 4078|BD|Indivíduos que utilizaram o governo eletrônico com 16 anos ou mais||Anual|t
@@ -219,23 +223,26 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4089|BD|Número de Infratores do cadastro de empregadores flagrados utilizando trabalho em condição análoga à escravidão – “Lista suja”||Anual|t
 4090|BD|Número total, em quilos (kg), de material reciclado em atividades industriais||Anual|t
 4094|BD|Orçamento investido em modernização tecnológica e inovação||Anual|t
+4095|Sidra|Número de óbitos de crianças menores de 5 anos de idade|2654/n1/all/v/allxp/p/all/c244/0/c1836/0/c2/0/c260/5922%205948%205954/c257/0|Anual|t
+4096|Sidra|Número de óbitos de crianças residentes de 0 a 27 dias de idade|2654/n1/all/v/allxp/p/all/c244/0/c1836/0/c2/0/c260/5923%205931/c257/0|Anual|t
 4098|BD|Número de óbitos pela síndrome da imunodeficiência adquirida (Aids)||Anual|t
 4099|BD|Número de óbitos por agressão||Anual|t
+4101|BD|Número de óbitos por armas de fogo||Anual|t
 4102|BD|Número de mulheres jovens de 15 a 24 anos de idade que não estudam nem trabalham||Anual|t
-4103|BD|Número de mulheres jovens de 15 a 24 anos de idade||Anual|t
-4104|BD|Número total de jovens de 15 a 24 anos de idade||Anual|t
+4103|Sidra|Número de mulheres jovens de 15 a 24 anos de idade|200/n1/all/v/allxp/p/all/c2/5/c1/0/c58/1143%201144/d/v93%200|Decenal|t
+4104|Sidra|Número total de jovens de 15 a 24 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1143%201144/d/v93%200|Decenal|t
 4105|BD|Número de pedidos respondidos no sistema de informação ao cidadão||Anual|t
 4106|BD|Valor da tarifa de ônibus preponderante no município multiplicado por 50 viagens||Anual|t
-4107|BD|Renda média mensal no município||Anual|t
+4107|IPEA|Renda média mensal no município|ADH_RDPC|Decenal|t
 4108|BD|Número total, em quilos (kg), de material reciclável recuperado||Anual|t
 4109|BD|PIB do turismo||Anual|t
 4111|BD|Número total, em quilos (kg), de resíduo urbano coletado||Anual|t
 4114|BD|Recursos alocados na LOA (Lei Orçamento Anual) para políticas de promoção da equidade de gênero||Anual|t
 4117|BD|Número de recursos e reclamações registrados no sistema de informação ao cidadão||Anual|t
 4118|BD|Valor dos recursos públicos municipais para cultura||Anual|t
-4120|BD|Renda de todas as faixas salariais do município||Anual|t
-4122|BD|Rendimento médio real das mulheres||Anual|t
-4124|BD|Rendimento médio real dos homens||Anual|t
+4121|BD|Rendimento médio real do trabalho principal das pessoas de 16 anos ou mais||Decenal|t
+4122|IPEA|Rendimento médio real das mulheres|ADH_RDPC_MUL|Decenal|t
+4124|IPEA|Rendimento médio real dos homens|ADH_RDPC_HOM|Decenal|t
 4125|BD|Número de rios e córregos classificados, pelo menos, com bom estado (segundo a classificação oficial)||Anual|t
 4126|BD|Número de rios e córregos no município||Anual|t
 4130|BD|Tempo médio gasto, em minutos, no deslocamento entre a moradia e o local de trabalho||Anual|t
@@ -251,6 +258,7 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4146|BD|Total de unidades de saúde básica||Anual|t
 4147|BD|Valor total repassado às famílias beneficiárias do Programa Bolsa Família no município||Anual|t
 4148|BD|Número de imóveis e propriedades rurais entregues via política habitacional e reforma agrária que tenham a mulher como proprietária||Anual|t
+4149|BD|Variação de renda do 1º décimo da população||Decenal|t
 4150|BD|Número total de imóveis e propriedades rurais entregues||Anual|t
 4152|BD|Variação de renda do 2º décimo da população||Anual|t
 4153|BD|Variação de renda do 3º décimo da população||Anual|t
@@ -271,7 +279,7 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4172|BD|Número total, em quilômetros quadrados (km²), de zona costeira em área de conservação e interesse científico||Anual|t
 4173|BD|Número total, em quilômetros quadrados (km²), de zona costeira||Anual|t
 4175|BD|Número de vereadoras na Câmara Municipal||Anual|t
-4176|BD|Número total de vereadores||Anual|t
+4176|IPEA|Número total de vereadores|VTOTC|Decenal|t
 4177|BD|Número de adultos (35 anos ou mais de idade) com diabetes||Anual|t
 4178|BD|Número de adultos (35 anos ou mais de idade)||Anual|t
 4179|BD|Número de processos municipais autuados por corrupção||Anual|t
@@ -282,12 +290,14 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 4185|BD|Número de professores nos anos finais do Ensino Fundamental e no Ensino Médio da rede pública||Anual|t
 4186|BD|Número de professores da educação básica com formação em educação especial||Anual|t
 4187|BD|Número total de professores da educação básica||Anual|t
+4192|Sidra|Número de imóveis locados no município|3511/n1/all/v/allxp/p/all/c511/0/c125/0/c137/0/c65/0/c74/0/d/v1549%200|Decenal|t
+4193|Sidra|Número total de imóveis do município|3152/n1/all/v/allxp/p/all/c125/2932/c68/9902|Decenal|t
 4194|BD|Nota de língua portuguesa da Prova Brasil - Anos Iniciais||Anual|t
 4195|BD|Nota de matemática da Prova Brasil - Anos Iniciais||Anual|t
 4196|BD|População que vive em um raio de até 300 metros de estações de metrô ou ponto de ônibus||Anual|t
-4197|BD|Valor da produção, em Reais (R$), de cereais, leguminosas e oleaginosas no município||Anual|t
-4198|BD|Quantidade produzida, em toneladas (t), de cereais, leguminosas e oleaginosas no município||Anual|t
-4199|BD|Área plantada, em hectares (ha), de cereais, leguminosas e oleaginosas no município||Anual|t
+4197|Sidra|Valor da produção, por mil Reais (R$), de cereais, leguminosas e oleaginosas no município|5457/n1/all/v/215/p/all/c782/40099%2040101%2040102%2040103%2040108%2040109%2040112%2040114%2040118%2040122%2040124%2040125%2040127%2040128|Anual|t
+4198|Sidra|Quantidade produzida, em toneladas (t), de cereais, leguminosas e oleaginosas no município|5457/n1/all/v/214/p/all/c782/40099%2040101%2040102%2040103%2040108%2040109%2040112%2040114%2040118%2040122%2040124%2040125%2040127%2040128|Anual|t
+4199|Sidra|Área plantada, em hectares (ha), de cereais, leguminosas e oleaginosas no município|5457/n1/all/v/8331/p/all/c782/40099%2040101%2040102%2040103%2040108%2040109%2040112%2040114%2040118%2040122%2040124%2040125%2040127%2040128|Anual|t
 4201|BD|Número de professores na pré-escola||Anual|t
 4202|BD|Número de professores no ensino fundamental||Anual|t
 4203|BD|Número de professores no ensino médio||Anual|t
@@ -330,41 +340,48 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 5003|BD|Número de ônibus com piso rebaixado para pessoas com deficiência||Anual|t
 5004|BD|Número de ônibus com elevador para pessoas com deficiência||Anual|t
 5005|BD|Homicídios na população branca||Anual|t
-5502|BD|Gastos públicos em Agricultura||Anual|t
-5503|BD|Gastos públicos em Assistência Social||Anual|t
-5506|BD|Gastos públicos em Comércio e Serviços||Anual|t
-5507|BD|Gastos públicos em Cultura||Anual|t
-5508|BD|Gastos públicos em Defesa Nacional||Anual|t
-5510|BD|Gastos públicos em Direitos da Cidadania||Anual|t
-5511|BD|Gastos públicos em Educação||Anual|t
-5514|BD|Gastos públicos em Essencial à Justiça||Anual|t
-5516|BD|Gastos públicos em Habitação||Anual|t
-5517|BD|Gastos públicos em Indústria||Anual|t
-5520|BD|Gastos públicos em Organização Agrária||Anual|t
-5521|BD|Gastos públicos em Previdência Social||Anual|t
-5523|BD|Gastos públicos em Saneamento||Anual|t
-5524|BD|Gastos públicos em Saúde||Anual|t
-5525|BD|Gastos públicos em Segurança Pública||Anual|t
-5528|BD|Gastos públicos em Urbanismo||Anual|t
+5500|IPEA|Total de gastos públicos em todas as áreas administrativas do município|DFOFM|Anual|t
+5501|IPEA|Gastos públicos: Administração|DFADMM|Anual|t
+5502|IPEA|Gastos públicos: Gestão ambiental, Agricultura e Organização agrária|DFAGRM|Anual|t
+5503|IPEA|Gastos públicos: Assistência social e previdência social|DFASPRM|Anual|t
+5504|IPEA|Gastos públicos: Ciência e Tecnologia|DFCETM|Anual|t
+5505|IPEA|Gastos públicos: Comunicações|DFCOMM|Anual|t
+5506|IPEA|Gastos públicos: Segurança pública|DFDEFSM|Anual|t
+5507|IPEA|Gastos públicos: Desportes e lazer|DFDELM|Anual|t
+5508|IPEA|Gastos públicos: Desenvolvimento regional|DFDESRM|Anual|t
+5509|IPEA|Gastos públicos: Educação e cultura|DFEDUCM|Anual|t
+5510|IPEA|Gastos públicos: Encargos especiais|DFENCEM|Anual|t
+5511|IPEA|Gastos públicos: Energia |DFENERM|Anual|t
+5512|IPEA|Gastos públicos: Urbanismo e habitação|DFHABM|Anual|t
+5513|IPEA|Gastos públicos: Indústria e comércio e serviços|DFICSM|Anual|t
+5514|IPEA|Gastos públicos: Essencial à justiça e direito da cidadania|DFJEDCM|Anual|t
+5515|IPEA|Gastos públicos: Judiciária |DFJUDM|Anual|t
+5516|IPEA|Gastos públicos: Legislativa |DFLEGM|Anual|t
+5517|IPEA|Gastos públicos: Relações exteriores|DFRELEXM|Anual|t
+5518|IPEA|Gastos públicos: Saúde e saneamento|DFSAUSM|Anual|t
+5519|IPEA|Gastos públicos: Trabalho |DFTRABM|Anual|t
+5520|IPEA|Gastos públicos: Transporte|DFTRAM|Anual|t
+5524|BD|Gastos públicos: Saúde||Anual|t
 5550|BD|Total de mortes com automóveis e caminhonetes||Anual|t
 5551|BD|Total de mortes com bicicleta||Anual|t
 5552|BD|Total de mortes com motocicleta||Anual|t
 5553|BD|Total de mortes por atropelamentos||Anual|t
-5570|BD|Número total, em quilômetros quadrados (km²), da área urbana do município||Anual|t
+5570|Sidra|Número total, em quilômetros quadrados (km²), da área urbana do município|8418/n1/all/v/12749/p/all/d/v12749%202|Anual|t
 5571|BD|Número total, em quilômetros quadrados (km²), da área rural do município||Anual|t
-5601|BD|Documentos pessoais, como RG, CPF, passaporte ou carteira de trabalho||Anual|t
-5602|BD|Números de saúde pública, como agendamento de consultas, remédios ou outros serviços do sistema público de saúde||Anual|t
-5603|BD|Educação pública, como ENEM, PROUNI, matrícula em escolas ou universidades públicas||Anual|t
-5604|BD|Direitos do trabalhador ou previdência social, como INSS, FGTS, seguro-desemprego, auxílio-doença ou aposentadoria||Anual|t
-5605|BD|Impostos e taxas governamentais, como declaração de imposto de renda, IPVA ou IPTU||Anual|t
-5606|BD|Polícia e segurança, como boletim de ocorrência, antecedentes criminais ou denúncias||Anual|t
-5607|BD|Transporte público ou outros serviços urbanos, como limpeza e conservação de vias, iluminação||Anual|t
+5601|BD|Usuários na internet: Documentos pessoais, como RG, CPF, passaporte ou carteira de trabalho||Anual|t
+5602|BD|Usuários na internet: Números de saúde pública, como agendamento de consultas, remédios ou outros serviços do sistema público de saúde||Anual|t
+5603|BD|Usuários na internet: Educação pública, como ENEM, PROUNI, matrícula em escolas ou universidades públicas||Anual|t
+5604|BD|Usuários na internet: Direitos do trabalhador ou previdência social, como INSS, FGTS, seguro-desemprego, auxílio-doença ou aposentadoria||Anual|t
+5605|BD|Usuários na internet: Impostos e taxas governamentais, como declaração de imposto de renda, IPVA ou IPTU||Anual|t
+5606|BD|Usuários na internet: Polícia e segurança, como boletim de ocorrência, antecedentes criminais ou denúncias||Anual|t
+5607|BD|Usuários na internet: Transporte público ou outros serviços urbanos, como limpeza e conservação de vias, iluminação||Anual|t
 5620|BD|Emissões de GEE (t CO2) nos processos industriais - CO2||Anual|t
 5621|BD|Emissões de GEE (t CO2) nos processos industriais - CH4||Anual|t
 5622|BD|Emissões de GEE (t CO2) nos processos industriais - N2O||Anual|t
 5623|BD|Emissões totais de GEE (t CO2) nos processos industriais||Anual|t
 5700|BD|Acompanhamento nutricional de crianças entre 0 e 5 anos de idade||Anual|t
 5701|BD|Acompanhamento nutricional de crianças entre 5 e 10 anos de idade||Anual|t
+5702|Sidra|População de crianças entre 5 a 10 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1141%202493/d/v93%200|Decenal|t
 5800|BD|Número de pessoas com hepatite A||Anual|t
 5801|BD|Número de pessoas com hepatite B||Anual|t
 5802|BD|Número de pessoas com hepatite C||Anual|t
@@ -375,24 +392,3 @@ codigo_variavel|tipo_banco|nome_variavel|codigo_banco|atualizacao|padrao
 5820|BD|Número total de leitos hospitalares públicos||Anual|t
 5821|BD|Número total de leitos hospitalares privados||Anual|t
 5830|BD|Gasto total em saúde (federal)||Anual|t
-5501|IPEA|Gastos públicos em Administração|DFADMM|Anual|t
-5504|IPEA|Gastos públicos em Ciência e Tecnologia|DFCETM|Anual|t
-5527|IPEA|Gastos públicos em Transporte|DFTRAM|Anual|t
-5505|IPEA|Gastos públicos em Comunicações|DFCOMM|Anual|t
-5509|IPEA|Gastos públicos em Desporto e Lazer|DFDELM|Anual|t
-5513|IPEA|Gastos públicos em Energia|DFENERM|Anual|t
-45|Sidra|População na faixa etária de 7 a 14 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1142%202490%202491%202492/d/v93%200|Decenal|t
-5519|IPEA|Gastos públicos em Legislativa|DFLEGM|Anual|t
-5522|IPEA|Gastos públicos em Relações Exteriores|DFRELEXM|Anual|t
-5526|IPEA|Gastos públicos em Trabalho|DFTRABM|Anual|t
-5515|BD|Gastos públicos em Gestão Ambiental||Anual|t
-5518|IPEA|Gastos públicos em Judiciária|DFJUDM|Anual|t
-5512|IPEA|Gastos públicos em Encargos Especiais|DFENCEM|Anual|t
-5500|IPEA|Total de gastos públicos em todas as áreas administrativas do município|RECORM|Anual|t
-27|IPEA|Área total do município em quilômetros quadrados (km²)|AREA|Anual|t
-30|IPEA|Índice de Desenvolvimento Humano (IDH) municipal|ADH_IDHM|Decenal|t
-155|IPEA|Mortalidade até cinco anos de idade|ADH_MORT5	|Decenal|f
-233|Sidra|População de crianças menores que 5 anos|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1140/d/v93%200|Decenal|t
-5702|Sidra|População de crianças entre 5 a 10 anos de idade|200/n1/all/v/allxp/p/all/c2/0/c1/0/c58/1141%202493/d/v93%200|Decenal|t
-4149|IPEA|Variação de renda do 1º décimo da população|ADH_PREN10RICOS|Decenal|t
-4119|IPEA|Renda municipal detida pelos 20% mais pobres|ADH_RDPC1|Decenal|t

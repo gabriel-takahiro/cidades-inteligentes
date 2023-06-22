@@ -70,7 +70,7 @@ public class IndicadorDAO {
 	public List<Indicador> buscarCodigoEMetodo() {
 		List<Indicador> indicadores = new ArrayList<Indicador>();
 		try {
-			String sql = "SELECT codigo_indicador, metodo_calculo FROM indicador";
+			String sql = "SELECT codigo_indicador, metodo_calculo FROM indicador ORDER BY 1 ASC";
 
 			try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 				pstm.execute();
@@ -133,7 +133,7 @@ public class IndicadorDAO {
 		List<String> stringIndicadores = listaIndicadores.stream().map(Object::toString).collect(Collectors.toList());
 		String indicadores = String.join(",", stringIndicadores);
 		String sql = "SELECT codigo_indicador, metodo_calculo FROM indicador WHERE codigo_indicador IN (" + indicadores
-				+ ")";
+				+ ") ORDER BY 1 ASC";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 			pstm.execute();
@@ -158,7 +158,7 @@ public class IndicadorDAO {
 	 */
 	public void mostrarIndicadores(JTable tableIndicadores, boolean seleciona) {
 		try {
-			String sql1 = "SELECT codigo_indicador, nome_indicador, numero_meta, metodo_calculo, padrao FROM indicador ORDER BY 5 DESC, 1 ASC";
+			String sql1 = "SELECT codigo_indicador, nome_indicador, descricao, numero_meta, metodo_calculo, padrao FROM indicador ORDER BY 1 ASC";
 
 			try (PreparedStatement pstm1 = connection.prepareStatement(sql1)) {
 				pstm1.execute();
@@ -184,6 +184,8 @@ public class IndicadorDAO {
 							nomeColuna[i - 1] = "Código";
 						} else if (rsmd.getColumnName(i).equals("nome_indicador")) {
 							nomeColuna[i - 1] = "Nome";
+						} else if (rsmd.getColumnName(i).equals("descricao")) {
+							nomeColuna[i - 1] = "Descrição";
 						} else if (rsmd.getColumnName(i).equals("numero_meta")) {
 							nomeColuna[i - 1] = "Meta";
 						} else if (rsmd.getColumnName(i).equals("metodo_calculo")) {
@@ -204,16 +206,17 @@ public class IndicadorDAO {
 					tableIndicadores.setRowSorter(new TableRowSorter<>(model));
 
 					int codigo_indicador;
-					String nome_indicador, numero_meta, metodo_calculo;
+					String nome_indicador, descricao, numero_meta, metodo_calculo;
 					boolean padrao;
 
 					while (rst1.next()) {
 						codigo_indicador = rst1.getInt(1);
 						nome_indicador = rst1.getString(2);
-						numero_meta = rst1.getString(3);
-						metodo_calculo = rst1.getString(4);
-						padrao = rst1.getBoolean(5);
-						String[] linha = { Integer.toString(codigo_indicador), nome_indicador, numero_meta,
+						descricao = rst1.getString(3);
+						numero_meta = rst1.getString(4);
+						metodo_calculo = rst1.getString(5);
+						padrao = rst1.getBoolean(6);
+						String[] linha = { Integer.toString(codigo_indicador), nome_indicador, descricao, numero_meta,
 								metodo_calculo, Boolean.toString(padrao) };
 						model.addRow(linha);
 					}
@@ -238,7 +241,7 @@ public class IndicadorDAO {
 	public void mostrarIndicadoresSemResultado(JTable tableIndicadoresSemResultado,
 			ArrayList<IndicadoresBuscados> indicadoresNaoValorados, int codigo_municipio, String data) {
 		try {
-			String sqlVariaveisIndicador = "SELECT codigo_variavel, nome_variavel FROM possui_variavel NATURAL JOIN variavel WHERE codigo_indicador = ?";
+			String sqlVariaveisIndicador = "SELECT codigo_variavel, nome_variavel FROM possui_variavel NATURAL JOIN variavel WHERE codigo_indicador = ? ORDER BY 1 ASC";
 			String sqlVariaveisValor = "SELECT valor, valor_oficial, valor_atualizado FROM valor_variavel WHERE codigo_variavel = ? AND codigo_municipio = ? AND data = ?";
 
 			DefaultTableModel model = (DefaultTableModel) tableIndicadoresSemResultado.getModel();
@@ -421,8 +424,8 @@ public class IndicadorDAO {
 	public List<Indicador> buscarIndicadorCompleto(List<Integer> listaIndicadores) {
 		List<String> stringIndicadores = listaIndicadores.stream().map(Object::toString).collect(Collectors.toList());
 		String indicadores = String.join(",", stringIndicadores);
-		String sql = "SELECT codigo_indicador, nome_indicador, numero_meta, metodo_calculo, padrao FROM indicador WHERE codigo_indicador IN ("
-				+ indicadores + ")";
+		String sql = "SELECT codigo_indicador, nome_indicador, descricao, numero_meta, metodo_calculo, padrao FROM indicador WHERE codigo_indicador IN ("
+				+ indicadores + ") ORDER BY 1 ASC";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
 			pstm.execute();
@@ -430,7 +433,7 @@ public class IndicadorDAO {
 				List<Indicador> listaIndicadoresCompletos = new ArrayList<>();
 				while (rst.next()) {
 					listaIndicadoresCompletos.add(new Indicador(rst.getInt(1), rst.getString(2), rst.getString(3),
-							rst.getString(4), rst.getBoolean(5)));
+							rst.getString(4), rst.getString(5), rst.getBoolean(6)));
 				}
 				return listaIndicadoresCompletos;
 			}
@@ -453,7 +456,7 @@ public class IndicadorDAO {
 				.collect(Collectors.toList());
 		String indicadores = String.join(",", stringIndicadores);
 		String sql = "SELECT codigo_indicador, nome_indicador, numero_meta, metodo_calculo, padrao FROM indicador WHERE codigo_indicador IN ("
-				+ indicadores + ")";
+				+ indicadores + ") ORDER BY 1 ASC";
 
 		List<Integer> listaIndicadoresVariaveis = new ArrayList<>();
 

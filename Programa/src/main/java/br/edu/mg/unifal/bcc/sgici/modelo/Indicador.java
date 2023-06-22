@@ -81,13 +81,15 @@ public class Indicador {
 	 * 
 	 * @param codigo         código do indicador
 	 * @param nome           nome do indicador
+	 * @param descricao		 descrição do indicador
 	 * @param meta           meta do indicador
 	 * @param metodo_calculo método de cálculo
 	 * @param padrao         true caso o indicador seja padrão
 	 */
-	public Indicador(int codigo, String nome, String meta, String metodo_calculo, boolean padrao) {
+	public Indicador(int codigo, String nome, String descricao, String meta, String metodo_calculo, boolean padrao) {
 		this.codigo = codigo;
 		this.nome = nome;
+		this.descricao = descricao;
 		this.meta = meta;
 		this.metodo_calculo = metodo_calculo;
 		this.padrao = padrao;
@@ -246,21 +248,22 @@ public class Indicador {
 
 			List<Indicador> listaIndicadoresCompleto = indicadorDAO.buscarIndicadorCompleto(listaIndicadores);
 
-			int coluna = 5;
+			int coluna = 6;
 
 			DefaultTableModel model = (DefaultTableModel) tableIndicadores.getModel();
 			String[] nomeColuna = new String[coluna];
 
 			nomeColuna[0] = "Código";
 			nomeColuna[1] = "Nome";
-			nomeColuna[2] = "Meta";
-			nomeColuna[3] = "Método de cálculo";
-			nomeColuna[4] = "Indicador padrão";
+			nomeColuna[2] = "Descrição";
+			nomeColuna[3] = "Meta";
+			nomeColuna[4] = "Método de cálculo";
+			nomeColuna[5] = "Indicador padrão";
 
 			model.setColumnIdentifiers(nomeColuna);
 
 			listaIndicadoresCompleto.forEach(indicador -> {
-				String[] linha = { Integer.toString(indicador.codigo), indicador.nome, indicador.meta,
+				String[] linha = { Integer.toString(indicador.codigo), indicador.nome, indicador.descricao, indicador.meta,
 						indicador.metodo_calculo, Boolean.toString(indicador.padrao) };
 				model.addRow(linha);
 

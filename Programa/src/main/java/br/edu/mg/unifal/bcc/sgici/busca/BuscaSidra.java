@@ -259,9 +259,10 @@ public class BuscaSidra implements Busca {
 				return listaResultados;
 			} catch (Exception e) {
 				tentativas++;
+				System.out.println(e);
 			}
 		}
-		throw new RuntimeException("Falha ao buscar o valor Sidra para todos os municípios.");
+		throw new RuntimeException("Falha ao buscar o valor Sidra para todos os municípios." + codigoBanco);
 	}
 
 }

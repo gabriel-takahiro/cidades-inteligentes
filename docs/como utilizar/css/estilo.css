@@ -21,13 +21,14 @@ body {
 .titulo-programa {
     text-align: center;
     margin: 5px;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 550;
     color: rgb(255, 255, 255);
 }
 
 .secao-titulo {
     background: linear-gradient(to bottom, #00d118, #003006);
-    padding: 5px;
+    padding: 15px 5px;
     font-size: 20px;
 }
 
@@ -110,6 +111,18 @@ p {
 
 .titulo {
     text-align: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+
+.direitos {
+    color: #555555;
+    font-size: 16px;
 }
 
 ::selection {
