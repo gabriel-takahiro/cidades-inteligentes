@@ -564,14 +564,14 @@ public class JanelaPrincipal extends JFrame {
 	public void instanciarJanelas(boolean abrirTutorial, Configuracao configuracao, String tabela) {
 		setTitle("Sistema de gestao de indicadores para cidades inteligentes (Tabela: " + tabela + ",  Desempenho: " + configuracao + ")");
 		setConfiguracao(configuracao);
-		instanciarIndicadores();
+		instanciarBancoDados();
+		instanciarTutorial(abrirTutorial);
 		instanciarVariaveis();
 		instanciarMetas();
 		instanciarODS();
 		instanciarConsultas();
 		instanciarCalculos();
-		instanciarBancoDados();
-		instanciarTutorial(abrirTutorial);
+		instanciarIndicadores();
 	}
 
 	/**

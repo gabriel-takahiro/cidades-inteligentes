@@ -60,6 +60,7 @@ public class CriarBD {
 		try (Connection connection = ConnectionFactory.recuperarConexao();) {
 			operacoes = new ArrayList<ResultadoOperacao>();
 
+			criarEsquemaPublico(connection);
 			criarODS(connection);
 			criarMeta(connection);
 			criarIndicador(connection);
@@ -99,6 +100,24 @@ public class CriarBD {
 		criarImportadosODS(connection);
 
 		return operacoes;
+	}
+	
+	/**
+	 * Este método executa a operação de criação do esquema "public" no banco de
+	 * dados. O esquema comporta as tabelas de dados básicos para o sistema. O
+	 * status da operação (sucesso ou falha) será registrado na lista de operações,
+	 * juntamente com o nome da operação ("Criar esquema importados").
+	 * 
+	 * @param connection conexão com o banco de dados
+	 */
+	public static void criarEsquemaPublico(Connection connection) {
+		String criaEsquemaImportados = "CREATE SCHEMA public;";
+		try (PreparedStatement pstm = connection.prepareStatement(criaEsquemaImportados)) {
+			pstm.execute();
+			operacoes.add(new ResultadoOperacao("Criar esquema public", "Sucesso"));
+		} catch (Exception e) {
+			operacoes.add(new ResultadoOperacao("Criar esquema public", "Falha"));
+		}
 	}
 
 	/**

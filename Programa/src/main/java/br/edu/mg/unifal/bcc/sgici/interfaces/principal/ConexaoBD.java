@@ -118,12 +118,16 @@ public class ConexaoBD extends JInternalFrame {
 				try {
 					new ConnectionFactory(textFieldUsuario.getText(), new String(passwordFieldSenha.getPassword()),
 							txtIc.getText(), (Configuracao) comboBoxDesempenho.getSelectedItem());
-					listaMenu.forEach(menu -> menu.setEnabled(true));
-					janelaPrincipal.instanciarJanelas(chckbxNewCheckBox.isSelected(), (Configuracao) comboBoxDesempenho.getSelectedItem(), txtIc.getText());
-					dispose();
 				} catch (Exception erro) {
 					System.out.println(erro);
 					new JanelaMensagem("Usuário e/ou senha e/ou tabela inválidos.");
+				}
+				try {
+					listaMenu.forEach(menu -> menu.setEnabled(true));
+					janelaPrincipal.instanciarJanelas(chckbxNewCheckBox.isSelected(), (Configuracao) comboBoxDesempenho.getSelectedItem(), txtIc.getText());
+					dispose();
+				} catch (Exception e1) {
+					dispose();
 				}
 			}
 		});
