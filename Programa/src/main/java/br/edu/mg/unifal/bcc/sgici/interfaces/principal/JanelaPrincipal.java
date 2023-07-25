@@ -562,7 +562,7 @@ public class JanelaPrincipal extends JFrame {
 	 * @param configuracao  configuração de desempenho
 	 */
 	public void instanciarJanelas(boolean abrirTutorial, Configuracao configuracao, String tabela) {
-		setTitle("Sistema de gestao de indicadores para cidades inteligentes (Tabela: " + tabela + ",  Desempenho: " + configuracao + ")");
+		setTitle("Sistema de gestao de indicadores para cidades inteligentes (Tabela: " + tabela + ")");
 		setConfiguracao(configuracao);
 		instanciarBancoDados();
 		instanciarTutorial(abrirTutorial);

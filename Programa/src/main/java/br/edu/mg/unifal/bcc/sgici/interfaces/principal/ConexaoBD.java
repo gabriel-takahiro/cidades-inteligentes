@@ -33,7 +33,6 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -62,7 +61,6 @@ public class ConexaoBD extends JInternalFrame {
 	private JPasswordField passwordFieldSenha;
 	private JTextField textFieldUsuario;
 	private JCheckBox chckbxNewCheckBox;
-	private JComboBox<Configuracao> comboBoxDesempenho;
 	private JTextField txtIc;
 
 	/**
@@ -74,7 +72,7 @@ public class ConexaoBD extends JInternalFrame {
 	public ConexaoBD(List<JMenu> listaMenu, JanelaPrincipal janelaPrincipal, JDesktopPane desktopPane) {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 375, 330);
+		setBounds(100, 100, 375, 290);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -99,7 +97,7 @@ public class ConexaoBD extends JInternalFrame {
 		lblSenha.setFont(new Font("Arial", Font.PLAIN, 16));
 
 		JButton btnConectar = new JButton("Conectar");
-		btnConectar.setBounds(10, 259, 339, 30);
+		btnConectar.setBounds(10, 219, 339, 30);
 		btnConectar.addActionListener(new ActionListener() {
 			/**
 			 * Faz o conexão com o banco de dados
@@ -117,14 +115,14 @@ public class ConexaoBD extends JInternalFrame {
 
 				try {
 					new ConnectionFactory(textFieldUsuario.getText(), new String(passwordFieldSenha.getPassword()),
-							txtIc.getText(), (Configuracao) comboBoxDesempenho.getSelectedItem());
+							txtIc.getText(), new Configuracao(Runtime.getRuntime().availableProcessors()));
 				} catch (Exception erro) {
 					System.out.println(erro);
 					new JanelaMensagem("Usuário e/ou senha e/ou tabela inválidos.");
 				}
 				try {
 					listaMenu.forEach(menu -> menu.setEnabled(true));
-					janelaPrincipal.instanciarJanelas(chckbxNewCheckBox.isSelected(), (Configuracao) comboBoxDesempenho.getSelectedItem(), txtIc.getText());
+					janelaPrincipal.instanciarJanelas(chckbxNewCheckBox.isSelected(), new Configuracao(Runtime.getRuntime().availableProcessors()), txtIc.getText());
 					dispose();
 				} catch (Exception e1) {
 					dispose();
@@ -148,7 +146,7 @@ public class ConexaoBD extends JInternalFrame {
 		chckbxNewCheckBox = new JCheckBox("Abrir tutorial");
 		chckbxNewCheckBox.setToolTipText("Abre o tutorial no navegador.");
 		chckbxNewCheckBox.setFont(new Font("Arial", Font.PLAIN, 16));
-		chckbxNewCheckBox.setBounds(10, 222, 129, 30);
+		chckbxNewCheckBox.setBounds(10, 182, 129, 30);
 		contentPane.add(chckbxNewCheckBox);
 
 		JLabel lblBancoDados = new JLabel("Banco de dados:");
@@ -163,19 +161,6 @@ public class ConexaoBD extends JInternalFrame {
 		txtIc.setBounds(149, 145, 200, 30);
 		contentPane.add(txtIc);
 		
-		JLabel lblDesempenho = new JLabel("Desempenho:");
-		lblDesempenho.setToolTipText("Configuração de desempenho do SGICI.");
-		lblDesempenho.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDesempenho.setBounds(10, 186, 129, 30);
-		contentPane.add(lblDesempenho);
-		
-		Configuracao[] configuracoes = Configuracao.values();
-		comboBoxDesempenho = new JComboBox<Configuracao>(configuracoes);
-		comboBoxDesempenho.setFont(new Font("Arial", Font.PLAIN, 16));
-		comboBoxDesempenho.setBounds(149, 186, 200, 28);
-		comboBoxDesempenho.setSelectedItem(Configuracao.MEDIO);
-		contentPane.add(comboBoxDesempenho);
-
 		setLocation(0, 0);
 		setVisible(true);
 		setResizable(false);

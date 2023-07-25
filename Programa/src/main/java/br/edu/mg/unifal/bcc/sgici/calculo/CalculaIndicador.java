@@ -392,7 +392,6 @@ public class CalculaIndicador {
 				try {
 					CalculoIndicador.calculaIndicadoresTodosMunicipios(listaIndicadoresSelecionados, data, recalcular,
 							valorRetroativo);
-
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							JanelaPrincipal.abrirJanelas(new MostrarResultadoParaTodos(listaIndicadoresSelecionados,

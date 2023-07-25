@@ -1,107 +1,40 @@
 package br.edu.mg.unifal.bcc.sgici.interfaces.principal;
 
 /**
- * <p>
- * Configurações pré-definidas para acesso a serviços externos.
- * </p>
- * <p>
- * Possui três opções de configuração: BAIXO, MEDIO e ALTO.
- * </p>
- * <p>
- * Cada configuração define valores para os seguintes parâmetros:
- * </p>
- * <p>
- * retryDelay, retryAttempts, connectTestPeriod, poolInicialSize, poolSize,
- * threadPoolSize, tempoBusca, tempoCalculo, connectTimeoutIpea,
- * readTimeoutIpea, connectTimeoutSidraUmMunicipio, readTimeoutSidraUmMunicipio,
- * connectTimeoutSidraTodosMunicipios e readTimeoutSidraTodosMunicipios.
- * </p>
+ * Classe com as configurações utilizadas no programa
  * 
  * @author Gabriel Takahiro
  * @version 0.4
  *
  */
-public enum Configuracao {
-	/**
-	 * Configuração de baixo desempenho
-	 */
-	BAIXO(1000, 10, 30, 2, 15, 2, 180, 15, 10000, 300000, 10000, 20000, 10000, 500000),
-	/**
-	 * Configuração de médio desempenho
-	 */
-	MEDIO(500, 10, 30, 5, 30, 5, 150, 10, 7500, 240000, 7500, 15000, 7500, 400000),
-	/**
-	 * Configuração de alto desempenho
-	 */
-	ALTO(100, 10, 30, 10, 50, 10, 120, 5, 5000, 180000, 5000, 10000, 5000, 300000);
-
-	private final int retryDelay;
-	private final int retryAttempts;
-	private final int connectTestPeriod;
+public class Configuracao {
+	private final int retryDelay = 500;
+	private final int retryAttempts = 10;
+	private final int connectTestPeriod = 30;
 	private final int poolInicialSize;
 	private final int poolSize;
 
 	private final int threadPoolSize;
-	private final int tempoBusca;
-	private final int tempoCalculo;
+	private final int tempoBusca = 200;
+	private final int tempoCalculo = 20;
 
-	private final int connectTimeoutIpea;
-	private final int readTimeoutIpea;
+	private final int connectTimeoutIpea = 10000;
+	private final int readTimeoutIpea = 300000;
 
-	private final int connectTimeoutSidraUmMunicipio;
-	private final int readTimeoutSidraUmMunicipio;
-	private final int connectTimeoutSidraTodosMunicipios;
-	private final int readTimeoutSidraTodosMunicipios;
+	private final int connectTimeoutSidraUmMunicipio = 10000;
+	private final int readTimeoutSidraUmMunicipio = 20000;
+	private final int connectTimeoutSidraTodosMunicipios = 10000;
+	private final int readTimeoutSidraTodosMunicipios = 500000;
 
 	/**
-	 * Construtor da classe Configuracao que recebe diversos parâmetros relacionados
-	 * a conexão e timeout.
+	 * Construtor da classe Configuracao que recebe a quantidade de processadores disponíveis.
 	 * 
-	 * @param retryDelay                         tempo de espera entre as tentativas
-	 *                                           de conexão
-	 * @param retryAttempts                      número de tentativas de conexão que
-	 *                                           devem ser realizadas em caso de
-	 *                                           falha
-	 * @param connectTestPeriod                  período de tempo entre as checagens
-	 *                                           de conexão
-	 * @param poolInicialSize                    tamanho inicial da pool de conexões
-	 * @param poolSize                           tamanho máximo da pool de conexões
-	 * @param threadPoolSize                     tamanho do pool de threads
-	 * @param tempoBusca                         tempo máximo para uma busca das
-	 *                                           variáveis
-	 * @param tempoCalculo                       tempo máximo para o cálculo de um
-	 *                                           indicador
-	 * @param connectTimeoutIpea                 tempo limite para a conexão com o
-	 *                                           site do IPEA
-	 * @param readTimeoutIpea                    tempo limite para a leitura de
-	 *                                           dados do site do IPEA
-	 * @param connectTimeoutSidraUmMunicipio     tempo limite para a conexão com o
-	 *                                           site do SIDRA para um município
-	 * @param readTimeoutSidraUmMunicipio        tempo limite para a leitura de
-	 *                                           dados do site do SIDRA para um
-	 *                                           município
-	 * @param connectTimeoutSidraTodosMunicipios tempo limite para a conexão com o
-	 *                                           site do SIDRA para todos os
-	 *                                           municípios de uma agregação
+	 * @param quantidadeNucleos                   quantidade de núcleos da máquina do usuário
 	 */
-	private Configuracao(int retryDelay, int retryAttempts, int connectTestPeriod, int poolInicialSize, int poolSize,
-			int threadPoolSize, int tempoBusca, int tempoCalculo, int connectTimeoutIpea, int readTimeoutIpea,
-			int connectTimeoutSidraUmMunicipio, int readTimeoutSidraUmMunicipio, int connectTimeoutSidraTodosMunicipios,
-			int readTimeoutSidraTodosMunicipios) {
-		this.retryDelay = retryDelay;
-		this.retryAttempts = retryAttempts;
-		this.connectTestPeriod = connectTestPeriod;
-		this.poolInicialSize = poolInicialSize;
-		this.poolSize = poolSize;
-		this.threadPoolSize = threadPoolSize;
-		this.tempoBusca = tempoBusca;
-		this.tempoCalculo = tempoCalculo;
-		this.connectTimeoutIpea = connectTimeoutIpea;
-		this.readTimeoutIpea = readTimeoutIpea;
-		this.connectTimeoutSidraUmMunicipio = connectTimeoutSidraUmMunicipio;
-		this.readTimeoutSidraUmMunicipio = readTimeoutSidraUmMunicipio;
-		this.connectTimeoutSidraTodosMunicipios = connectTimeoutSidraTodosMunicipios;
-		this.readTimeoutSidraTodosMunicipios = readTimeoutSidraTodosMunicipios;
+	public Configuracao(int quantidadeNucleos) {
+		this.poolInicialSize = quantidadeNucleos;
+		this.poolSize = quantidadeNucleos * 2;
+		this.threadPoolSize = quantidadeNucleos;
 	}
 
 	/**
