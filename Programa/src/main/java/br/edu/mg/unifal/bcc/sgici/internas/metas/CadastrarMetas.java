@@ -130,7 +130,7 @@ public class CadastrarMetas extends JanelasInternas {
 		try {
 			mostrarODS();
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			System.out.println(e1.getMessage());
 		}
 
 		setLocation(0, 0);

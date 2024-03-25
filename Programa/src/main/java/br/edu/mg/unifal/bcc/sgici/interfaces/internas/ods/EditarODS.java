@@ -163,7 +163,7 @@ public class EditarODS extends JanelasInternas {
 		try {
 			Tabelas.mostrarODS(2, table);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			System.out.println(e1.getMessage());
 		}
 
 		setLocation(0, 0);

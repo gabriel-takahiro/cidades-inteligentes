@@ -108,4 +108,13 @@ public class ConnectionFactory {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public boolean isConnected() {
+	    try (Connection connection = dataSource.getConnection()) {
+	        return true;
+	    } catch (SQLException e) {
+	        return false;
+	    }
+	}
+
 }

@@ -571,7 +571,11 @@ public class CadastrarIndicadores extends JanelasInternas {
 		comboBoxMeta.setBounds(498, 92, 107, 22);
 		panel.add(comboBoxMeta);
 
-		mostrarMetas();
+		try {
+			mostrarMetas();
+		} catch (Exception e1) {
+			System.out.println(e1.getMessage());
+		}
 
 		JButton btnIncluirIndicadores = new JButton("Incluir indicadores");
 		btnIncluirIndicadores.addActionListener(new ActionListener() {
@@ -590,7 +594,7 @@ public class CadastrarIndicadores extends JanelasInternas {
 		try {
 			Tabelas.mostrarVariaveis(tableVariaveis);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			System.out.println(e1.getMessage());
 		}
 		setVisible(true);
 		setMaximizable(false);

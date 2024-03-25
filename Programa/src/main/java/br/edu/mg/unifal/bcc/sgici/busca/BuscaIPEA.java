@@ -172,10 +172,6 @@ public class BuscaIPEA implements Busca {
 					String codigo = jsonObject.get("TERCODIGO").getAsString();
 					String valor = jsonObject.get("VALVALOR").getAsString();
 					
-					if(valor.replace(" ", "").equals("") || valor.equals(null)) {
-						valor = "0";
-					}
-					
 					int anoJson = Integer.parseInt(data.substring(0, 4));
 					if (anoJson >= anoMinimo && anoJson <= ano && codigo.length() == 7) {
 						listaResultados

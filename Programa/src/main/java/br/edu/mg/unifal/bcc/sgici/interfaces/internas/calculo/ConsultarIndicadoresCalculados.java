@@ -209,7 +209,7 @@ public class ConsultarIndicadoresCalculados extends JanelasInternas {
 		try {
 			Tabelas.mostrarIndicadores(6, table);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			System.out.println(e1.getMessage());
 		}
 	}
 

@@ -91,7 +91,7 @@ public class MostrarODS extends JanelasInternas {
 		try {
 			Tabelas.mostrarODS(table);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
 		setLocation(0, 0);

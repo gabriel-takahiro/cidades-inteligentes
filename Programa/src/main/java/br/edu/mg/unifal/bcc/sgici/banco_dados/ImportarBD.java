@@ -89,6 +89,7 @@ public class ImportarBD {
 			pstm.execute();
 			operacoes.add(new ResultadoOperacao("Importar planilha", "Sucesso"));
 		} catch (Exception e) {
+			System.out.println(e);
 			operacoes.add(new ResultadoOperacao("Importar planilha", "Falha"));
 		}
 	}
@@ -108,6 +109,7 @@ public class ImportarBD {
 			pstm.execute();
 			operacoes.add(new ResultadoOperacao("Importar municípios", "Sucesso"));
 		} catch (Exception e) {
+			System.out.println(e);
 			operacoes.add(new ResultadoOperacao("Importar municípios", "Falha"));
 		}
 	}
@@ -127,6 +129,7 @@ public class ImportarBD {
 			pstm.execute();
 			operacoes.add(new ResultadoOperacao("Importar variáveis", "Sucesso"));
 		} catch (Exception e) {
+			System.out.println(e);
 			operacoes.add(new ResultadoOperacao("Importar variáveis", "Falha"));
 		}
 	}
@@ -146,6 +149,7 @@ public class ImportarBD {
 			pstm.execute();
 			operacoes.add(new ResultadoOperacao("Importar ODS", "Sucesso"));
 		} catch (Exception e) {
+			System.out.println(e);
 			operacoes.add(new ResultadoOperacao("Importar ODS", "Falha"));
 		}
 	}

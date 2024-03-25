@@ -273,7 +273,7 @@ public class RecalcularIndicadores extends JanelasInternas {
 			);
 			contentPane.setLayout(gl_contentPane);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			System.out.println(e1.getMessage());
 		}
 
 		setLocation(0, 0);
